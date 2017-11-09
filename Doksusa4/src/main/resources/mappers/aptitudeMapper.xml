@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doksusa.ap">
+	
+	<select id="ap_selectAll">
+		select * from aptitude</select>
+	<select id="ap_select" parameterType="int">
+		select * from aptitude where a_num=#{a_num}</select>
+	<insert id="ap_insert" parameterType="apdto">
+		insert into aptitude (a_num,a_school,a_year,a_subject,a_subnum,a_answer,a_link) values (#{a_num},#{a_school},#{a_year},#{a_subject},#{a_subnum},#{a_answer},#{a_link})</insert>
+	<update id="ap_update" parameterType="apdto">
+		update aptitude set a_school=#{a_school},a_year=#{a_year},a_subject=#{a_subject},a_subnum=#{a_subnum},a_answer=#{a_answer},a_link=#{a_link} where a_num=#{a_num}</update>
+	<delete id="ap_delete" parameterType="int">
+		delete from aptitude where a_num=#{a_num}</delete>
+
+</mapper>

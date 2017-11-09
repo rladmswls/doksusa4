@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="log4j"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="userdto" type="com.doksusa.user.UserDTO"/>
+		<typeAlias alias="ipsidto" type="com.doksusa.ipsiinfo.IpsiInfoDTO"/>
+		<typeAlias alias="asdto" type="com.doksusa.a_solution.A_solutionDTO"/>
+		<typeAlias alias="apdto" type="com.doksusa.aptitude.AptitudeDTO"/>
+		<typeAlias alias="foredto" type="com.doksusa.foreword.ForewordDTO"/>
+	</typeAliases>
+</configuration>

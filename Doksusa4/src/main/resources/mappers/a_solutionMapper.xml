@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doksusa.as">
+
+	<select id="as_select" resultType="asdto" parameterType="int">
+		select * from a_solution where a_num=#{a_num}</select>	
+	<insert id="as_insert" parameterType="asdto">
+		insert into a_solution (a_num,a_sol) values (#{a_num},#{a_sol})</insert>
+	<update id="as_update" parameterType="int">
+		update a_solution set a_sol=#{a_sol} where a_num=#{a_num}</update>
+	<delete id="as_delete" parameterType="int">
+		delete from a_solution where a_num=#{a_num}</delete>
+
+</mapper>

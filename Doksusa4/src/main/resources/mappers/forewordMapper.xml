@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doksusa.fore">
+
+	<select id="fore_selectAll">
+		select * from foreword</select>
+	<select id="fore_select" parameterType="string">
+		select * from foreword where f_foreword=#{f_foreword}</select>
+	<insert id="fore_insert" parameterType="foredto">
+		insert into foreword (f_foreword) values (#{f_foreword})</insert>
+	<update id="fore_update" parameterType="foredto">
+		update foreword set f_foreword=#{f_foreword}</update>
+	<delete id="fore_delete" parameterType="string">
+		delete from foreword where f_foreword=#{f_foreword}</delete>
+
+</mapper>

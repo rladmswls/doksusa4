@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doksusa.ipsi">
+
+	<select id="ipsi_selectAll" resultType="ipsidto">
+		select * from IpsiInfo</select>
+	<select id="ipsi_selectLogo" resultType="string" parameterType="string">
+		select logo from IpsiInfo where university=#{university}</select>
+	<select id="ipsi_selectByKey" resultType="ipsidto" parameterType="string">
+		select * from IpsiInfo where university like #{key}</select>
+	<insert id="ipsi_insert" parameterType="ipsidto">
+		insert into IpsiInfo (university,link) values (#{university},#{link})</insert>
+	<update id="ipsi_update" parameterType="String">
+		update IpsiInfo set link=#{link} where university=#{university}</update>
+	<delete id="ipsi_delete" parameterType="string">
+		delete from IpsiInfo where university=#{university}</delete>
+
+</mapper>
