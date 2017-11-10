@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+body{
+}
+body,p {
+	background-color: lightgray;
+	margin: 30px;
+	padding: 0;
+	height: 100%;
+	text-align: center;
+	}
+
+aside{
+	width:15%;
+	height:70%;
+	float:left;
+	text-align: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.btn{
+	margin-top: 10px;
+}
+iframe{
+	border: 0px;
+}
+.i{
+	border-right: solid 1px black; 
+}
+div#here {
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
