@@ -60,7 +60,7 @@
 	</section>
 	
 	<div id="footer">
-		<p>&copy; good</p>
+		<p>&copy; Doksusa</p>
 	</div>
 </body>
 </html>

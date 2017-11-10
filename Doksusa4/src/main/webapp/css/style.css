@@ -1,14 +1,10 @@
 @CHARSET "UTF-8";
-body{
-}
 body,p {
 	background-color: lightgray;
-	margin: 30px;
+	margin: 50px;
 	padding: 0;
-	height: 100%;
 	text-align: center;
-	}
-
+}
 aside{
 	width:15%;
 	height:70%;
@@ -27,7 +23,11 @@ iframe{
 	border-right: solid 1px black; 
 }
 div#here {
+	height:100%;
     padding: 10px;
+    color: black;
+    background-color: white;
+}
+div#footer {
     color: white;
-    background-color: black;
 }

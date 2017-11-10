@@ -19,7 +19,7 @@ public class UserController {
 	@Autowired
 	UserService userservice;
 	
-	@RequestMapping("/login")
+	@RequestMapping("/login.do")
 	public String front(){
 		return "login";
 	}
@@ -34,7 +34,7 @@ public class UserController {
 		return "userlist";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login(String u_id, String u_pw, Model model){
 		UserDTO user = userservice.login(u_id, u_pw);
 		if(user==null){
@@ -47,7 +47,7 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping("/join")
+	@RequestMapping("/join.do")
 	public String userinsert(){
 		return "user_insert";
 	}
