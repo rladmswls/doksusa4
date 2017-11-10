@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 <script>
 	$(document).ready(function(){
-		$("#btn").on("click",function(){
-				alert("이미 가입된 회원입니다.");
+		$("#join").on("click",function(){
+			alert("이미 가입된 회원입니다.");
 		});
 	});
 </script>
@@ -17,11 +17,10 @@
 <body>
 <center>
 <div>
-	<h1>회원가입</h1>
 	<form action="join.do" method="post">
 		<table>
 			<tr>
-				<td><input type="text"  name="u_id" value="${u_id}" placeholder="아이디를 입력하세요"></td>		
+				<td><input type="text"  name="u_id" placeholder="아이디를 입력하세요"></td>		
 			</tr>
 			<tr>
 				<td><input type="password" name="u_pw" placeholder="비밀번호를 입력하세요"></td>

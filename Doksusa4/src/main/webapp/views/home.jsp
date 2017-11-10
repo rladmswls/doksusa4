@@ -19,7 +19,9 @@
 <script src="resources/jquery-3.2.1.min.js"></script>
 <script>
    $(document).ready(function(){
-       $("#here").load("join.do");
+       $("#sign").on("click",function(){
+    	   $("#here").load("join.do");
+       });
    });
 </script>
 </head>
@@ -57,7 +59,7 @@
 				<li><a href="#">마이페이지</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="join.do"><span
+				<li><a id="sign"><span
 						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><c:choose>
 					<c:when test="${sessionScope.u_id == null}">
