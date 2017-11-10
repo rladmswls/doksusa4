@@ -19,6 +19,7 @@
 <script src="resources/jquery-3.2.1.min.js"></script>
 <script>
    $(document).ready(function(){
+	   $("#here").load("ipsi.do");
        $("#sign").on("click",function(){
     	   $("#here").load("join.do");
        });

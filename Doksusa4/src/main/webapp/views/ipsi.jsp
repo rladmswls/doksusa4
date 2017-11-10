@@ -10,7 +10,7 @@
 <body>
    <c:forEach var="ipsi" items="${ipsiInfo}">
 	<a href="${ipsi.link}">
-      <img src="../upload/${logo}" width="200" height="130"/>		
+      <img src="../upload/${ipsi.logo}" width="200" height="130"/>		
 	</a><br>
    </c:forEach>
 </body>
