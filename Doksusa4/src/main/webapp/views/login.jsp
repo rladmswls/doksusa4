@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <html>
 <head>
 <title>doksusa</title>
@@ -12,24 +12,29 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 	function login() {
-		f.action = 	"/login";
+		f.action = 	"/login.do";
 		f.method="post";
 		f.submit();
 	}
-	function userinsert() {
-		f.action = 	"/userinsert";
-		f.method="get";
+	function searchID() {
+		f.action = 	"/searchID.do";
 		f.submit();
-	} 
+	}
+	function searchPW() {
+		f.action = 	"/searchPW.do";
+		f.submit();
+	}
+	
 </script>
 </head>
 <body>
 	<form name="f" method="post" action="">
 		<p>로그인</p>
-		<input type="text" id="u_id" placeholder="아이디 입력"><br>
-		<input type="password" id="u_pw" placeholder="비밀번호 입력"><br>
+		<input type="text" name="u_id" placeholder="아이디 입력"><br>
+		<input type="password" name="u_pw" placeholder="비밀번호 입력"><br>
 		<button class="btn" onclick="login()" id="login">로그인</button>
-		<button class="btn" onclick="userinsert()" id="join">회원가입</button>
+		<button class="btn" onclick="searchID()" id="login">아이디 찾기</button>
+		<button class="btn" onclick="searchPW()" id="login">비밀번호 찾기</button>
 	</form>
 </body>
 </html>
