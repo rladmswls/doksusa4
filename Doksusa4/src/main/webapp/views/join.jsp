@@ -28,7 +28,7 @@
             <td><input type="text" name="u_nick" placeholder="닉네임을 설정하세요"></td>
          </tr>
          <tr>
-            <td><input type="tel" name="u_phone" pattern="[01]{3}-[0-9]{3,4}-[0-9]{4}" placeholder="-를 포함하여 입력하세요"></td>
+            <td><input type="tel" name="u_phone"  placeholder="전번 입력하세요"></td>
          </tr>
          <tr>
             <td><input id="join" type="submit" value="회원등록"><input type="reset" value="초기화"></td>

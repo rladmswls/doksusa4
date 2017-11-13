@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<form action="check.do" method="POST">
+<form action="check.do" method="POST" >
 	<input type="password" name="u_pw" placeholder="비밀번호 입력">
 	<input type="submit" >
 </form>
 
 <script>
 	function check(){
-			
+	
 	}
 
 </script>

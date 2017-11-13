@@ -32,12 +32,22 @@ public class UserController {
 		return "join";
 	}
 	
-	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/check.do", method = RequestMethod.GET)
 	public String check(){
-		return "update";
+		return "check";
 	}
 	
-
+	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
+	public String userupdate(String u_pw, Model model, HttpSession session){
+		int userdto = userservice.user_update(u_pw);
+		if(){
+			
+		}else{
+			
+			return "update";
+		}
+	}
+	
 	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
