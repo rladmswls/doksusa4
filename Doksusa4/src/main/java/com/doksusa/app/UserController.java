@@ -39,11 +39,12 @@ public class UserController {
 	
 	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
 	public String userupdate(String u_pw, Model model, HttpSession session){
-		int userdto = userservice.user_update(u_pw);
-		if(){
-			
+		int checkpw = userservice.user_update(u_pw);
+		if(checkpw==0){
+			model.addAttribute("message", "비밀번호가 틀립니다.");
+			return "message";
 		}else{
-			
+		
 			return "update";
 		}
 	}
@@ -71,6 +72,7 @@ public class UserController {
 			return "message";
 		} else {
 			session.setAttribute("user", user);
+			session.setAttribute("u_id", u_id);
 			model.addAttribute("user", user);
 			return "home";
 		}

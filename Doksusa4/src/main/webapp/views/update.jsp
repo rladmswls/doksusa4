@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="update.do" method="post">
+	<form action="update.do" method="POST">
+
 		
-	
-	
 	
 	</form>
 	
