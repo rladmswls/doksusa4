@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doksusa.cm">
+
+	<select id="cm_selectAll" resultType="userdto">
+		select * from users</select>
+	<select id="cm_select" resultType="userdto" parameterType="string">
+		select * from users where u_id=#{u_id}</select>
+	<insert id="cm_insert" parameterType="userdto">
+		insert into users (u_num,u_id,u_pw,u_nick) values (u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick})</insert>
+	<update id="cm_update" parameterType="String">
+		update users set u_pw=#{u_pw},u_nick=#{u_nick} where u_pw=#{u_pw}</update>
+	<delete id="cm_delete" parameterType="string">
+		delete from users where u_id=#{u_id}</delete>
+
+</mapper>
