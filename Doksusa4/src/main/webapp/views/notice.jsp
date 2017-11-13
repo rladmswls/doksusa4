@@ -12,10 +12,6 @@
 </head>
 <body>
 <h3>공지사항</h3>
-<c:if test="${sessionScope.u_id == dok}">
-	<button onclick="cm_insert.do" value="등록"></button>
-</c:if>
-<input type="button">
 <table class="table">
 	<tr>
 		<th id="c_num">번호</th>
@@ -36,5 +32,9 @@
 	</c:forEach>
 	</tr>
 </table>
+<c:choose>
+<c:when test="${sessionScope.u_id == 'dok'}">
+	<button class="btn" id="if" onclick="cm_insert.do">등록</button></c:when>
+</c:choose>
 </body>
 </html>

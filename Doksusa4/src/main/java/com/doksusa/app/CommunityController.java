@@ -16,5 +16,7 @@ public class CommunityController {
 	public String cm_list(){
 		return "notice";
 	}
+	
+	
 
 }
