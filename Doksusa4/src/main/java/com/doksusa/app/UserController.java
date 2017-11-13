@@ -19,95 +19,95 @@ import com.doksusa.user.UserService;
 @Controller
 public class UserController {
 
-	@Autowired
-	UserService userservice;
+   @Autowired
+   UserService userservice;
+   
+   
 
-	@RequestMapping("/home.do")
-	public String home() {
-		return "home";
-	}
+   @RequestMapping("/home.do")
+   public String home() {
+      return "home";
+   }
 
-	@RequestMapping("/join.do")
-	public String join() {
-		return "join";
-	}
-	
-	@RequestMapping(value = "/check.do", method = RequestMethod.GET)
-	public String check(){
-		return "check";
-	}
-	
-	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
-	public String usercheck(String u_pw, Model model, HttpSession session){
-		int checkpw = userservice.user_update(u_pw);
-		if(checkpw!=0){
-			model.addAttribute("message", "비밀번호가 틀립니다.");
-			return "message";
-		}else{
-			return "update";
-		}
-	}
-	
+   @RequestMapping("/join.do")
+   public String join() {
+      return "join";
+   }
+   
+   @RequestMapping(value = "/check.do", method = RequestMethod.GET)
+   public String check(){
+      return "check";
+   }
+   
+   @RequestMapping(value = "/check.do", method = RequestMethod.POST)
+   public String usercheck(String u_pw, Model model, HttpSession session){
+      UserDTO checkpw = userservice.user_select2(u_pw);
+      if(checkpw==null){
+         model.addAttribute("message", "비밀번호가 틀립니다.");
+         return "message";
+      }else{
+         return "update";
+      }
+   }
+   
+   
+   
+   @RequestMapping(value = "/join.do", method = RequestMethod.POST)
+   public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
+      UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
+      userservice.user_insert(userdto);
+      model.addAttribute("userdto", userdto);
+      return "home";
+   }
 
-	
-	
-	
-	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
-		UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
-		userservice.user_insert(userdto);
-		model.addAttribute("userdto", userdto);
-		return "home";
-	}
+   @RequestMapping(value = "/login.do", method = RequestMethod.GET)
+   public String front() {
+      return "login";
+   }
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String front() {
-		return "login";
-	}
+   @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+   public String login(String u_id, String u_pw, Model model, HttpSession session) {
+      System.out.println(u_id);
+      UserDTO user = userservice.login(u_id, u_pw);
+      if (user == null) {
+         model.addAttribute("message", "등록된 회원이 아닙니다.");
+         return "login";
+      } else {
+         session.setAttribute("user", user);
+         session.setAttribute("u_id", u_id);
+         model.addAttribute("user", user);
+         return "home";
+      }
+   }
 
-	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String login(String u_id, String u_pw, Model model, HttpSession session) {
-		System.out.println(u_id);
-		UserDTO user = userservice.login(u_id, u_pw);
-		if (user == null) {
-			model.addAttribute("message", "등록된 회원이 아닙니다.");
-			return "login";
-		} else {
-			session.setAttribute("user", user);
-			session.setAttribute("u_id", u_id);
-			model.addAttribute("user", user);
-			return "home";
-		}
-	}
+   @RequestMapping("/logout.do")
+   public String logout(HttpSession session) {
+      session.removeAttribute("user");
+      //session.invalidate();
+      System.out.println(session.getAttribute("user"));
+      return "home";
+   }
 
-	@RequestMapping("/logout.do")
-	public String logout(HttpSession session) {
-		session.removeAttribute("user");
-		//session.invalidate();
-		System.out.println(session.getAttribute("user"));
-		return "home";
-	}
+   @RequestMapping("/searchID.do")
+   public String searchID() {
 
-	@RequestMapping("/searchID.do")
-	public String searchID() {
+      return "searchID";
+   }
 
-		return "searchID";
-	}
+   @RequestMapping("/searchPW.do")
+   public String searchPW() {
 
-	@RequestMapping("/searchPW.do")
-	public String searchPW() {
+      return "searchPW";
+   }
 
-		return "searchPW";
-	}
-
-	@RequestMapping("/userlist")
-	public String showList(Model model) {
-		List<UserDTO> list = userservice.user_selectAll();
-		model.addAttribute("userlist", list);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("user2", new A_solutionDTO());
-		mv.setViewName("userlist");
-		return "userlist";
-	}
+   @RequestMapping("/userlist")
+   public String showList(Model model) {
+      List<UserDTO> list = userservice.user_selectAll();
+      model.addAttribute("userlist", list);
+      ModelAndView mv = new ModelAndView();
+      mv.addObject("user2", new A_solutionDTO());
+      mv.setViewName("userlist");
+      return "userlist";
+   }
 
 }

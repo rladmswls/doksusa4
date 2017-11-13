@@ -4,17 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doksusa.user">
 
-	<select id="user_selectAll" resultType="userdto">
-		select * from users</select>
-	<select id="user_selectById" resultType="userdto" parameterType="string">
-		select * from users where u_id=#{u_id}</select>
-	<insert id="user_insert" parameterType="userdto">
-		insert into users (u_num,u_id,u_pw,u_nick,u_phone) values (u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick},#{u_phone})</insert>
-	<update id="user_update" parameterType="String">
-		update users set u_pw=#{u_pw},u_nick=#{u_nick}, u_phone=#{u_phone} where u_num=#{u_num}</update>
-	<delete id="user_delete" parameterType="string">
-		delete from users where u_id=#{u_id}</delete>
-	<select id="user_login" resultType="userdto" parameterType="map">
-		select * from users where u_id=#{u_id} and u_pw=#{u_pw}</select>
-
+   <select id="user_selectAll" resultType="userdto">
+      select * from users</select>
+   <select id="user_selectById" resultType="userdto" parameterType="string">
+      select * from users where u_id=#{u_id}</select>
+   <insert id="user_insert" parameterType="userdto">
+      insert into users (u_num,u_id,u_pw,u_nick,u_phone) values (u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick},#{u_phone})</insert>
+   <update id="user_update" parameterType="String">
+      update users set u_pw=#{u_pw},u_nick=#{u_nick}, u_phone=#{u_phone} where u_num=#{u_num}</update>
+   <delete id="user_delete" parameterType="string">
+      delete from users where u_id=#{u_id}</delete>
+   <select id="user_login" resultType="userdto" parameterType="map">
+      select * from users where u_id=#{u_id} and u_pw=#{u_pw}</select>
+   <select id ="user_select2" resultType="userdto" parameterType="String">
+      select * from users where u_pw=#{u_pw}
+   </select>
 </mapper>
