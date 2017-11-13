@@ -8,12 +8,12 @@ public class ExamDTO {
 	int e_subnum;
 	int e_answer;
 	String e_link;
-	@Override
-	public String toString() {
-		return "ExamDTO [e_num=" + e_num + ", e_year=" + e_year + ", e_subject=" + e_subject + ", e_subnum=" + e_subnum
-				+ ", e_answer=" + e_answer + ", e_link=" + e_link + "]";
+	String e_title;
+	public ExamDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public ExamDTO(int e_num, int e_year, String e_subject, int e_subnum, int e_answer, String e_link) {
+	public ExamDTO(int e_num, int e_year, String e_subject, int e_subnum, int e_answer, String e_link, String e_title) {
 		super();
 		this.e_num = e_num;
 		this.e_year = e_year;
@@ -21,6 +21,12 @@ public class ExamDTO {
 		this.e_subnum = e_subnum;
 		this.e_answer = e_answer;
 		this.e_link = e_link;
+		this.e_title = e_title;
+	}
+	@Override
+	public String toString() {
+		return "ExamDTO [e_num=" + e_num + ", e_year=" + e_year + ", e_subject=" + e_subject + ", e_subnum=" + e_subnum
+				+ ", e_answer=" + e_answer + ", e_link=" + e_link + ", e_title=" + e_title + "]";
 	}
 	public int getE_num() {
 		return e_num;
@@ -58,6 +64,14 @@ public class ExamDTO {
 	public void setE_link(String e_link) {
 		this.e_link = e_link;
 	}
+	public String getE_title() {
+		return e_title;
+	}
+	public void setE_title(String e_title) {
+		this.e_title = e_title;
+	}
+	
+	
 	
 	
 	

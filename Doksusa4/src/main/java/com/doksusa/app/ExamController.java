@@ -27,6 +27,15 @@ public class ExamController {
 		return "esubjectlist";
 	}
 	
+	@RequestMapping("/examview.do")
+	public String showExam(int e_num, Model model){
+		ExamDTO dto = examservice.exam_selectByEnum(e_num);
+		model.addAttribute("examdto", dto);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("examdto");
+		return "examdetail";
+	}
+	
 	
 	
 	
