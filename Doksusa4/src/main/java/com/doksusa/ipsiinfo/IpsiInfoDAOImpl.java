@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository("ipsidao")
 public class IpsiInfoDAOImpl implements IpsiInfoDAO {
 
-	@Qualifier
+	@Autowired
 	SqlSession session;
 
 	String namespace = "com.doksusa.ipsi.";

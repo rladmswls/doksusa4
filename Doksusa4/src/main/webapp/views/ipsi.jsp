@@ -5,13 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <title>Insert title here</title>
 </head>
 <body>
+<h3>입시 사이트로 바로가기</h3>
+<c:set var="num" value="0"></c:set>
    <c:forEach var="ipsi" items="${ipsiInfo}">
 	<a href="${ipsi.link}">
-      <img src="../upload/${ipsi.logo}" width="200" height="130"/>		
-	</a><br>
+      <img src="upload/${ipsi.logo}"/>		
+	</a>
+	<c:set var="num" value="${ num+1}"></c:set>
+	<c:if test="${num%5==0}"><br></c:if>
    </c:forEach>
 </body>
 </html>

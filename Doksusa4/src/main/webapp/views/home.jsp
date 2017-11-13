@@ -23,10 +23,17 @@
        $("#sign").on("click",function(){
     	   $("#here").load("join.do");
        });
+       $("#login").on("click",function(){
+    	   $("#here").load("login.do");
+       });
+       $("#logout").on("click",function(){
+    	   location.reload();
+    	   $("#here").load("logout.do");
+       });
    });
 </script>
 </head>
-<body style="height: 1500px">
+<body>
 	<header>
 		<h1>독하게 수능준비하는 사람들</h1>
 	</header>
@@ -34,7 +41,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active"><a href="home.do">Home</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">모의고사<span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -63,13 +70,13 @@
 				<li><a id="sign"><span
 						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><c:choose>
-					<c:when test="${sessionScope.u_id == null}">
-						<a href="login.do"><span class="glyphicon glyphicon-log-in"></span>
+					<c:when test="${sessionScope.user == null}">
+						<a id="login"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a>
 					</c:when>
 					<c:otherwise>
-						<a href="logout.do"><span class="glyphicon glyphicon-log-out"></span>
-							${user.u_nick}님 Logout</a>
+						<a id="logout"><span class="glyphicon glyphicon-log-out"></span>
+						  ${user.u_nick}님 Logout</a>
 					</c:otherwise>
 				</c:choose>
 				</li>

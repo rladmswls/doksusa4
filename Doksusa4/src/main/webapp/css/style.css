@@ -23,11 +23,31 @@ iframe{
 	border-right: solid 1px black; 
 }
 div#here {
-	height:100%;
     padding: 10px;
     color: black;
     background-color: white;
 }
 div#footer {
     color: white;
+}
+img{
+	width: 200px;
+	height: 200px;
+	padding: 30px;
+}
+h1{
+	padding-bottom: 30px;
+	font-weight: bold;
+	font-family: myFirstFont;
+}
+@font-face {
+	font-family: myFirstFont;
+	src: url("../font/NEXON Football Gothic B.otf");
+}
+@font-face {
+	font-family: mySecondFont;
+	src: url("../font/DX하루B.ttf");
+}
+h3{
+	font-family: mySecondFont;
 }
