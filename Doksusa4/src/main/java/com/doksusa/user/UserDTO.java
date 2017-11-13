@@ -9,6 +9,11 @@ public class UserDTO {
 	String u_phone;
 
 	
+	public UserDTO() {
+		super();
+	}
+
+
 	public int getU_num() {
 		return u_num;
 	}

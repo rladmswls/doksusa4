@@ -32,13 +32,13 @@ public class UserController {
 		return "join";
 	}
 	
-	@RequestMapping("/update.do")
-	public String update(){
+	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
+	public String check(){
 		return "update";
 	}
 	
-	
 
+	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
 		UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);

@@ -9,9 +9,9 @@
 	<select id="user_selectById" resultType="userdto" parameterType="string">
 		select * from users where u_id=#{u_id}</select>
 	<insert id="user_insert" parameterType="userdto">
-		insert into users (u_num,u_id,u_pw,u_nick) values (u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick})</insert>
+		insert into users (u_num,u_id,u_pw,u_nick,u_phone) values (u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick},#{u_phone})</insert>
 	<update id="user_update" parameterType="String">
-		update users set u_pw=#{u_pw},u_nick=#{u_nick} where u_pw=#{u_pw}</update>
+		update users set u_pw=#{u_pw},u_nick=#{u_nick}, u_phone=#{u_phone} where u_pw=#{u_pw}</update>
 	<delete id="user_delete" parameterType="string">
 		delete from users where u_id=#{u_id}</delete>
 	<select id="user_login" resultType="userdto" parameterType="map">

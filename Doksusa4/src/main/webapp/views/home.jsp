@@ -33,6 +33,11 @@
        $("#notice").on("click",function(){
     	   $("#here").load("notice.do");
        });
+       
+       $("#check").on("click",function(){
+    	   $("#here").load("check.do");
+       });
+      
    });
 </script>
 </head>
@@ -77,7 +82,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">개인정보수정</a></li>
+						<li><a id="check">개인정보수정</a></li>
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
