@@ -6,7 +6,9 @@ public interface ExamService {
 
 	public List<ExamDTO> exam_selectAll();
 
-	public ExamDTO exam_select(int e_num);
+	public List<ExamDTO> exam_selectBySubject(String e_subject);
+	
+	public ExamDTO exam_selectByEnum(int e_num);
 
 	public int exam_insert(ExamDTO examdto);
 

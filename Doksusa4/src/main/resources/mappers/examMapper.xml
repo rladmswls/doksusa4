@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doksusa.exam">
+
+	<select id="exam_selectAll" resultType="examdto">
+		select * from exam</select>
+
+	<select id="exam_selectBySubject" resultType="examdto" parameterType="string">
+		select * from exam where e_subject=#{e_subject}</select>
+		
+		<select id="exam_selectByEnum" resultType="examdto" parameterType="int">
+		select * from exam where e_num=#{e_num}</select>
+		
+		
+	<insert id="exam_insert" parameterType="examdto">
+		insert into exam (e_num,e_year,e_subject,e_subnum,e_answer,e_link) values (e_num_SEQ.nextval,#{e_num},#{e_year},#{e_subject},#{e_subnum},#{e_answer},#{e_link})</insert>
+
+
+	<update id="exam_update" parameterType="int">
+		update exam set e_year=#{e_year},e_subject=#{e_subject}, e_subnum=#{e_subnum},e_answer=#{e_answer},e_link=#{e_link} where e_num=#{e_num}</update>
+	
+	<delete id="exam_delete" parameterType="int">
+		delete from exam where e_num=#{e_num}</delete>
+		
+
+</mapper>

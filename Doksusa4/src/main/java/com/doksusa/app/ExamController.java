@@ -18,14 +18,26 @@ public class ExamController {
 	ExamService examservice;
 	
 	
+
+	
+	
+	
+	
 	@RequestMapping("/examlist")
 	public String showList(Model model) {
 		List<ExamDTO> list = examservice.exam_selectAll();
 		model.addAttribute("examlist", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("examlist");
-		return "userlist";
+		return "examlist";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 //	@RequestMapping("/ipsi.do")

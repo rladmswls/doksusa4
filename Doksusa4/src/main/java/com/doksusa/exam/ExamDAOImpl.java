@@ -20,8 +20,8 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public ExamDTO exam_select(int e_num) {
-		return session.selectOne(namespace + "exam_selectById", e_num);
+	public ExamDTO exam_selectByEnum(int e_num) {
+		return session.selectOne(namespace + "exam_exam_selectByEnum", e_num);
 	}
 
 	@Override
@@ -37,6 +37,11 @@ public class ExamDAOImpl implements ExamDAO{
 	@Override
 	public int exam_delete(int e_num) {
 		return session.delete(namespace + "exam_delete", e_num);
+	}
+
+	@Override
+	public List<ExamDTO> exam_selectBySubject(String e_subject) {
+		return session.selectList(namespace + "exam_selectBySubject", e_subject);
 	}
 	
 	

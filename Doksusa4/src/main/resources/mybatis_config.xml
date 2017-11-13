@@ -12,5 +12,7 @@
 		<typeAlias alias="asdto" type="com.doksusa.a_solution.A_solutionDTO"/>
 		<typeAlias alias="apdto" type="com.doksusa.aptitude.AptitudeDTO"/>
 		<typeAlias alias="foredto" type="com.doksusa.foreword.ForewordDTO"/>
+		<typeAlias alias="examdto" type="com.doksusa.exam.ExamDTO"/>
+		<typeAlias alias="cmdto" type="com.doksusa.community.CommunityDTO"/>
 	</typeAliases>
 </configuration>
