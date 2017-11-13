@@ -5,11 +5,12 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<meta http-equiv="refresh" content="1;url=login.do">
+<meta http-equiv="refresh">
+<script>
+   alert("${message}");
+</script>
 <title>Insert title here</title>
 </head>
 <body>
-<br><br>
-${message}
 </body>
 </html>

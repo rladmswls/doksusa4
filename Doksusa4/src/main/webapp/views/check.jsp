@@ -7,18 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h3>비밀번호 확인</h3>
 <form action="check.do" method="POST" >
 	<input type="password" name="u_pw" placeholder="비밀번호 입력">
 	<input type="submit" >
 </form>
-
+<!-- 
 <script>
 	function check(){
 	
 	}
 
 </script>
-
+ -->
 </body>
 </html>

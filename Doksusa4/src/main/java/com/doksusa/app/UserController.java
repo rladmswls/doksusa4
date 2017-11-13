@@ -38,16 +38,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
-	public String userupdate(String u_pw, Model model, HttpSession session){
+	public String usercheck(String u_pw, Model model, HttpSession session){
 		int checkpw = userservice.user_update(u_pw);
-		if(checkpw==0){
+		if(checkpw!=0){
 			model.addAttribute("message", "비밀번호가 틀립니다.");
 			return "message";
 		}else{
-		
 			return "update";
 		}
 	}
+	
+
+	
 	
 	
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
@@ -69,7 +71,7 @@ public class UserController {
 		UserDTO user = userservice.login(u_id, u_pw);
 		if (user == null) {
 			model.addAttribute("message", "등록된 회원이 아닙니다.");
-			return "message";
+			return "login";
 		} else {
 			session.setAttribute("user", user);
 			session.setAttribute("u_id", u_id);
