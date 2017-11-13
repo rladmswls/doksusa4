@@ -45,16 +45,23 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">모의고사<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
+						<li><a href="#">언어</a></li>
+						<li><a href="#">수리</a></li>
+						<li><a href="#">외국어</a></li>
+						<li><a href="#">한국사</a></li>
+						<li><a href="#">사탐</a></li>
+						<li><a href="#">과탐</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">적성<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Page 1-1</a></li>
-						<li><a href="#">Page 1-2</a></li>
-						<li><a href="#">Page 1-3</a></li>
+						<li><a href="#">고대세종</a></li>
+						<li><a href="#">홍익대</a></li>
+						<li><a href="#">한신대</a></li>
+						<li><a href="#">가천대</a></li>
+						<li><a href="#">수원대</a></li>
+						<li><a href="#">강남대</a></li>
+						<li><a href="#">을지대</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
@@ -64,7 +71,11 @@
 						<li><a href="#">고3</a></li>
 						<li><a href="#">재수생</a></li>
 					</ul></li>
-				<li><a href="#">마이페이지</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">개인정보수정</a></li>
+					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a id="sign"><span
