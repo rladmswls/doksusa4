@@ -31,10 +31,17 @@ public class UserController {
 	public String join() {
 		return "join";
 	}
+	
+	@RequestMapping("/update.do")
+	public String update(){
+		return "update";
+	}
+	
+	
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public String userinsert(String u_id, String u_pw, String u_nick, Model model) {
-		UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick);
+	public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
+		UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
 		userservice.user_insert(userdto);
 		model.addAttribute("userdto", userdto);
 		return "home";
