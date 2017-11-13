@@ -1,6 +1,8 @@
 package com.doksusa.community;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,13 @@ public class CommunityDAOImpl implements CommunityDAO{
 	}
 
 	@Override
-	public int cm_update(int c_num, String c_group) {
-		return session.update(namespace + "cm_update", c_group);
+	public int cm_update(int c_num) {
+		return session.update(namespace + "cm_update", c_num);
 	}
 
 	@Override
-	public int cm_delete(int c_num, String c_group) {
-		return session.delete(namespace + "cm_delete", c_group);
+	public int cm_delete(int c_num) {
+		return session.delete(namespace + "cm_delete", c_num);
 	}
 
 }

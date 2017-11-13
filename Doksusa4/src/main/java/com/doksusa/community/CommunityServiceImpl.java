@@ -31,13 +31,13 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public int cm_update(int c_num, String c_group) {
-		return cm.cm_update(c_num, c_group);
+	public int cm_update(int c_num) {
+		return cm.cm_update(c_num);
 	}
 
 	@Override
-	public int cm_delete(int c_num, String c_group) {
-		return cm.cm_delete(c_num, c_group);
+	public int cm_delete(int c_num) {
+		return cm.cm_delete(c_num);
 	}
 
 }

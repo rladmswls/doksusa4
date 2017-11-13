@@ -5,12 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>Insert title here</title>
 </head>
 <body>
 <h3>공지사항</h3>
-<table>
+<c:if test="${sessionScope.u_id == dok}">
+	<button onclick="cm_insert.do" value="등록"></button>
+</c:if>
+<input type="button">
+<table class="table">
 	<tr>
 		<th id="c_num">번호</th>
 		<th id="f_foreword">머리말</th>

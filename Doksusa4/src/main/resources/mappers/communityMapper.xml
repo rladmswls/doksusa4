@@ -4,15 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doksusa.cm">
 
-	<select id="cm_selectAll" resultType="userdto">
-		select * from users</select>
-	<select id="cm_select" resultType="userdto" parameterType="string">
-		select * from users where u_id=#{u_id}</select>
-	<insert id="cm_insert" parameterType="userdto">
-		insert into users (u_num,u_id,u_pw,u_nick) values (u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick})</insert>
-	<update id="cm_update" parameterType="String">
-		update users set u_pw=#{u_pw},u_nick=#{u_nick} where u_pw=#{u_pw}</update>
-	<delete id="cm_delete" parameterType="string">
-		delete from users where u_id=#{u_id}</delete>
+	<select id="cm_selectAll" resultType="cmdto">
+		select * from community</select>
+	<select id="cm_select" resultType="cmdto" parameterType="int">
+		select * from community where c_num=#{c_num}</select>
+	<insert id="cm_insert" parameterType="cmdto">
+		insert into community values (c_num_SEQ.nextval,#{c_group},sysdate,#{title},#{f_foreword},#{u_num})</insert>
+	<update id="cm_update" parameterType="int">
+		update community,content set title=#{title},c_content=#{c_content} where c_num=#{c_num} and c_group=#{c_group}</update>
+	<delete id="cm_delete" parameterType="int">
+		delete from community,content where c_num=#{c_num}</delete>
 
 </mapper>
