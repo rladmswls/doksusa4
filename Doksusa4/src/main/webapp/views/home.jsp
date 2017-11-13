@@ -30,6 +30,9 @@
     	   location.reload();
     	   $("#here").load("logout.do");
        });
+       $("#notice").on("click",function(){
+    	   $("#here").load("notice.do");
+       });
    });
 </script>
 </head>
@@ -66,7 +69,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">공지사항</a></li>
+						<li><a id="notice">공지사항</a></li>
 						<li><a href="#">고1 + 고2</a></li>
 						<li><a href="#">고3</a></li>
 						<li><a href="#">재수생</a></li>
