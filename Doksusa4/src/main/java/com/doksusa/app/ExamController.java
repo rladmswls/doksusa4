@@ -18,7 +18,14 @@ public class ExamController {
 	ExamService examservice;
 	
 	
-
+	@RequestMapping("/esubject.do")
+	public String showSubjectList(String e_subject, Model model){
+		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
+		model.addAttribute("esubjectlist", list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("esubjectlist");
+		return "esubjectlist";
+	}
 	
 	
 	
