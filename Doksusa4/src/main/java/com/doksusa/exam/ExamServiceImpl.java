@@ -1,0 +1,43 @@
+package com.doksusa.exam;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("examService")
+public class ExamServiceImpl implements ExamService{
+
+	@Autowired
+	ExamDAO exam;
+	
+	public void setExam(ExamDAO exam) {
+		this.exam = exam;
+	}
+	
+	@Override
+	public List<ExamDTO> exam_selectAll() {
+		return exam.exam_selectAll();
+	}
+
+	@Override
+	public ExamDTO exam_select(int e_num) {
+		return exam.exam_select(e_num);
+	}
+
+	@Override
+	public int exam_insert(ExamDTO examdto) {
+		return exam.exam_insert(examdto);
+	}
+
+	@Override
+	public int exam_update(int e_num) {
+		return exam.exam_update(e_num);
+	}
+
+	@Override
+	public int exam_delete(int e_num) {
+		return exam.exam_delete(e_num);
+	}
+
+}
