@@ -27,7 +27,6 @@ public class ExamController {
 		mv.setViewName("esubjectlist");
 		return "exam/esubjectlist";
 	}
-
 	
 	
 	

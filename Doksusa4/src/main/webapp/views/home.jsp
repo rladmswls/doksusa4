@@ -41,11 +41,7 @@
    });
 </script>
 
-<script type="text/javascript">
-function korean(){
-       return confirm("삭제하시겠습니까?");
-}
-</script>
+
 
 </head>
 <body>
@@ -61,11 +57,11 @@ function korean(){
 					data-toggle="dropdown" href="#">모의고사<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="esubject.do?e_subject=언어">언어</a></li>
-						<li><a href="#">수리</a></li>
-						<li><a href="#">외국어</a></li>
-						<li><a href="#">한국사</a></li>
-						<li><a href="#">사탐</a></li>
-						<li><a href="#">과탐</a></li>
+						<li><a href="esubject.do?e_subject=수리">수리</a></li>
+						<li><a href="esubject.do?e_subject=외국어">외국어</a></li>
+						<li><a href="esubject.do?e_subject=한국사">한국사</a></li>
+						<li><a href="esubject.do?e_subject=사탐">사탐</a></li>
+						<li><a href="esubject.do?e_subject=과탐">과탐</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">적성<span class="caret"></span></a>
