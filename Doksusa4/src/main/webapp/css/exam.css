@@ -5,12 +5,48 @@ body,p {
 	padding: 0;
 	text-align: center;
 }
-
-h3{
-	font-family: mySecondFont;
+aside{
+	width:15%;
+	height:70%;
+	float:left;
+	text-align: left;
+	margin-left: 10px;
+	margin-top: 10px;
 }
+iframe{
+	border: 0px;
+}
+.i{
+	border-right: solid 1px black; 
+}
+div#here {
+    padding: 10px;
+    color: black;
+    background-color: white;
+}
+div#footer {
+    color: white;
+}
+
 img{
 	width: 50px;
 	height: 50px;
 	padding: 30px;
+}
+h1{
+	padding-bottom: 30px;
+	font-weight: bold;
+	font-family: myFirstFont;
+}
+@font-face {
+	font-family: myFirstFont;
+	src: url("../font/NEXON Football Gothic B.otf");
+}
+@font-face {
+	font-family: mySecondFont;
+	src: url("../font/DX하루B.ttf");
+}
+
+h3{
+	font-family: mySecondFont;
 }
