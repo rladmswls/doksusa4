@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doksusa.fore">
 
-	<select id="fore_selectAll">
+	<select id="fore_selectAll" resultType="foredto">
 		select * from foreword</select>
 	<select id="fore_select" parameterType="string">
 		select * from foreword where f_foreword=#{f_foreword}</select>

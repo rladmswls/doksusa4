@@ -12,14 +12,18 @@ public class ForewordServiceImpl implements ForewordService{
 	@Autowired
 	ForewordDAO fore;
 	
+	public void setFore(ForewordDAO fore) {
+		this.fore = fore;
+	}
+
 	@Override
 	public List<ForewordDTO> fore_selectAll() {
 		return fore.fore_selectAll();
 	}
 
 	@Override
-	public ForewordDTO fore_select(String foreword) {
-		return fore.fore_select(foreword);
+	public ForewordDTO fore_select(String f_foreword) {
+		return fore.fore_select(f_foreword);
 	}
 
 	@Override
@@ -33,8 +37,8 @@ public class ForewordServiceImpl implements ForewordService{
 	}
 
 	@Override
-	public int fore_delete(String foreword) {
-		return fore.fore_delete(foreword);
+	public int fore_delete(String f_foreword) {
+		return fore.fore_delete(f_foreword);
 	}
 
 }

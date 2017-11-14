@@ -8,7 +8,19 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="resources/jquery-3.2.1.min.js"></script>
 <title>Insert title here</title>
+<script>
+$(document).ready(function(){
+	 $("button").click(function(){
+	        $("#here").load("cm_insert.do");
+	    });
+});
+</script>
 </head>
 <body>
 <h3>공지사항</h3>
@@ -34,7 +46,8 @@
 </table>
 <c:choose>
 <c:when test="${sessionScope.u_id == 'dok'}">
-	<button class="btn" id="if" onclick="cm_insert.do">등록</button></c:when>
+	<button class="btn" id="if">등록</button></c:when>
 </c:choose>
+<div id="here"></div>
 </body>
 </html>

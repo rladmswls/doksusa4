@@ -2,28 +2,29 @@ package com.doksusa.foreword;
 
 public class ForewordDTO {
 
-	String foreword;
+	String f_foreword;
 
 	public ForewordDTO() {
 		super();
 	}
 
-	public ForewordDTO(String foreword) {
+	public ForewordDTO(String f_foreword) {
 		super();
-		this.foreword = foreword;
+		this.f_foreword = f_foreword;
 	}
 
-	public String getForeword() {
-		return foreword;
+	public String getF_foreword() {
+		return f_foreword;
 	}
 
-	public void setForeword(String foreword) {
-		this.foreword = foreword;
+	public void setF_foreword(String f_foreword) {
+		this.f_foreword = f_foreword;
 	}
 
 	@Override
 	public String toString() {
-		return "ForewordDTO [foreword=" + foreword + "]";
+		return "ForewordDTO [f_foreword=" + f_foreword + "]";
 	}
+
 
 }

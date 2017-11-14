@@ -20,8 +20,8 @@ public class ForewordDAOImpl implements ForewordDAO{
 	}
 
 	@Override
-	public ForewordDTO fore_select(String foreword) {
-		return session.selectOne(namespace + "fore_select", foreword);
+	public ForewordDTO fore_select(String f_foreword) {
+		return session.selectOne(namespace + "fore_select", f_foreword);
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class ForewordDAOImpl implements ForewordDAO{
 	}
 
 	@Override
-	public int fore_delete(String foreword) {
-		return session.delete(namespace + "fore_delete", foreword);
+	public int fore_delete(String f_foreword) {
+		return session.delete(namespace + "fore_delete", f_foreword);
 	}
 
 }
