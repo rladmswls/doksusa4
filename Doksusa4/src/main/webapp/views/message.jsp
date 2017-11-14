@@ -5,9 +5,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<meta http-equiv="refresh">
 <script>
    alert("${message}");
+   history.go(-1); 
 </script>
 <title>Insert title here</title>
 </head>
