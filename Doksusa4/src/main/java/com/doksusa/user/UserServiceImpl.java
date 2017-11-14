@@ -48,9 +48,10 @@ public class UserServiceImpl implements UserService{
    }
 
    @Override
-   public UserDTO user_select2(String u_pw) {
-      // TODO Auto-generated method stub
-      return user.user_select2(u_pw);
+   public UserDTO user_select2(String u_id, String u_pw) {
+      return user.user_select2(u_id,u_pw);
    }
+
+
 
 }

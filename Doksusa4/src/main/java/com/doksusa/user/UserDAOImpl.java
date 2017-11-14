@@ -50,9 +50,11 @@ public class UserDAOImpl implements UserDAO {
    }
 
    @Override
-   public UserDTO user_select2(String u_pw) {
-      // TODO Auto-generated method stub
-      return session.selectOne(namespace+ "user_select2" , u_pw);
-   }
+   public UserDTO user_select2(String u_id, String u_pw) {
+	   Map<String, String> data = new HashMap<String, String>();
+	      data.put("u_id", u_id);
+	      data.put("u_pw", u_pw);
+	      return session.selectOne(namespace + "user_login", data);
+	   }
 
 }

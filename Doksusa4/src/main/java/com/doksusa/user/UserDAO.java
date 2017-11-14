@@ -16,6 +16,6 @@ public interface UserDAO {
 
    public UserDTO login(String u_id, String u_pw);
    
-   public UserDTO user_select2(String u_pw);
+   public UserDTO user_select2(String u_id, String u_pw);
 
 }

@@ -40,8 +40,8 @@ public class UserController {
    }
    
    @RequestMapping(value = "/check.do", method = RequestMethod.POST)
-   public String usercheck(String u_pw, Model model, HttpSession session){
-      UserDTO checkpw = userservice.user_select2(u_pw);
+   public String usercheck(String u_id, String u_pw, Model model, HttpSession session){
+      UserDTO checkpw = userservice.user_select2(u_id,u_pw);
       if(checkpw==null){
          model.addAttribute("message", "비밀번호가 틀립니다.");
          return "message";
