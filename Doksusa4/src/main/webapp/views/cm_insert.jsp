@@ -9,18 +9,18 @@
 </head>
 <body>
 <h3>공지사항 등록</h3>
+<hr>
 <form action="">
-<div>
-	말머리
+	말머리 :
 	<select name="foreword">
         <c:forEach var="foreword" items="${foreword}">
             <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
         </c:forEach>
     </select><br>  
-	제목
-	<input type="text" value="title">
-	글작성
-</div>
+	제목 :
+	<input type="text" value="title"><br>
+	글작성 :
+	<input><br>
 </form>
 </body>
 </html>
