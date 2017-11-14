@@ -14,5 +14,6 @@
 		<typeAlias alias="foredto" type="com.doksusa.foreword.ForewordDTO"/>
 		<typeAlias alias="examdto" type="com.doksusa.exam.ExamDTO"/>
 		<typeAlias alias="cmdto" type="com.doksusa.community.CommunityDTO"/>
+		<typeAlias alias="codto" type="com.doksusa.content.ContentDTO"/>
 	</typeAliases>
 </configuration>

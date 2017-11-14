@@ -3,41 +3,41 @@ package com.doksusa.community;
 import java.sql.Date;
 
 public class CommunityDTO {
-	String group;
-	int num;
+	int c_num;
+	String c_group;
 	Date day;
 	String title;
-	String foreword;
+	String f_foreword;
 	int u_num;
 
 	public CommunityDTO() {
 		super();
 	}
 
-	public CommunityDTO(String group, int num, Date day, String title, String foreword, int u_num) {
+	public CommunityDTO(int c_num, String c_group, Date day, String title, String f_foreword, int u_num) {
 		super();
-		this.group = group;
-		this.num = num;
+		this.c_num = c_num;
+		this.c_group = c_group;
 		this.day = day;
 		this.title = title;
-		this.foreword = foreword;
+		this.f_foreword = f_foreword;
 		this.u_num = u_num;
 	}
 
-	public String getGroup() {
-		return group;
+	public int getC_num() {
+		return c_num;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
 	}
 
-	public int getNum() {
-		return num;
+	public String getC_group() {
+		return c_group;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setC_group(String c_group) {
+		this.c_group = c_group;
 	}
 
 	public Date getDay() {
@@ -56,12 +56,12 @@ public class CommunityDTO {
 		this.title = title;
 	}
 
-	public String getForeword() {
-		return foreword;
+	public String getF_foreword() {
+		return f_foreword;
 	}
 
-	public void setForeword(String foreword) {
-		this.foreword = foreword;
+	public void setF_foreword(String f_foreword) {
+		this.f_foreword = f_foreword;
 	}
 
 	public int getU_num() {
@@ -74,7 +74,8 @@ public class CommunityDTO {
 
 	@Override
 	public String toString() {
-		return "CommunityDTO [group=" + group + ", num=" + num + ", day=" + day + ", title=" + title + ", foreword="
-				+ foreword + ", u_num=" + u_num + "]";
+		return "CommunityDTO [c_num=" + c_num + ", c_group=" + c_group + ", day=" + day + ", title=" + title
+				+ ", f_foreword=" + f_foreword + ", u_num=" + u_num + "]";
 	}
+
 }

@@ -10,7 +10,7 @@
 <body>
 <h3>공지사항 등록</h3>
 <hr>
-<form action="">
+<form action="cm_insert.do" method="post">
 	말머리 :
 	<select name="foreword">
         <c:forEach var="foreword" items="${foreword}">
@@ -18,9 +18,9 @@
         </c:forEach>
     </select><br>  
 	제목 :
-	<input type="text" value="title"><br>
-	글작성 :
-	<input><br>
+	<input type="text" name="title" id="title"><br><br>
+	<textarea rows="10" cols="100" name="c_content" id="c_content"></textarea>
+	<input type="submit" value="저장">
 </form>
 </body>
 </html>
