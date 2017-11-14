@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+body,p {
+	background-color: lightgray;
+	margin: 50px;
+	padding: 0;
+	text-align: center;
+}
+
+h3{
+	font-family: mySecondFont;
+}
+img{
+	width: 50px;
+	height: 50px;
+	padding: 30px;
+}

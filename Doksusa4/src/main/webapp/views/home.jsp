@@ -40,6 +40,13 @@
       
    });
 </script>
+
+<script type="text/javascript">
+function korean(){
+       return confirm("삭제하시겠습니까?");
+}
+</script>
+
 </head>
 <body>
 	<header>
@@ -53,7 +60,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">모의고사<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">언어</a></li>
+						<li><a href="esubject.do?e_subject=언어">언어</a></li>
 						<li><a href="#">수리</a></li>
 						<li><a href="#">외국어</a></li>
 						<li><a href="#">한국사</a></li>
