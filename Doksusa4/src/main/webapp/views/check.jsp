@@ -7,19 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>본인 확인</h3>
+<h3>본인 확인</h3>
 <form action="check.do" method="POST" >
 	<input type="text" name="u_id" placeholder="아이디 입력">
 	<input type="password" name="u_pw" placeholder="비밀번호 입력">
-	<input type="submit" >
+	<input type="submit" id="button">
 </form>
-<!-- 
-<script>
-	function check(){
-	
-	}
-
-</script>
- -->
 </body>
 </html>

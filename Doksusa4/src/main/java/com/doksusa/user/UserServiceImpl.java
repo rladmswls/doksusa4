@@ -32,11 +32,7 @@ public class UserServiceImpl implements UserService{
       return user.user_insert(userdto);
    }
 
-   @Override
-   public int user_update(String u_pw) {
-      return user.user_update(u_pw);
-   }
-
+  
    @Override
    public int user_delete(String u_id) {
       return user.user_delete(u_id);
@@ -50,6 +46,10 @@ public class UserServiceImpl implements UserService{
    @Override
    public UserDTO user_select2(String u_id, String u_pw) {
       return user.user_select2(u_id,u_pw);
+   }
+   @Override
+   public UserDTO user_update(String u_id, String u_pw) {
+	   return user.user_update(u_id,u_pw);
    }
 
 

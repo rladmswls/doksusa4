@@ -7,10 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h3>회원정보 수정</h3>
 	<form action="update.do" method="POST">
-		비밀번호<input type="password" name="u_pw" placeholder="수정 할 비밀번호"><br>
-		닉네임<input type="text" name="u_nick" placeholder="수정 할 닉네임"><br>
-		핸드폰번호<input type="text" name="u_phone" placeholder="수정 할 핸드폰번호"><br>
+		   <td><input type="password" name="u_pw" placeholder="수정 할 비밀번호를 입력"></td><br>
+         </tr>
+         <tr>
+            <td><input type="text" name="u_nick" placeholder="수정 할 닉네임 입력"></td><br>
+         </tr>
+         <tr>
+            <td><input type="tel" name="u_phone"  placeholder="수정 할 전화번호 입력"></td><br>
+         </tr>
 		<input type="submit">
 	</form>
 	

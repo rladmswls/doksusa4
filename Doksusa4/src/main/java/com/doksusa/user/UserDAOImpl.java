@@ -31,11 +31,11 @@ public class UserDAOImpl implements UserDAO {
       return session.insert(namespace + "user_insert", userdto);
    }
 
-   @Override
-   public int user_update(String u_pw) {
-      return session.update(namespace + "user_update", u_pw);
+/*   @Override
+   public UserDTO user_update(String u_id, String u_pw) {
+      return session.update(namespace + "user_update", );
    }
-
+*/
    @Override
    public int user_delete(String u_id) {
       return session.delete(namespace + "user_delete", u_id);
@@ -54,7 +54,14 @@ public class UserDAOImpl implements UserDAO {
 	   Map<String, String> data = new HashMap<String, String>();
 	      data.put("u_id", u_id);
 	      data.put("u_pw", u_pw);
-	      return session.selectOne(namespace + "user_login", data);
+	      return session.selectOne(namespace + "user_select2", data);
 	   }
+   @Override
+   public UserDTO user_update(String u_id, String u_pw) {
+	   Map<String, String> data = new HashMap<String, String>();
+	   data.put("u_id", u_id);
+	   data.put("u_pw", u_pw);
+	   return session.selectOne(namespace + "user_update", data);
+   }
 
 }
