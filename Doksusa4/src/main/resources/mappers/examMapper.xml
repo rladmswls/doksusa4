@@ -10,6 +10,12 @@
 	<select id="exam_selectBySubject" resultType="examdto" parameterType="string">
 		select * from exam where e_subject=#{e_subject}</select>
 		
+	<select id="exam_selectByGrade" resultType="examdto" parameterType="int">
+		select * from exam where e_grade=#{e_grade}</select>
+		
+		
+		
+		
 		<select id="exam_selectByEnum" resultType="examdto" parameterType="int">
 		select * from exam where e_num=#{e_num}</select>
 		

@@ -15,8 +15,8 @@
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
-<h3>과목별 모의고사  리스트</h3>
-<form action="esubject.do" method="get">
+<h3>과목+학년별 모의고사  리스트</h3>
+<form action="egrade.do" method="get">
 <div class="container">
 	<table class="table" >
 
@@ -29,11 +29,10 @@
       <th id="e_link">문제PDF</th>
       <th id="e_answer">답지PDF</th>
       <th id="e_solution">해설PDF</th>
-      
    </tr>
    </thead>
   <c:set var="num" value="0"></c:set> 
-   <c:forEach var="list" items="${esubjectlist}">
+   <c:forEach var="list" items="${egradelist}">
    <tbody>
       <tr>
          <td>${list.e_num}</td>

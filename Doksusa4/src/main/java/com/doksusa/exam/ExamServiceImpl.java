@@ -19,6 +19,20 @@ public class ExamServiceImpl implements ExamService{
 	public List<ExamDTO> exam_selectAll() {
 		return exam.exam_selectAll();
 	}
+	
+	
+	@Override
+	public List<ExamDTO> exam_selectBySubject(String e_subject) {
+		return exam.exam_selectBySubject(e_subject);
+	}
+
+	@Override
+	public List<ExamDTO> exam_selectByGrade(int e_grade) {
+		return exam.exam_selectByGrade(e_grade);
+	}
+	
+	
+	
 
 	@Override
 	public ExamDTO exam_selectByEnum(int e_num) {
@@ -40,9 +54,6 @@ public class ExamServiceImpl implements ExamService{
 		return exam.exam_delete(e_num);
 	}
 
-	@Override
-	public List<ExamDTO> exam_selectBySubject(String e_subject) {
-		return exam.exam_selectBySubject(e_subject);
-	}
+	
 
 }

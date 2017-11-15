@@ -25,11 +25,17 @@ public class ExamController {
 		model.addAttribute("esubjectlist", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("esubjectlist");
-		System.out.println("윤수지 최고짱짱");
 		return "exam/esubjectlist";
 	}
 	
-	
+	@RequestMapping(value="/egrade.do", method=RequestMethod.GET)
+	public String showGradeList(int e_grade, Model model){
+		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
+		model.addAttribute("egradelist", list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("egradelist");
+		return "exam/egradelist";
+	}
 	
 	
 	

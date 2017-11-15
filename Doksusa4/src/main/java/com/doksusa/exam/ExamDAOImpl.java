@@ -18,6 +18,21 @@ public class ExamDAOImpl implements ExamDAO{
 	public List<ExamDTO> exam_selectAll() {
 		return session.selectList(namespace + "exam_selectAll");
 	}
+	
+	@Override
+	public List<ExamDTO> exam_selectBySubject(String e_subject) {
+		return session.selectList(namespace + "exam_selectBySubject", e_subject);
+	}
+	
+	
+	@Override
+	public List<ExamDTO> exam_selectByGrade(int e_grade) {
+		return session.selectList(namespace + "exam_selectByGrade", e_grade);
+	}
+	
+	
+	
+	
 
 	@Override
 	public ExamDTO exam_selectByEnum(int e_num) {
@@ -39,10 +54,8 @@ public class ExamDAOImpl implements ExamDAO{
 		return session.delete(namespace + "exam_delete", e_num);
 	}
 
-	@Override
-	public List<ExamDTO> exam_selectBySubject(String e_subject) {
-		return session.selectList(namespace + "exam_selectBySubject", e_subject);
-	}
+	
+
 	
 	
 }

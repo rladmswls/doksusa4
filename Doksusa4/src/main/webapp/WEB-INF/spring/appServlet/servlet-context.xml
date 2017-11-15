@@ -46,7 +46,7 @@
 	</aop:config>
 
 	<context:component-scan
-		base-package="com.doksusa.a_solution,com.doksusa.a_wrongnote,com.doksusa.app,com.doksusa.aptitude,com.doksusa.comment,com.doksusa.community,com.doksusa.content,com.doksusa.e_solution,com.doksusa.e_wrongnote,com.doksusa.exam,com.doksusa.foreword,com.doksusa.ipsiinfo,com.doksusa.manager,com.doksusa.user" />
+		base-package="com.doksusa.a_sub,com.doksusa.a_wrongnote,com.doksusa.app,com.doksusa.aptitude,com.doksusa.comment,com.doksusa.community,com.doksusa.e_sub,com.doksusa.e_wrongnote,com.doksusa.exam,com.doksusa.foreword,com.doksusa.ipsiinfo,com.doksusa.user" />
 
 	<jee:jndi-lookup id="dataSource2" jndi-name="jdbc/myoracle"
 		resource-ref="true" />
