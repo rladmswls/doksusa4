@@ -1,15 +1,15 @@
 package com.doksusa.e_wrongnote;
 
-public class E_wrongnote {
+public class E_wrongnoteDTO {
 	int e_num;
 	int e_subnum;
 	int u_num;
 
-	public E_wrongnote() {
+	public E_wrongnoteDTO() {
 		super();
 	}
 
-	public E_wrongnote(int e_num, int e_subnum, int u_num) {
+	public E_wrongnoteDTO(int e_num, int e_subnum, int u_num) {
 		super();
 		this.e_num = e_num;
 		this.e_subnum = e_subnum;
