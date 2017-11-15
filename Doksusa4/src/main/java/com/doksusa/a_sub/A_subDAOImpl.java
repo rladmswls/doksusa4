@@ -12,7 +12,7 @@ public class A_subDAOImpl implements A_subDAO{
 	
 	String namespace = "com.doksusa.as.";
 	
-	@Override
+/*	@Override
 	public A_subDTO as_select(int a_num) {
 		return session.selectOne(namespace + "as_select", a_num);
 	}
@@ -30,6 +30,6 @@ public class A_subDAOImpl implements A_subDAO{
 	@Override
 	public int as_delete(int a_num) {
 		return session.delete(namespace + "as_delete", a_num);
-	}
+	}*/
 
 }

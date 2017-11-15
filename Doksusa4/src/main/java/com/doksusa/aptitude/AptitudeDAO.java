@@ -6,12 +6,16 @@ public interface AptitudeDAO {
 	
 	public List<AptitudeDTO> ap_selectAll();
 	
-	public AptitudeDTO ap_select(int a_num);
+	public List<AptitudeDTO> ap_selectByA_school(String a_school);
+	
+	
+	
+/*	public AptitudeDTO ap_select(int a_num);
 	
 	public int ap_insert(AptitudeDTO apdto);
 	
 	public int ap_update(AptitudeDTO apdto);
 	
-	public int ap_delete(int a_num);
+	public int ap_delete(int a_num);*/
 
 }

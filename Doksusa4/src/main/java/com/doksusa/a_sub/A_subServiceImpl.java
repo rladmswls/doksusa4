@@ -13,7 +13,8 @@ public class A_subServiceImpl implements A_subService {
 	public void setAs(A_subDAO as) {
 		this.as = as;
 	}
-
+	
+/*
 	@Override
 	public A_subDTO as_select(int a_num) {
 		return as.as_select(a_num);
@@ -33,5 +34,5 @@ public class A_subServiceImpl implements A_subService {
 	public int as_delete(int a_num) {
 		return as.as_delete(a_num);
 	}
-
+*/
 }

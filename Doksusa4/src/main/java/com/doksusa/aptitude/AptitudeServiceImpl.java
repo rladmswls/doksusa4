@@ -22,6 +22,13 @@ public class AptitudeServiceImpl implements AptitudeService{
 	}
 
 	@Override
+	public List<AptitudeDTO> ap_selectByA_school(String a_school) {
+		return ap.ap_selectByA_school(a_school);
+	}
+	
+	
+
+	/*@Override
 	public AptitudeDTO ap_select(int a_num) {
 		return ap.ap_select(a_num);
 	}
@@ -39,6 +46,6 @@ public class AptitudeServiceImpl implements AptitudeService{
 	@Override
 	public int ap_delete(int a_num) {
 		return ap.ap_delete(a_num);
-	}
+	}*/
 
 }

@@ -12,7 +12,7 @@ public class E_subDAOImpl implements E_subDAO {
 	@Autowired
 	SqlSession session;
 
-	String namespace = "com.doksusa.e_sub.";
+	String namespace = "com.doksusa.es.";
 	
 	@Override
 	public List<E_subDTO> esub_selectAll() {

@@ -20,6 +20,13 @@ public class AptitudeDAOImpl implements AptitudeDAO {
 	}
 
 	@Override
+	public List<AptitudeDTO> ap_selectByA_school(String a_school) {
+		return session.selectList(namespace + "ap_selectByA_school", a_school);
+	}
+	
+	
+
+	/*@Override
 	public AptitudeDTO ap_select(int a_num) {
 		return session.selectOne(namespace + "ap_select", a_num);
 	}
@@ -38,5 +45,5 @@ public class AptitudeDAOImpl implements AptitudeDAO {
 	public int ap_delete(int a_num) {
 		return session.delete(namespace + "ap_delete", a_num);
 	}
-
+*/
 }
