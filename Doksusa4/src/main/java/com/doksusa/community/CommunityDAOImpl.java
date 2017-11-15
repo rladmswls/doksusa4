@@ -41,4 +41,10 @@ public class CommunityDAOImpl implements CommunityDAO{
 		return session.delete(namespace + "cm_delete", c_num);
 	}
 
+	@Override
+	public List<CommunityDTO> cm_selectBy(int c_group) {
+		return session.selectList(namespace + "cm_selectBy", c_group);
+		
+	}
+
 }

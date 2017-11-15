@@ -40,4 +40,9 @@ public class CommunityServiceImpl implements CommunityService{
 		return cm.cm_delete(c_num);
 	}
 
+	@Override
+	public List<CommunityDTO> cm_selectBy(int c_group) {
+		return cm.cm_selectBy(c_group);
+	}
+
 }

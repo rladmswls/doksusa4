@@ -38,6 +38,7 @@
 	</c:forEach>
 	</tr>
 </table>
+	<input type="hidden" name="c_group" id="c_group" value="${c_group }">
 <c:choose>
 <c:when test="${sessionScope.u_id == 'dok'}">
 	<form action="cm_insert.do">

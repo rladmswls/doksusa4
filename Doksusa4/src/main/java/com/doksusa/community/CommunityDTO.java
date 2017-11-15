@@ -6,7 +6,7 @@ public class CommunityDTO {
 	int c_num;
 	int u_num;
 	String f_foreword;
-	String c_group;
+	int c_group;
 	String c_title;
 	String c_content;
 	Date c_date;
@@ -15,7 +15,7 @@ public class CommunityDTO {
 		super();
 	}
 
-	public CommunityDTO(int c_num, int u_num, String f_foreword, String c_group, String c_title, String c_content,
+	public CommunityDTO(int c_num, int u_num, String f_foreword, int c_group, String c_title, String c_content,
 			Date c_date) {
 		super();
 		this.c_num = c_num;
@@ -25,6 +25,12 @@ public class CommunityDTO {
 		this.c_title = c_title;
 		this.c_content = c_content;
 		this.c_date = c_date;
+	}
+
+	@Override
+	public String toString() {
+		return "CommunityDTO [c_num=" + c_num + ", u_num=" + u_num + ", f_foreword=" + f_foreword + ", c_group="
+				+ c_group + ", c_title=" + c_title + ", c_content=" + c_content + ", c_date=" + c_date + "]";
 	}
 
 	public int getC_num() {
@@ -51,11 +57,11 @@ public class CommunityDTO {
 		this.f_foreword = f_foreword;
 	}
 
-	public String getC_group() {
+	public int getC_group() {
 		return c_group;
 	}
 
-	public void setC_group(String c_group) {
+	public void setC_group(int c_group) {
 		this.c_group = c_group;
 	}
 
@@ -82,11 +88,7 @@ public class CommunityDTO {
 	public void setC_date(Date c_date) {
 		this.c_date = c_date;
 	}
-
-	@Override
-	public String toString() {
-		return "CommunityDTO [c_num=" + c_num + ", u_num=" + u_num + ", f_foreword=" + f_foreword + ", c_group="
-				+ c_group + ", c_title=" + c_title + ", c_content=" + c_content + ", c_date=" + c_date + "]";
-	}
+	
+	
 
 }

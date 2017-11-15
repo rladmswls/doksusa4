@@ -5,6 +5,8 @@ import java.util.List;
 public interface CommunityService {
 
 	public List<CommunityDTO> cm_selectAll();
+	
+	public List<CommunityDTO> cm_selectBy(int c_group);
 
 	public CommunityDTO cm_select(int c_num);
 

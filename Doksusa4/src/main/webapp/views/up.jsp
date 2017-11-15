@@ -57,7 +57,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="notice.do">공지사항</a></li>
+						<li><a href="notice.do?c_group=1">공지사항</a></li>
 						<li><a href="#">고1 + 고2</a></li>
 						<li><a href="#">고3</a></li>
 						<li><a href="#">N수생</a></li>

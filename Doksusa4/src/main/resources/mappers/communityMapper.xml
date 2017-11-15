@@ -6,6 +6,8 @@
 
 	<select id="cm_selectAll" resultType="cmdto">
 		select * from community</select>
+	<select id="cm_selectBy" resultType="cmdto">
+		select * from community where c_group=#{c_group}</select>
 	<select id="cm_select" resultType="cmdto" parameterType="int">
 		select * from community where c_num=#{c_num}</select>
 	<insert id="cm_insert" parameterType="cmdto">
