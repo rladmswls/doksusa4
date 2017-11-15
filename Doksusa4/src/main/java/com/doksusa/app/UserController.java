@@ -24,8 +24,6 @@ public class UserController {
    UserService userservice;
    @Autowired
 	IpsiInfoService ipsiservice;
-   
-   
 
    @RequestMapping("/home.do")
    public String home(Model model) {
@@ -37,6 +35,16 @@ public class UserController {
    @RequestMapping("/join.do")
    public String join() {
       return "join";
+   }
+   
+   @RequestMapping(value = "/join.do", method = RequestMethod.POST)
+   public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
+      UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
+      userservice.user_insert(userdto);
+      model.addAttribute("userdto", userdto);
+      List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+      model.addAttribute("ipsiInfo",ipsiInfo);
+      return "home";
    }
    
    @RequestMapping(value = "/check.do", method = RequestMethod.GET)
@@ -59,16 +67,6 @@ public class UserController {
    public String userupdate(String u_pw, String u_nick, String u_phone, Model model){
 	   
 	   return "";
-   }
-
-   
-   
-   @RequestMapping(value = "/join.do", method = RequestMethod.POST)
-   public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
-      UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
-      userservice.user_insert(userdto);
-      model.addAttribute("userdto", userdto);
-      return "home";
    }
 
    @RequestMapping(value = "/login.do", method = RequestMethod.GET)
