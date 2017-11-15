@@ -25,6 +25,7 @@ public class ExamController {
 		model.addAttribute("esubjectlist", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("esubjectlist");
+		System.out.println("윤수지 최고짱짱");
 		return "exam/esubjectlist";
 	}
 	
