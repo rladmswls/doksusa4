@@ -30,6 +30,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="up.jsp" flush="false"/>
+<div id="here">
 <h3>로그인</h3>
    <form name="f" action="" method="post">
       <input type="text" name="u_id" id="u_id"  placeholder="아이디 입력"><br>
@@ -38,5 +40,6 @@
       <button class="btn" onclick="searchID()" id="login2">아이디 찾기</button>
       <button class="btn" onclick="searchPW()" id="login3">비밀번호 찾기</button>
    </form>
+   </div>
 </body>
 </html>

@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="up.jsp" flush="false"/>
+<div id="here">
 <h3>공지사항 등록</h3>
 <hr>
 <form action="cm_insert.do" method="post">
@@ -16,11 +18,12 @@
         <c:forEach var="foreword" items="${foreword}">
             <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
         </c:forEach>
-    </select><br>  
+    </select>
 	제목 :
 	<input type="text" name="title" id="title"><br><br>
-	<textarea rows="10" cols="100" name="c_content" id="c_content"></textarea>
+	<textarea rows="10" cols="100" name="c_content" id="c_content"></textarea><br><br>
 	<input type="submit" value="저장">
 </form>
+</div>
 </body>
 </html>

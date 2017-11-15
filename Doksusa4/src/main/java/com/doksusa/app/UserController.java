@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.a_solution.A_solutionDTO;
+import com.doksusa.ipsiinfo.IpsiInfoDTO;
+import com.doksusa.ipsiinfo.IpsiInfoService;
 import com.doksusa.user.UserDTO;
 import com.doksusa.user.UserService;
 
@@ -21,12 +22,16 @@ public class UserController {
 
    @Autowired
    UserService userservice;
+   @Autowired
+	IpsiInfoService ipsiservice;
    
    
 
    @RequestMapping("/home.do")
-   public String home() {
-      return "home";
+   public String home(Model model) {
+	   List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+		model.addAttribute("ipsiInfo",ipsiInfo);
+	   return "home";
    }
 
    @RequestMapping("/join.do")
@@ -79,6 +84,8 @@ public class UserController {
          model.addAttribute("message", "등록된 회원이 아닙니다.");
          return "login";
       } else {
+    	 List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+  		 model.addAttribute("ipsiInfo",ipsiInfo);
          session.setAttribute("user", user);
          session.setAttribute("u_id", u_id);
          model.addAttribute("user", user);
@@ -87,7 +94,9 @@ public class UserController {
    }
 
    @RequestMapping("/logout.do")
-   public String logout(HttpSession session) {
+   public String logout(HttpSession session,Model model) {
+	  List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+	  model.addAttribute("ipsiInfo",ipsiInfo);
       session.removeAttribute("user");
       //session.invalidate();
       System.out.println(session.getAttribute("user"));

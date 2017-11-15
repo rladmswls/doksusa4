@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="up.jsp" flush="false"/>
+<div id="here">
 ${userlist }
+</div>
 </body>
 </html>

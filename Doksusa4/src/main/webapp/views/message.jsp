@@ -12,5 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="up.jsp" flush="false"/>
 </body>
 </html>

@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="up.jsp" flush="false"/>
+<div id="here">
 <h3>회원정보 수정</h3>
 	<form action="update.do" method="POST">
 		   <td><input type="password" name="u_pw" placeholder="수정 할 비밀번호를 입력"></td><br>
@@ -19,6 +21,6 @@
          </tr>
 		<input type="submit">
 	</form>
-	
+</div>
 </body>
 </html>

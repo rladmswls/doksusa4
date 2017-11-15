@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="../up.jsp" flush="false"/>
+<div id="here">
 <h3>모의고사 리스트</h3>
 ${examlist}
 
-
+</div>
 </body>
 </html>

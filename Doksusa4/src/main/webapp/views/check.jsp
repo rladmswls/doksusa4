@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("home.do");
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,11 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="up.jsp" flush="false"/>
+<div id="here">
 <h3>본인 확인</h3>
 <form action="check.do" method="POST" >
 	<input type="text" name="u_id" placeholder="아이디 입력">
 	<input type="password" name="u_pw" placeholder="비밀번호 입력">
 	<input type="submit" id="button">
 </form>
+</div>
 </body>
 </html>
