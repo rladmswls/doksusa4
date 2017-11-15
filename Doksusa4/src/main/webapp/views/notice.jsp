@@ -16,6 +16,8 @@
 <jsp:include page="up.jsp" flush="false"/>
 <div id="here">
 <h3>공지사항</h3>
+<form action="notice.do" method="get">
+<div class="container"> 
 <table class="table">
 	<thead class="hd">
 	<tr>
@@ -27,21 +29,27 @@
 	</tr>
 	</thead>
 	<tr>
-	<c:forEach var="noticelist" items="${noticelist}">
+	
+	  <c:set var="num" value="0"></c:set> 
+  
+	<c:forEach var="list" items="${noticelist}">
 		<tr>
-			<td>${noticelist.c_num }</td>
-			<td>${noticelist.f_foreword }</td>
-			<td><a href="noticeview.do?c_num=${noticelist.c_num }" class=notice>${noticelist.title }</a></td>
+			<td>${list.c_num}</td>
+			<td>${list.f_foreword}</td>
+			<td><a href="noticeview.do?c_num=${list.c_num}" class=notice>${list.c_title}</a></td>
 			<td>${noticelist.day }</td>
 			<td>${noticelist.u_nick }</td>
 		</tr>
 	</c:forEach>
 	</tr>
 </table>
-	<input type="hidden" name="c_group" id="c_group" value="${c_group }">
+</div>
+
+</form>
+	
 <c:choose>
 <c:when test="${sessionScope.u_id == 'dok'}">
-	<form action="cm_insert.do">
+	<form action="cm_insert.do?c_group=1">
 	<input type="submit" value="등록"></form></c:when>
 </c:choose>
 </div>

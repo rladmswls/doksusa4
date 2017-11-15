@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.community.CommunityDTO;
 import com.doksusa.community.CommunityService;
@@ -25,21 +26,38 @@ public class CommunityController {
 	@Autowired
 	ForewordService fservice;
 	
-	@RequestMapping("/notice.do")
+	@RequestMapping(value="/notice.do", method=RequestMethod.GET)
 	public String cm_list(int c_group, Model model){
 		List<CommunityDTO> noticelist = cmservice.cm_selectBy(c_group);
 		model.addAttribute("noticelist", noticelist);
-		model.addAttribute("c_group", c_group);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("noticelist");
 		return "notice";
 	}
 	
-	@RequestMapping("/cm_insert.do")
+	
+	@RequestMapping(value="/cm_insert1.do", method=RequestMethod.GET)
+	public String cm_insert(int c_group, Model model){
+		
+		model.addAttribute("foreword", foreword);
+		model.addAttribute("c_group", c_group);
+		return "cm_insert";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+/*	@RequestMapping(value="/cm_insert.do", method=RequestMethod.GET)
 	public String cm_insert(int c_group, Model model){
 		List<ForewordDTO> foreword = fservice.fore_selectAll();
 		model.addAttribute("foreword", foreword);
 		model.addAttribute("c_group", c_group);
 		return "cm_insert";
-	}
+	}*/
 	
 	@RequestMapping(value="/cm_insert.do", method = RequestMethod.POST)
 	public String cm_insert2(int u_num, String f_foreword,int c_group, String c_title, String c_content, Model model){
