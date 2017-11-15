@@ -1,11 +1,11 @@
-package com.doksusa.a_solution;
+package com.doksusa.a_sub;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository("asdao")
-public class A_solutionDAOImpl implements A_solutionDAO{
+public class A_subDAOImpl implements A_subDAO{
 
 	@Autowired
 	SqlSession session;
@@ -13,12 +13,12 @@ public class A_solutionDAOImpl implements A_solutionDAO{
 	String namespace = "com.doksusa.as.";
 	
 	@Override
-	public A_solutionDTO as_select(int a_num) {
+	public A_subDTO as_select(int a_num) {
 		return session.selectOne(namespace + "as_select", a_num);
 	}
 
 	@Override
-	public int as_insert(A_solutionDTO asdto) {
+	public int as_insert(A_subDTO asdto) {
 		return session.insert(namespace + "as_insert", asdto);
 	}
 

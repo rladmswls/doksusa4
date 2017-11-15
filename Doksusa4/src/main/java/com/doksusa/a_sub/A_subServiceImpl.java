@@ -1,26 +1,26 @@
-package com.doksusa.a_solution;
+package com.doksusa.a_sub;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("asService")
-public class A_solutionServiceImpl implements A_solutionService {
+public class A_subServiceImpl implements A_subService {
 
 	@Autowired
-	A_solutionDAO as;
+	A_subDAO as;
 	
 
-	public void setAs(A_solutionDAO as) {
+	public void setAs(A_subDAO as) {
 		this.as = as;
 	}
 
 	@Override
-	public A_solutionDTO as_select(int a_num) {
+	public A_subDTO as_select(int a_num) {
 		return as.as_select(a_num);
 	}
 
 	@Override
-	public int as_insert(A_solutionDTO asdto) {
+	public int as_insert(A_subDTO asdto) {
 		return as.as_insert(asdto);
 	}
 

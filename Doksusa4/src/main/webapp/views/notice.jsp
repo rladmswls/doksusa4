@@ -21,8 +21,8 @@
 	<tr>
 		<th id="c_num">번호</th>
 		<th id="f_foreword">머리말</th>
-		<th id="title">제목</th>
-		<th id="day">날짜</th>
+		<th id="c_title">제목</th>
+		<th id="c_date">날짜</th>
 		<th id="u_nick">작성자</th>
 	</tr>
 	</thead>

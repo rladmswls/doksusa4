@@ -8,12 +8,19 @@
 	</settings>
 	<typeAliases>
 		<typeAlias alias="userdto" type="com.doksusa.user.UserDTO"/>
+		
 		<typeAlias alias="ipsidto" type="com.doksusa.ipsiinfo.IpsiInfoDTO"/>
-		<typeAlias alias="asdto" type="com.doksusa.a_solution.A_solutionDTO"/>
+		
+		<typeAlias alias="asdto" type="com.doksusa.a_sub.A_subDTO"/>
+		
 		<typeAlias alias="apdto" type="com.doksusa.aptitude.AptitudeDTO"/>
+		
 		<typeAlias alias="foredto" type="com.doksusa.foreword.ForewordDTO"/>
+		
 		<typeAlias alias="examdto" type="com.doksusa.exam.ExamDTO"/>
+		
 		<typeAlias alias="cmdto" type="com.doksusa.community.CommunityDTO"/>
+		
 		<typeAlias alias="codto" type="com.doksusa.content.ContentDTO"/>
 	</typeAliases>
 </configuration>

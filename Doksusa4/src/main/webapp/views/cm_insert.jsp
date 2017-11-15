@@ -20,7 +20,7 @@
         </c:forEach>
     </select>
 	제목 :
-	<input type="text" name="title" id="title"><br><br>
+	<input type="text" name="c_title" id="c_title"><br><br>
 	<textarea rows="10" cols="100" name="c_content" id="c_content"></textarea><br><br>
 	<input type="submit" value="저장">
 </form>

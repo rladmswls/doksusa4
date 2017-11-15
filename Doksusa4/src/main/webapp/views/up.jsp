@@ -60,7 +60,7 @@
 						<li><a href="notice.do">공지사항</a></li>
 						<li><a href="#">고1 + 고2</a></li>
 						<li><a href="#">고3</a></li>
-						<li><a href="#">재수생</a></li>
+						<li><a href="#">N수생</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doksusa.a_solution.A_solutionDTO;
+import com.doksusa.a_sub.A_subDTO;
 import com.doksusa.ipsiinfo.IpsiInfoDTO;
 import com.doksusa.ipsiinfo.IpsiInfoService;
 import com.doksusa.user.UserDTO;
@@ -120,7 +120,7 @@ public class UserController {
       List<UserDTO> list = userservice.user_selectAll();
       model.addAttribute("userlist", list);
       ModelAndView mv = new ModelAndView();
-      mv.addObject("user2", new A_solutionDTO());
+      mv.addObject("user2", new A_subDTO());
       mv.setViewName("userlist");
       return "userlist";
    }
