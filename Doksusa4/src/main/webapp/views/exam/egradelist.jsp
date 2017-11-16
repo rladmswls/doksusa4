@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
-<h3>과목+학년별 모의고사  리스트</h3>
+<h3>고${e_grade } 모의고사  리스트</h3>
 <form action="egrade.do" method="get">
 <div class="container">
 	<table class="table" >

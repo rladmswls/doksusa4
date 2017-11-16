@@ -32,6 +32,7 @@ public class ExamController {
 	public String showGradeList(int e_grade, Model model){
 		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
 		model.addAttribute("egradelist", list);
+		model.addAttribute("e_grade", e_grade);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("egradelist");
 		return "exam/egradelist";
