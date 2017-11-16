@@ -63,6 +63,8 @@ public class UserController {
       }
    }
    
+   
+   
    @RequestMapping(value="/update.do", method = RequestMethod.POST)
    public String userupdate(String u_pw, String u_nick, String u_phone, Model model){
 	   

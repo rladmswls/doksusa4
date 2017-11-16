@@ -66,6 +66,8 @@
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="check.do">개인정보수정</a></li>
+						<li><a href="delete.do">회원 탈퇴</a></li>
+						<li><a href="wrong.do">오답 풀이</a></li>
 					</ul></li>
 			</ul>
 			
