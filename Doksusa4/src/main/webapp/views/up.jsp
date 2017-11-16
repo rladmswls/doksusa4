@@ -57,10 +57,10 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="notice.do?c_group=1">공지사항</a></li>
-						<li><a href="#">고1 + 고2</a></li>
-						<li><a href="#">고3</a></li>
-						<li><a href="#">N수생</a></li>
+						<li><a href="communitylist.do?c_group=1">공지사항</a></li>
+						<li><a href="communitylist.do?c_group=2">고1 + 고2</a></li>
+						<li><a href="communitylist.do?c_group=3">고3</a></li>
+						<li><a href="communitylist.do?c_group=4">N수생</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>

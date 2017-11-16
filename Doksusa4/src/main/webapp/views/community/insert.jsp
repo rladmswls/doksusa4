@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="up.jsp" flush="false"/>
+<jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
 <h3>공지사항 등록</h3>
 <hr>

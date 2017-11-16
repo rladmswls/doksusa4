@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,25 +28,52 @@ public class CommunityController {
 	@Autowired
 	ForewordService fservice;
 	
-	@RequestMapping(value="/notice.do", method=RequestMethod.GET)
-	public String cm_list(int c_group, Model model){
-		List<CommunityDTO> noticelist = cmservice.cm_selectBy(c_group);
-		model.addAttribute("noticelist", noticelist);
+	@RequestMapping(value="/communitylist.do", method=RequestMethod.GET)
+	public String cm_list(int c_group, Model model, HttpSession session){
+		List<CommunityDTO> list = cmservice.cm_selectBy(c_group);
+		model.addAttribute("communitylist", list);
+		session.setAttribute("c_group", c_group);
+		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("noticelist");
-		return "notice";
+		mv.setViewName("communitylist");
+		return "community/communitylist";
 	}
 	
 	
-	@RequestMapping(value="/cm_insert1.do", method=RequestMethod.GET)
+	
+	@RequestMapping(value="/communityview.do", method=RequestMethod.GET)
+	public String cm_detail(int c_num, Model model){
+		CommunityDTO cdto = cmservice.cm_select(c_num);
+		model.addAttribute("communitydto", cdto);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("communitydto");
+		return "community/contentview";
+		
+	}
+	
+	
+	@RequestMapping(value="/cm_insert.do", method=RequestMethod.GET)
 	public String cm_insert(int c_group, Model model){
+		List<ForewordDTO> foreword = fservice.fore_selectAll();
+		model.addAttribute("foreword", foreword);
+		model.addAttribute("c_group", c_group);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("c_group");
+		return "community/insert";
+	}
+	
+	
+	
+/*	//공지사항 insert
+	@RequestMapping(value="/cm_insert1.do", method=RequestMethod.GET)
+	public String cm_insert1(int c_group, Model model){
 		
 		model.addAttribute("foreword", foreword);
 		model.addAttribute("c_group", c_group);
 		return "cm_insert";
 	}
 	
-	
+	*/
 	
 	
 	
