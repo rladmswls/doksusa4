@@ -8,8 +8,8 @@
 		select * from aptitude</select>
 	<select id="ap_select" parameterType="int">
 		select * from aptitude where a_num=#{a_num}</select>
-	<select id="ap_selectByA_school" parameterType="int">
-	
+	<select id="ap_selectByA_school" resultType="apdto" parameterType="String" >
+		select * from aptitude where a_school=#{a_school}</select>
 	
 	<insert id="ap_insert" parameterType="apdto">
 		insert into aptitude (a_num,a_school,a_year,a_subject,a_subnum,a_answer,a_link) values (#{a_num},#{a_school},#{a_year},#{a_subject},#{a_subnum},#{a_answer},#{a_link})</insert>
@@ -17,5 +17,5 @@
 		update aptitude set a_school=#{a_school},a_year=#{a_year},a_subject=#{a_subject},a_subnum=#{a_subnum},a_answer=#{a_answer},a_link=#{a_link} where a_num=#{a_num}</update>
 	<delete id="ap_delete" parameterType="int">
 		delete from aptitude where a_num=#{a_num}</delete>
-
+	
 </mapper>

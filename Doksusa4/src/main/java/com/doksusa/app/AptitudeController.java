@@ -35,6 +35,7 @@ public class AptitudeController {
 	
 	
 	
+	
 //	@RequestMapping("/examlist")
 //	public String showList(Model model) {
 //		List<ExamDTO> list = examservice.exam_selectAll();
