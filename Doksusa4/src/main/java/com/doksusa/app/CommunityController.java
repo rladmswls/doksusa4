@@ -28,19 +28,19 @@ public class CommunityController {
 	@Autowired
 	ForewordService fservice;
 	
-	@RequestMapping(value="/communitylist.do", method=RequestMethod.GET)
-	public String cm_list(int c_group, Model model, HttpSession session){
-		List<CommunityDTO> list = cmservice.cm_selectBy(c_group);
-		model.addAttribute("communitylist", list);
-		session.setAttribute("c_group", c_group);
-		
+	
+	
+	@RequestMapping(value="/noticelist.do", method=RequestMethod.GET)
+	public String notice_list(Model model){
+		List<CommunityDTO> list = cmservice.cm_selectBy(1);
+		model.addAttribute("noticelist",list);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("communitylist");
-		return "community/communitylist";
+		mv.setViewName("noticelist");
+		return "community/noticelist";
 	}
 	
 	
-	
+	//communityview.do
 	@RequestMapping(value="/communityview.do", method=RequestMethod.GET)
 	public String cm_detail(int c_num, Model model){
 		CommunityDTO cdto = cmservice.cm_select(c_num);
@@ -48,54 +48,28 @@ public class CommunityController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("communitydto");
 		return "community/contentview";
-		
 	}
 	
-	
-	@RequestMapping(value="/cm_insert.do", method=RequestMethod.GET)
-	public String cm_insert(int c_group, Model model){
+	//noticeinsert.do
+	@RequestMapping(value="/noticeinsert.do", method=RequestMethod.GET)
+	public String notice_insertGet(Model model){
 		List<ForewordDTO> foreword = fservice.fore_selectAll();
-		model.addAttribute("foreword", foreword);
-		model.addAttribute("c_group", c_group);
+		model.addAttribute("foreword",foreword);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("c_group");
-		return "community/insert";
+		mv.setViewName("foreword");
+		return "community/noticeinsert";
 	}
 	
-	
-	
-/*	//공지사항 insert
-	@RequestMapping(value="/cm_insert1.do", method=RequestMethod.GET)
-	public String cm_insert1(int c_group, Model model){
-		
-		model.addAttribute("foreword", foreword);
-		model.addAttribute("c_group", c_group);
-		return "cm_insert";
-	}
-	
-	*/
-	
-	
-	
-	
-	
-	
-/*	@RequestMapping(value="/cm_insert.do", method=RequestMethod.GET)
-	public String cm_insert(int c_group, Model model){
-		List<ForewordDTO> foreword = fservice.fore_selectAll();
-		model.addAttribute("foreword", foreword);
-		model.addAttribute("c_group", c_group);
-		return "cm_insert";
-	}*/
-	
-	@RequestMapping(value="/cm_insert.do", method = RequestMethod.POST)
-	public String cm_insert2(int u_num, String f_foreword,int c_group, String c_title, String c_content, Model model){
+	@RequestMapping(value="/noticeinsert.do", method=RequestMethod.POST)
+	public String notice_insertPost(int u_num, String f_foreword, String c_title, String c_content, Model model){
 		Date c_date = date();
-		CommunityDTO cmdto = new CommunityDTO(0, u_num, f_foreword, c_group, c_title, c_content, c_date);
-		cmservice.cm_insert(cmdto);
-		model.addAttribute("cmdto", cmdto);
-		return "notice";
+		CommunityDTO cdto = new CommunityDTO(0, u_num, f_foreword, 1, c_title, c_content, c_date );
+		int count = cmservice.cm_insert(cdto);
+		cmservice.cm_insert(cdto);
+		model.addAttribute("cdto", cdto);
+		return "community/noticelist";
 	}
+
 	
 	public Date date(){
 		Calendar calendar = Calendar.getInstance();

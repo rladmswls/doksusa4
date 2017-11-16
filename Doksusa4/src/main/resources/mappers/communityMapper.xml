@@ -10,8 +10,9 @@
 		select * from community where c_group=#{c_group}</select>
 	<select id="cm_select" resultType="cmdto" parameterType="int">
 		select * from community where c_num=#{c_num}</select>
+		
 	<insert id="cm_insert" parameterType="cmdto">
-		insert into community values (c_num_SEQ.nextval,#{c_group},sysdate,#{title},#{f_foreword},#{u_num})</insert>
+		insert into community values (c_num_SEQ.nextval,#{u_num}, #{f_foreword}, #{c_group}, #{c_title},#{c_content},#{c_date})</insert>
 	<update id="cm_update" parameterType="int">
 		update community,content set title=#{title},c_content=#{c_content} where c_num=#{c_num} and c_group=#{c_group}</update>
 	<delete id="cm_delete" parameterType="int">
