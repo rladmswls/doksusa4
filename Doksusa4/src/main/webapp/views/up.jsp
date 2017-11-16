@@ -59,6 +59,11 @@
 						<li><a href="aschool.do?a_school=수원대">수원대</a></li>
 						<li><a href="aschool.do?a_school=강남대">강남대</a></li>
 						<li><a href="aschool.do?a_school=을지대">을지대</a></li>
+						<c:choose>
+                     <c:when test="${sessionScope.u_id == 'dok'}">
+                        <li><a href="a_insert.do">등록</a></li>
+                     </c:when>
+                  </c:choose>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>

@@ -15,10 +15,10 @@
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
-<h3>학교별 적성  리스트</h3>
+<h3>${a_school} 적성  리스트</h3>
 <form action="aschool.do" method="get">
 <div class="container">
-	<table class="table" >
+   <table class="table" >
 
    <thead class="hd">
    <tr>
@@ -28,6 +28,12 @@
       <th id="a_title">제목</th>
       <th id="a_link">문제PDF</th>
       <th id="a_answer">답지PDF</th>
+     <c:choose>
+         <c:when test="${sessionScope.u_id == 'dok'}">
+             <!-- <th>수정</th> -->
+             <th>삭제</th>
+         </c:when>
+      </c:choose>
    </tr>
    </thead>
   <c:set var="num" value="0"></c:set> 
@@ -36,15 +42,22 @@
       <tr>
          <td>${list.a_num}</td>
          <td>${list.a_year}</td>
-         <td>${list.a_school}</td>
+         <td><input type="hidden" name="a_school" value="${list.a_school}">${list.a_school}</td>
          <td>${list.a_title}</td>
-         <td><a href="${list.a_link}"><img src="exams/pdf.png"/></a></td>
-         <td><a href="${list.a_answer}"><img src="exams/pdf.png"/></a></td>
+         <td><a href="${list.a_link}"><img src="aptitude/pdf.png"/></a></td>
+         <td><a href="${list.a_answer}"><img src="aptitude/pdf.png"/></a></td>
+       <c:choose>
+         <c:when test="${sessionScope.u_id == 'dok'}">
+         <!--    <td><input type="button" onclick="a_update.do" value="수정"></td> -->
+            <td><input type="button" onclick="a_delete.do" value="삭제"></td>
+            <td></td>
+         </c:when>
+      </c:choose>
       </tr>
    <c:set var="num" value="${num+1}"></c:set>
-	<c:if test="${num%5==0}"><br></c:if> 
+   <c:if test="${num%5==0}"><br></c:if> 
    </c:forEach>
-</table>	
+</table>   
 </div>
 </form>
 </div>

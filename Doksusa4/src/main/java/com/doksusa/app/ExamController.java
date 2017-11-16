@@ -30,7 +30,9 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value="/egrade.do", method=RequestMethod.GET)
-	public String showGradeList(int e_grade, Model model){
+	public String showGradeList(String e_subject,int e_grade, Model model){
+		System.out.println(e_subject);
+		
 		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
 		model.addAttribute("egradelist", list);
 		model.addAttribute("e_grade", e_grade);

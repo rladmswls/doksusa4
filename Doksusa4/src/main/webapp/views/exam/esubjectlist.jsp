@@ -15,11 +15,12 @@
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
-<h3>과목별 모의고사  리스트</h3>
+<h3>${e_subject} 모의고사  리스트</h3>
 <form action="egrade.do">
 <label class="radio-inline"><input type="radio" name="e_grade" value="1">고1</label>
 <label class="radio-inline"><input type="radio" name="e_grade" value="2">고2</label>
 <label class="radio-inline"><input type="radio" name="e_grade" value="3">고3</label> 
+<input type="hidden" name="e_subject" value="${e_subject}">
 <input type="submit" value="선택" class="btn btn-outline-dark">
 </form>
 <form action="e_delete.do">
@@ -41,7 +42,7 @@
 		</c:choose>
    </tr>
    </thead>
-   <input type="hidden" name="e_subject" value="${e_subject}">
+   
   <c:set var="num" value="0"></c:set> 
    <c:forEach var="list" items="${esubjectlist}">
    <tbody>
@@ -49,7 +50,7 @@
          <td><input type="hidden" name="e_num" value="${list.e_num}">${list.e_num}</td>
          <td>${list.e_year}</td>
          <td>${list.e_grade}</td>
-         <td>${list.e_subject}</td>
+         <td><input type="hidden" name="e_subject" value="${e_subject}">${list.e_subject}</td>
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>

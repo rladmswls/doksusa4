@@ -10,10 +10,6 @@ public interface ExamDAO {
 	
 	public List<ExamDTO> exam_selectByGrade(int e_grade);
 	
-	
-	
-	
-
 	public ExamDTO exam_selectByEnum(int e_num);
 
 	public int exam_insert(ExamDTO examdto);
