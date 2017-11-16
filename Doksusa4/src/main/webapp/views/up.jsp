@@ -37,7 +37,8 @@
 					data-toggle="dropdown" href="#">모의고사<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="esubject.do?e_subject=언어">언어</a></li>
-						<li><a href="esubject.do?e_subject=수리">수리</a></li>
+						<li><a href="esubject.do?e_subject=수리-가형">수리-가형</a></li>
+						<li><a href="esubject.do?e_subject=수리-나형">수리-나형</a></li>
 						<li><a href="esubject.do?e_subject=외국어">외국어</a></li>
 						<li><a href="esubject.do?e_subject=한국사">한국사</a></li>
 						<li><a href="esubject.do?e_subject=사탐">사탐</a></li>
@@ -51,21 +52,21 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">적성<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">고대세종</a></li>
-						<li><a href="#">홍익대</a></li>
-						<li><a href="#">한신대</a></li>
-						<li><a href="#">가천대</a></li>
-						<li><a href="#">수원대</a></li>
-						<li><a href="#">강남대</a></li>
-						<li><a href="#">을지대</a></li>
+						<li><a href="aschool.do?a_school=고대세종">고대세종</a></li>
+						<li><a href="aschool.do?a_school=홍익대">홍익대</a></li>
+						<li><a href="aschool.do?a_school=한신대">한신대</a></li>
+						<li><a href="aschool.do?a_school=가천대">가천대</a></li>
+						<li><a href="aschool.do?a_school=수원대">수원대</a></li>
+						<li><a href="aschool.do?a_school=강남대">강남대</a></li>
+						<li><a href="aschool.do?a_school=을지대">을지대</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="communitylist.do?c_group=1">공지사항</a></li>
-						<li><a href="communitylist.do?c_group=2">고1 + 고2</a></li>
-						<li><a href="communitylist.do?c_group=3">고3</a></li>
-						<li><a href="communitylist.do?c_group=4">N수생</a></li>
+						<li><a href="noticelist.do">공지사항</a></li>
+						<li><a href="onetwolist.do">고1 + 고2</a></li>
+						<li><a href="threelist.do">고3</a></li>
+						<li><a href="relist.do">N수생</a></li>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>
