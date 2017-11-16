@@ -22,6 +22,7 @@ public class ExamController {
 	@RequestMapping(value="/esubject.do", method=RequestMethod.GET)
 	public String showSubjectList(String e_subject, Model model){
 		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
+		model.addAttribute("e_subject",e_subject);
 		model.addAttribute("esubjectlist", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("esubjectlist");
@@ -53,9 +54,19 @@ public class ExamController {
 	}
 
 	@RequestMapping("/e_delete.do")
-	public String e_delete( int e_num,Model model){
+	public String e_delete(int e_num, String e_subject, Model model){
 		examservice.exam_delete(e_num);
-		return "redirect:esubject.do";
+		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
+		model.addAttribute("esubjectlist", list);
+		return "exam/esubjectlist";
+	}
+	
+	@RequestMapping("/e_delete2.do")
+	public String e_delete2(int e_num, int e_grade, Model model){
+		examservice.exam_delete(e_num);
+		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
+		model.addAttribute("egradelist", list);
+		return "exam/egradelist";
 	}
 	
 	
