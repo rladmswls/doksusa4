@@ -34,7 +34,12 @@
       <th id="e_link">문제PDF</th>
       <th id="e_answer">답지PDF</th>
       <th id="e_solution">해설PDF</th>
-      
+       <c:choose>
+			<c:when test="${sessionScope.u_id == 'dok'}">
+				 <th>수정</th>
+				 <th>삭제</th>
+			</c:when>
+		</c:choose>
    </tr>
    </thead>
   <c:set var="num" value="0"></c:set> 
@@ -48,6 +53,13 @@
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>
+         <c:choose>
+			<c:when test="${sessionScope.u_id == 'dok'}">
+				<td><input type="button" onclick="e_update.do" value="수정"></td>
+				<td><input type="button" onclick="e_delete.do" value="삭제"></td>
+				<td></td>
+			</c:when>
+		</c:choose>
       </tr>
    <c:set var="num" value="${num+1}"></c:set>
 	<c:if test="${num%5==0}"><br></c:if> 
