@@ -38,6 +38,16 @@ public class ExamController {
 		return "exam/egradelist";
 	}
 	
+	@RequestMapping("/e_insert.do")
+	public String insert(){
+		return "exam/e_insert";
+	}
+	
+	@RequestMapping(value="/e_insert.do", method=RequestMethod.GET)
+	public String e_insert(){
+		return "exam/e_insert";
+	}
+	
 	
 	
 	

@@ -42,6 +42,11 @@
 						<li><a href="esubject.do?e_subject=한국사">한국사</a></li>
 						<li><a href="esubject.do?e_subject=사탐">사탐</a></li>
 						<li><a href="esubject.do?e_subject=과탐">과탐</a></li>
+						<c:choose>
+							<c:when test="${sessionScope.u_id == 'dok'}">
+								<li><a href="e_insert.do">등록</a></li>
+							</c:when>
+						</c:choose>
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">적성<span class="caret"></span></a>

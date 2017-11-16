@@ -16,6 +16,12 @@
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
 <h3>고${e_grade } 모의고사  리스트</h3>
+<form action="egrade.do">
+<label class="radio-inline"><input type="radio" name="e_grade" value="1">고1</label>
+<label class="radio-inline"><input type="radio" name="e_grade" value="2">고2</label>
+<label class="radio-inline"><input type="radio" name="e_grade" value="3" checked="checked">고3</label> 
+<input type="submit" value="선택" class="btn btn-outline-dark">
+</form>
 <form action="egrade.do" method="get">
 <div class="container">
 	<table class="table" >
