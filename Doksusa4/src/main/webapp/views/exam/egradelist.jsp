@@ -19,7 +19,7 @@
 <form action="egrade.do">
 <label class="radio-inline"><input type="radio" name="e_grade" value="1">고1</label>
 <label class="radio-inline"><input type="radio" name="e_grade" value="2">고2</label>
-<label class="radio-inline"><input type="radio" name="e_grade" value="3" checked="checked">고3</label> 
+<label class="radio-inline"><input type="radio" name="e_grade" value="3">고3</label> 
 <input type="submit" value="선택" class="btn btn-outline-dark">
 </form>
 <form action="egrade.do" method="get">
@@ -36,7 +36,6 @@
       <th id="e_solution">해설PDF</th>
        <c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
-				 <th>수정</th>
 				 <th>삭제</th>
 			</c:when>
 		</c:choose>
@@ -55,9 +54,7 @@
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>
          <c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
-				<td><input type="button" onclick="e_update.do" value="수정"></td>
-				<td><input type="button" onclick="e_delete.do" value="삭제"></td>
-				<td></td>
+				<td><input type="button" onclick="e_delete.do?e_num=${list.e_num}" value="삭제"></td>
 			</c:when>
 		</c:choose>
       </tr>

@@ -13,16 +13,12 @@
 	<select id="exam_selectByGrade" resultType="examdto" parameterType="int">
 		select * from exam where e_grade=#{e_grade}</select>
 		
-		
-		
-		
-		<select id="exam_selectByEnum" resultType="examdto" parameterType="int">
+	<select id="exam_selectByEnum" resultType="examdto" parameterType="int">
 		select * from exam where e_num=#{e_num}</select>
 		
 		
 	<insert id="exam_insert" parameterType="examdto">
 		insert into exam values (e_num_SEQ.nextval,#{e_year},#{e_grade},#{e_subject},#{e_link},#{e_answer},#{e_solution})</insert>
-
 
 	<update id="exam_update" parameterType="int">
 		update exam set e_year=#{e_year},e_subject=#{e_subject}, e_subnum=#{e_subnum},e_answer=#{e_answer},e_link=#{e_link} where e_num=#{e_num}</update>

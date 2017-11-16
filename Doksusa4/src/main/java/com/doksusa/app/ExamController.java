@@ -51,7 +51,12 @@ public class ExamController {
 		model.addAttribute("egradelist", list);
 		return "exam/egradelist";
 	}
-	
+
+	@RequestMapping("/e_delete.do")
+	public String e_delete( int e_num,Model model){
+		examservice.exam_delete(e_num);
+		return "redirect:esubject.do";
+	}
 	
 	
 	
