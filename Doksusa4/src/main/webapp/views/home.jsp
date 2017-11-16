@@ -12,7 +12,7 @@
 <h3>입시 사이트로 바로가기</h3>
 <c:set var="num" value="0"></c:set>
    <c:forEach var="ipsi" items="${ipsiInfo}">
-	<a href="${ipsi.link}">
+	<a href="#" onclick="window.open('${ipsi.link}')">
       <img id="ipsi" src="upload/${ipsi.logo}"/>		
 	</a>
 	<c:set var="num" value="${ num+1}"></c:set>
