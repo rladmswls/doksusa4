@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.a_sub.A_subDTO;
@@ -23,52 +26,73 @@ public class UserController {
    @Autowired
    UserService userservice;
    @Autowired
-	IpsiInfoService ipsiservice;
+   IpsiInfoService ipsiservice;
 
    @RequestMapping("/home.do")
    public String home(Model model) {
-	   List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-		model.addAttribute("ipsiInfo",ipsiInfo);
-	   return "home";
+      List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+      model.addAttribute("ipsiInfo", ipsiInfo);
+      return "home";
    }
 
    @RequestMapping("/join.do")
    public String join() {
       return "join";
    }
-   
+
    @RequestMapping(value = "/join.do", method = RequestMethod.POST)
    public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
       UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
       userservice.user_insert(userdto);
       model.addAttribute("userdto", userdto);
       List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-      model.addAttribute("ipsiInfo",ipsiInfo);
+      model.addAttribute("ipsiInfo", ipsiInfo);
       return "home";
    }
-   
+
    @RequestMapping(value = "/check.do", method = RequestMethod.GET)
-   public String check(){
+   public String check() {
       return "check";
    }
-   
+
    @RequestMapping(value = "/check.do", method = RequestMethod.POST)
-   public String usercheck(String u_id, String u_pw, Model model, HttpSession session){
-      UserDTO checkpw = userservice.user_select2(u_id,u_pw);
-      if(checkpw==null){
+   public String usercheck(String u_id, String u_pw, Model model, HttpSession session) {
+      UserDTO checkpw = userservice.user_select2(u_id, u_pw);
+      if (checkpw == null) {
          model.addAttribute("message", "비밀번호가 틀립니다.");
          return "message";
-      }else{
+      } else {
          return "update";
       }
    }
-   
-   
-   
-   @RequestMapping(value="/update.do", method = RequestMethod.POST)
-   public String userupdate(String u_pw, String u_nick, String u_phone, Model model){
-	   
-	   return "";
+
+   @RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+   public String Delete() {
+
+      return "delete";
+   }
+
+   @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
+   public String userDelete( String yesOrno,Model model, HttpSession session) {
+      System.out.println(yesOrno);
+      if (yesOrno.equals("예")) {
+         List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+         model.addAttribute("ipsiInfo", ipsiInfo);
+         String u_id = (String) session.getAttribute("u_id");
+         userservice.user_delete(u_id);
+         session.invalidate();
+         return "home";
+      }else{
+         List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+         model.addAttribute("ipsiInfo", ipsiInfo);
+         return "home";
+      }
+   }
+
+   @RequestMapping(value = "/update.do", method = RequestMethod.POST)
+   public String userupdate(String u_pw, String u_nick, String u_phone, Model model) {
+
+      return "";
    }
 
    @RequestMapping(value = "/login.do", method = RequestMethod.GET)
@@ -84,8 +108,8 @@ public class UserController {
          model.addAttribute("message", "등록된 회원이 아닙니다.");
          return "login";
       } else {
-    	 List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-  		 model.addAttribute("ipsiInfo",ipsiInfo);
+         List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+         model.addAttribute("ipsiInfo", ipsiInfo);
          session.setAttribute("user", user);
          session.setAttribute("u_id", u_id);
          model.addAttribute("user", user);
@@ -94,11 +118,11 @@ public class UserController {
    }
 
    @RequestMapping("/logout.do")
-   public String logout(HttpSession session,Model model) {
-	  List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-	  model.addAttribute("ipsiInfo",ipsiInfo);
+   public String logout(HttpSession session, Model model) {
+      List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+      model.addAttribute("ipsiInfo", ipsiInfo);
       session.removeAttribute("user");
-      //session.invalidate();
+      // session.invalidate();
       System.out.println(session.getAttribute("user"));
       return "home";
    }
