@@ -25,6 +25,15 @@ public class CommunityServiceImpl implements CommunityService{
 		return cm.cm_select(c_num);
 	}
 
+	
+	@Override
+	public String cm_selectUnick(int u_num){
+		return cm.cm_selectUnick(u_num);
+	}
+	
+	
+	
+	
 	@Override
 	public int cm_insert(CommunityDTO cmdto) {
 		return cm.cm_insert(cmdto);

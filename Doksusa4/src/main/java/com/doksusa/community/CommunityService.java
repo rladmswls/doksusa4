@@ -9,6 +9,12 @@ public interface CommunityService {
 	public List<CommunityDTO> cm_selectBy(int c_group);
 
 	public CommunityDTO cm_select(int c_num);
+	
+	public String cm_selectUnick(int u_num);
+	
+	
+	
+	
 
 	public int cm_insert(CommunityDTO cmdto);
 

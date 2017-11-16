@@ -3,10 +3,9 @@ package com.doksusa.app;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.community.CommunityDTO;
 import com.doksusa.community.CommunityService;
+import com.doksusa.community.CommunityUserDTO;
 import com.doksusa.foreword.ForewordDTO;
 import com.doksusa.foreword.ForewordService;
 
@@ -33,11 +33,22 @@ public class CommunityController {
 	@RequestMapping(value="/noticelist.do", method=RequestMethod.GET)
 	public String notice_list(Model model){
 		List<CommunityDTO> list = cmservice.cm_selectBy(1);
-		model.addAttribute("noticelist",list);
+		List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
+		for(CommunityDTO cdto : list ){
+			String s = cmservice.cm_selectUnick(cdto.getU_num());
+			System.out.println(s);
+			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(), cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+			unicklist.add(cudto);
+		}
+		model.addAttribute("u_nick_list",unicklist);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("noticelist");
-		return "community/noticelist";
+		mv.setViewName("u_nick_list");
+	return "community/noticelist";
 	}
+	
+	
+	
+	
 	
 	
 	//communityview.do

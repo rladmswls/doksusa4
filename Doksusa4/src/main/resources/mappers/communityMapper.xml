@@ -6,10 +6,16 @@
 
 	<select id="cm_selectAll" resultType="cmdto">
 		select * from community</select>
-	<select id="cm_selectBy" resultType="cmdto">
+	<select id="cm_selectBy" resultType="cmdto" parameterType="int">
 		select * from community where c_group=#{c_group}</select>
 	<select id="cm_select" resultType="cmdto" parameterType="int">
 		select * from community where c_num=#{c_num}</select>
+		
+		<select id="cm_selectUnick" resultType="string" parameterType="int">
+		 select u_nick from users where u_num=#{u_num}</select>
+		
+		
+		
 		
 	<insert id="cm_insert" parameterType="cmdto">
 		insert into community values (c_num_SEQ.nextval,#{u_num}, #{f_foreword}, #{c_group}, #{c_title},#{c_content},#{c_date})</insert>

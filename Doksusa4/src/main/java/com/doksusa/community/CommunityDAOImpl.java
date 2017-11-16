@@ -1,8 +1,6 @@
 package com.doksusa.community;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +44,14 @@ public class CommunityDAOImpl implements CommunityDAO{
 		return session.selectList(namespace + "cm_selectBy", c_group);
 		
 	}
+
+	@Override
+	public String cm_selectUnick(int u_num) {
+			return session.selectOne(namespace + "cm_selectUnick" , u_num);
+		
+	}
+	
+	
+	
 
 }

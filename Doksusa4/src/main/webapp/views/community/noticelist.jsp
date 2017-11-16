@@ -16,37 +16,35 @@
 	<jsp:include page="../up.jsp" flush="false" />
 	<div id="here">
 		<h3>공지사항</h3>
-		<form action="noticelist.do" method="get">
-			<div class="container">
-				<table class="table">
-					<thead class="hd">
-						<tr>
-							<th id="c_num">글번호</th>
-							<th id="f_foreword">머리말</th>
-							<th id="c_title">제목</th>
-							<th id="c_date">날짜</th>
-							<th id="u_nick">작성자</th>
-						</tr>
-					</thead>
+
+		<div class="container">
+			<table class="table">
+				<thead class="hd">
 					<tr>
-
-						<c:set var="num" value="0"></c:set>
-						<c:forEach var="list" items="${noticelist}">
-							<tr>
-								<td>${list.c_num}</td>
-								<td>${list.f_foreword}</td>
-								<td><a href="communityview.do?c_num=${list.c_num}"
-									class=notice>${list.c_title}</a></td>
-								<td>${noticelist.c_date}</td>
-								<td>${noticelist.u_nick}</td>
-							</tr>
-						</c:forEach>
+						<th id="c_num">글번호</th>
+						<th id="f_foreword">머리말</th>
+						<th id="c_title">제목</th>
+						<th id="c_date">날짜</th>
+						<th id="u_nick">작성자</th>
 					</tr>
-				</table>
-			</div>
+				</thead>
+				<tr>
 
-		</form>
+					<c:set var="num" value="0"></c:set>
+					<c:forEach var="list" items="${u_nick_list}">
 
+						<tr>
+							<td>${list.c_num}</td>
+							<td>${list.f_foreword}</td>
+							<td><a href="communityview.do?c_num=${list.c_num}"
+								class=notice>${list.c_title}</a></td>
+							<td>${list.c_date}</td>
+							<td>${list.u_nick}</td>
+						</tr>
+					</c:forEach>
+				</tr>
+			</table>
+		</div>
 		<c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
 				<form action="noticeinsert.do">
