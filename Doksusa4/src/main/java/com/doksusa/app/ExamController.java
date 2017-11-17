@@ -60,6 +60,8 @@ public class ExamController {
 		ExamDTO examdto = new ExamDTO(0, e_year, e_grade, e_subject, e_link, e_answer, e_solution);
 		examservice.exam_insert(examdto);
 		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
+		model.addAttribute("e_subject",e_subject);
+		model.addAttribute("e_grade",e_grade);
 		model.addAttribute("egradelist", list);
 		return "exam/egradelist";
 	}
@@ -75,10 +77,11 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/e_delete2.do")
-	public String e_delete2(int e_num, int e_grade, Model model){
+	public String e_delete2(String e_subject,int e_num, int e_grade, Model model){
 		examservice.exam_delete(e_num);
 		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
-		model.addAttribute(e_grade);
+		model.addAttribute("e_subject",e_subject);
+		model.addAttribute("e_grade",e_grade);
 		model.addAttribute("egradelist", list);
 		return "exam/egradelist";
 	}

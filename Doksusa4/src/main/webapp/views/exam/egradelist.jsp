@@ -48,7 +48,9 @@
       <tr>
          <td><input type="hidden" name="e_num" value="${list.e_num}">${list.e_num}</td>
          <td>${list.e_year}</td>
-         <c:if test="${num==0}"><td><input type="hidden" name="e_grade" value="${list.e_grade}">${list.e_grade}</td></c:if>
+         <c:if test="${num==0}"><input type="hidden" name="e_grade" value="${list.e_grade}"></c:if>
+         <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
+         <td>${list.e_grade}</td>
          <td>${list.e_subject}</td>
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
