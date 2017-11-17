@@ -13,5 +13,8 @@ public interface ForewordDAO {
 	public int fore_update(ForewordDTO foredto);
 	
 	public int fore_delete(String f_foreword);
-
+	
+	
+	
+	public List<ForewordDTO> fore_selectForUser();
 }

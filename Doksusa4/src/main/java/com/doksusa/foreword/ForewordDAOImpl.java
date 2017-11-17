@@ -39,4 +39,9 @@ public class ForewordDAOImpl implements ForewordDAO{
 		return session.delete(namespace + "fore_delete", f_foreword);
 	}
 
+	@Override
+	public List<ForewordDTO> fore_selectForUser() {
+		return session.selectList(namespace + "fore_selectForUser");
+	}
+
 }

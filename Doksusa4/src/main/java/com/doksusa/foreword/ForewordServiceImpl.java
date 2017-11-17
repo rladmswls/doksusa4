@@ -41,4 +41,9 @@ public class ForewordServiceImpl implements ForewordService{
 		return fore.fore_delete(f_foreword);
 	}
 
+	@Override
+	public List<ForewordDTO> fore_selectForUser() {
+		return fore.fore_selectForUser();
+	}
+
 }

@@ -22,81 +22,199 @@ import com.doksusa.foreword.ForewordService;
 
 @Controller
 public class CommunityController {
-	
+
 	@Autowired
 	CommunityService cmservice;
 	@Autowired
 	ForewordService fservice;
-	
-	
-	
-	@RequestMapping(value="/noticelist.do", method=RequestMethod.GET)
-	public String notice_list(Model model){
+
+	@RequestMapping(value = "/noticelist.do", method = RequestMethod.GET)
+	public String notice_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(1);
 		List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
-		for(CommunityDTO cdto : list ){
+		for (CommunityDTO cdto : list) {
 			String s = cmservice.cm_selectUnick(cdto.getU_num());
 			System.out.println(s);
-			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(), cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
 			unicklist.add(cudto);
 		}
-		model.addAttribute("u_nick_list",unicklist);
+		model.addAttribute("u_nick_list", unicklist);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
-	return "community/noticelist";
+		return "community/noticelist";
 	}
-	
-	
-	
-	
-	
-	
-	//communityview.do
-	@RequestMapping(value="/communityview.do", method=RequestMethod.GET)
-	public String cm_detail(int c_num, Model model){
+
+	@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
+	public String cm_detail(int c_num, Model model) {
 		CommunityDTO cdto = cmservice.cm_select(c_num);
 		model.addAttribute("communitydto", cdto);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("communitydto");
 		return "community/contentview";
 	}
-	
-	//noticeinsert.do
-	@RequestMapping(value="/noticeinsert.do", method=RequestMethod.GET)
-	public String notice_insertGet(Model model){
+
+	@RequestMapping(value = "/noticeinsert.do", method = RequestMethod.GET)
+	public String notice_insertGet(Model model) {
 		List<ForewordDTO> foreword = fservice.fore_selectAll();
-		model.addAttribute("foreword",foreword);
+		model.addAttribute("foreword", foreword);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("foreword");
 		return "community/noticeinsert";
 	}
-	
-	@RequestMapping(value="/noticeinsert.do", method=RequestMethod.POST)
-	public String notice_insertPost(int u_num, String f_foreword, String c_title, String c_content, Model model){
+
+	@RequestMapping(value = "/noticeinsert.do", method = RequestMethod.POST)
+	public String notice_insertPost(int u_num, String f_foreword, String c_title, String c_content, Model model) {
 		Date c_date = date();
-		CommunityDTO cdto = new CommunityDTO(0, u_num, f_foreword, 1, c_title, c_content, c_date );
-		int count = cmservice.cm_insert(cdto);
+		CommunityDTO cdto = new CommunityDTO(0, u_num, f_foreword, 1, c_title, c_content, c_date);
 		cmservice.cm_insert(cdto);
 		model.addAttribute("cdto", cdto);
-		return "community/noticelist";
+	
+		
+		return "redirect:/noticelist.do";
+		
+		
 	}
 
 	
-	public Date date(){
-		Calendar calendar = Calendar.getInstance();
-	    int year = calendar.get(Calendar.YEAR);
-	    int month = calendar.get(Calendar.MONTH)+1;
-	    int day = calendar.get(Calendar.DAY_OF_MONTH);
-	    int hour = calendar.get(Calendar.HOUR);
-	    int minute = calendar.get(Calendar.MINUTE);
-	    int second = calendar.get(Calendar.SECOND);
-	    
-	    String str = year + "-" + month + "-" + day +"/" + hour + ":" + minute + ":" + second;
-	     
-	     Date sysdate = stringToDate(str);
-	     return sysdate;
-	}
 	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/onetwolist.do", method = RequestMethod.GET)
+	public String onetwo_list(Model model) {
+		List<CommunityDTO> list = cmservice.cm_selectBy(2);
+		List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
+		for (CommunityDTO cdto : list) {
+			String s = cmservice.cm_selectUnick(cdto.getU_num());
+			System.out.println(s);
+			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+			unicklist.add(cudto);
+		}
+		model.addAttribute("u_nick_list", unicklist);
+		model.addAttribute("c_group", 2);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("u_nick_list");
+		mv.setViewName("c_group");
+		
+		return "community/onetwolist";
+	}
+
+	@RequestMapping(value = "/threelist.do", method = RequestMethod.GET)
+	public String three_list(Model model) {
+		List<CommunityDTO> list = cmservice.cm_selectBy(3);
+		List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
+		for (CommunityDTO cdto : list) {
+			String s = cmservice.cm_selectUnick(cdto.getU_num());
+			System.out.println(s);
+			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+			unicklist.add(cudto);
+		}
+		model.addAttribute("u_nick_list", unicklist);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("u_nick_list");
+		return "community/threelist";
+	}
+
+	@RequestMapping(value = "/relist.do", method = RequestMethod.GET)
+	public String re_list(Model model) {
+		List<CommunityDTO> list = cmservice.cm_selectBy(4);
+		List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
+		for (CommunityDTO cdto : list) {
+			String s = cmservice.cm_selectUnick(cdto.getU_num());
+			System.out.println(s);
+			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+			unicklist.add(cudto);
+		}
+		model.addAttribute("u_nick_list", unicklist);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("u_nick_list");
+		return "community/relist";
+	}
+
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/communityinsert.do", method = RequestMethod.GET)
+	public String communityinsert(int c_group, Model model) {
+		List<ForewordDTO> foreword = fservice.fore_selectForUser();
+		model.addAttribute("foreword", foreword);
+		model.addAttribute("c_group", foreword);
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("foreword");
+		mv.setViewName("c_group");
+
+		return "community/communityinsert";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/communityinsert.do", method = RequestMethod.POST)
+	public String communityinsertPost(int u_num, String f_foreword, int c_group, String c_title, String c_content,
+			Model model) {
+		Date c_date = date();
+		CommunityDTO cdto = new CommunityDTO(0, u_num, f_foreword, c_group, c_title, c_content, c_date);
+		cmservice.cm_insert(cdto);
+		model.addAttribute("cdto", cdto);
+		switch (c_group) {
+		case 2:
+			return "redirect:/onetwolist.do";
+		case 3:
+			return "redirect:/threelist.do";
+		case 4:
+			return "redirect:/relist.do";
+		default:
+			return "redirect:/onetwolist.do";
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public Date date() {
+		Calendar calendar = Calendar.getInstance();
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH) + 1;
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		int hour = calendar.get(Calendar.HOUR);
+		int minute = calendar.get(Calendar.MINUTE);
+		int second = calendar.get(Calendar.SECOND);
+
+		String str = year + "-" + month + "-" + day + "/" + hour + ":" + minute + ":" + second;
+
+		Date sysdate = stringToDate(str);
+		return sysdate;
+	}
+
 	public static java.sql.Date stringToDate(String sdate) {
 		java.sql.Date d = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
