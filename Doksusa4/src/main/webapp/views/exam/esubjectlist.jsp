@@ -44,13 +44,15 @@
    </thead>
    
   <c:set var="num" value="0"></c:set> 
+  
    <c:forEach var="list" items="${esubjectlist}">
    <tbody>
       <tr>
          <td><input type="hidden" name="e_num" value="${list.e_num}">${list.e_num}</td>
          <td>${list.e_year}</td>
          <td>${list.e_grade}</td>
-         <td><input type="hidden" name="e_subject" value="${e_subject}">${list.e_subject}</td>
+         <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
+         <td>${list.e_subject}</td>
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>

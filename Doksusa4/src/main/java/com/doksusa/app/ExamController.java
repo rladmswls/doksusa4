@@ -1,5 +1,6 @@
 package com.doksusa.app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +21,29 @@ public class ExamController {
 	
 	
 	@RequestMapping(value="/esubject.do", method=RequestMethod.GET)
-	public String showSubjectList(String e_subject, Model model){
+	public String showSubjectList(String e_subject,Model model){
 		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
 		model.addAttribute("e_subject",e_subject);
 		model.addAttribute("esubjectlist", list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("esubjectlist");
+		mv.setViewName("e_subject");
 		return "exam/esubjectlist";
 	}
 	
 	@RequestMapping(value="/egrade.do", method=RequestMethod.GET)
 	public String showGradeList(String e_subject,int e_grade, Model model){
-		System.out.println(e_subject);
-		
-		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
-		model.addAttribute("egradelist", list);
+		System.out.println(e_grade);
+		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
+		List<ExamDTO> elist = new ArrayList<ExamDTO>();
+		for(ExamDTO edto : list){
+			if(e_grade == edto.getE_grade()){
+				elist.add(edto);
+			}
+		}
+		//List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
+		model.addAttribute("egradelist", elist);
+		model.addAttribute("e_subject",e_subject);
 		model.addAttribute("e_grade", e_grade);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("egradelist");
@@ -57,8 +66,10 @@ public class ExamController {
 
 	@RequestMapping("/e_delete.do")
 	public String e_delete(int e_num, String e_subject, Model model){
+		System.out.println(e_subject);
 		examservice.exam_delete(e_num);
 		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
+		model.addAttribute("e_subject",e_subject);
 		model.addAttribute("esubjectlist", list);
 		return "exam/esubjectlist";
 	}
@@ -67,6 +78,7 @@ public class ExamController {
 	public String e_delete2(int e_num, int e_grade, Model model){
 		examservice.exam_delete(e_num);
 		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
+		model.addAttribute(e_grade);
 		model.addAttribute("egradelist", list);
 		return "exam/egradelist";
 	}

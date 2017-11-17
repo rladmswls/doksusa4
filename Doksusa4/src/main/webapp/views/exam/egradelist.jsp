@@ -19,7 +19,8 @@
 <form action="egrade.do">
 <label class="radio-inline"><input type="radio" name="e_grade" value="1">고1</label>
 <label class="radio-inline"><input type="radio" name="e_grade" value="2">고2</label>
-<label class="radio-inline"><input type="radio" name="e_grade" value="3">고3</label> 
+<label class="radio-inline"><input type="radio" name="e_grade" value="3">고3</label>
+<input type="hidden" name="e_subject" value="${e_subject}"> 
 <input type="submit" value="선택" class="btn btn-outline-dark">
 </form>
 <form action="e_delete2.do">
@@ -47,7 +48,7 @@
       <tr>
          <td><input type="hidden" name="e_num" value="${list.e_num}">${list.e_num}</td>
          <td>${list.e_year}</td>
-         <td><input type="hidden" name="e_grade" value="${list.e_grade}">${list.e_grade}</td>
+         <c:if test="${num==0}"><td><input type="hidden" name="e_grade" value="${list.e_grade}">${list.e_grade}</td></c:if>
          <td>${list.e_subject}</td>
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
