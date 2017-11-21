@@ -52,6 +52,12 @@ public class UserServiceImpl implements UserService{
 	   return user.user_update(u_id,u_pw);
    }
 
+@Override
+public UserDTO user_selectByNick(String u_nick) {
+	// TODO Auto-generated method stub
+	return user.user_selectByNick(u_nick);
+}
+
 
 
 }

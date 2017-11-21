@@ -64,4 +64,10 @@ public class UserDAOImpl implements UserDAO {
 	   return session.selectOne(namespace + "user_update", data);
    }
 
+@Override
+public UserDTO user_selectByNick(String u_nick) {
+	// TODO Auto-generated method stub
+	 return session.selectOne(namespace + "user_selectByNick", u_nick);
+}
+
 }

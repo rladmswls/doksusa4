@@ -7,6 +7,8 @@ public interface UserDAO {
    public List<UserDTO> user_selectAll();
 
    public UserDTO user_select(String u_id);
+   
+   public UserDTO user_selectByNick(String u_nick);
 
    public int user_insert(UserDTO userdto);
 

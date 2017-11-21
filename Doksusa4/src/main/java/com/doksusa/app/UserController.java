@@ -59,6 +59,14 @@ public class UserController {
 	   else return "1";
 
    }
+   @RequestMapping("/checkNick.do")
+   @ResponseBody
+   public String checkNick(String u_nick){
+	   UserDTO userdto = userservice.user_selectByNick(u_nick);
+	   if(userdto==null) return "0";
+	   else return "1";
+
+   }
    
    @RequestMapping("/checkIDPW.do")
    @ResponseBody

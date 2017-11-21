@@ -8,6 +8,8 @@ public interface UserService {
 
    public UserDTO user_select(String u_id);
    
+   public UserDTO user_selectByNick(String u_nick);
+   
    public UserDTO user_select2(String u_id, String u_pw);
 
    public int user_insert(UserDTO userdto);
