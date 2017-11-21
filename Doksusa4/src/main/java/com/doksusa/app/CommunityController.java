@@ -5,7 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +45,7 @@ public class CommunityController {
 		model.addAttribute("u_nick_list", unicklist);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
+
 		return "community/noticelist";
 	}
 
