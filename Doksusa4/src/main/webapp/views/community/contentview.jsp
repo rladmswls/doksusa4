@@ -35,6 +35,8 @@ function updateCommunity(){
 	<c:choose>
 		<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
 			<form name="f" action="">
+				<input type="hidden" name="c_num" id="c_num" value="${communityuserdto.c_num}">
+				<input type="hidden" name="c_group" id="c_group" value="${communityuserdto.c_group}">
 				<input type="button" onclick = "updateCommunity()" value="수정하기">
 				<input type="button" onclick = "deleteCommunity()" value="삭제하기">
 			</form>

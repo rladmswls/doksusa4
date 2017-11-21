@@ -30,7 +30,11 @@ public class CommunityController {
 	CommunityService cmservice;
 	@Autowired
 	ForewordService fservice;
+	
+	@Autowired
+	Commnet
 
+	// noticelist 보기
 	@RequestMapping(value = "/noticelist.do", method = RequestMethod.GET)
 	public String notice_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(1);
@@ -49,9 +53,7 @@ public class CommunityController {
 		return "community/noticelist";
 	}
 
-	
-	
-
+	// notice insert
 	@RequestMapping(value = "/noticeinsert.do", method = RequestMethod.GET)
 	public String notice_insertGet(Model model) {
 		List<ForewordDTO> foreword = fservice.fore_selectAll();
@@ -60,27 +62,20 @@ public class CommunityController {
 		mv.setViewName("foreword");
 		return "community/noticeinsert";
 	}
-
+	
+	// notice insert
 	@RequestMapping(value = "/noticeinsert.do", method = RequestMethod.POST)
 	public String notice_insertPost(int u_num, String f_foreword, String c_title, String c_content, Model model) {
 		Date c_date = date();
 		CommunityDTO cdto = new CommunityDTO(0, u_num, f_foreword, 1, c_title, c_content, c_date);
 		cmservice.cm_insert(cdto);
 		model.addAttribute("cdto", cdto);
-	
-		
+
 		return "redirect:/noticelist.do";
-		
-		
+
 	}
 
-	
-	
-	
-
-	
-	
-	
+	//고1고2 커뮤니티 보기
 	@RequestMapping(value = "/onetwolist.do", method = RequestMethod.GET)
 	public String onetwo_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(2);
@@ -94,14 +89,15 @@ public class CommunityController {
 		}
 		model.addAttribute("u_nick_list", unicklist);
 		model.addAttribute("c_group", 2);
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
 		mv.setViewName("c_group");
-		
+
 		return "community/onetwolist";
 	}
 
+	//고3 커뮤니티보기
 	@RequestMapping(value = "/threelist.do", method = RequestMethod.GET)
 	public String three_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(3);
@@ -115,14 +111,15 @@ public class CommunityController {
 		}
 		model.addAttribute("u_nick_list", unicklist);
 		model.addAttribute("c_group", 3);
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
 		mv.setViewName("c_group");
-		
+
 		return "community/threelist";
 	}
 
+	//n수생 커뮤니티보기
 	@RequestMapping(value = "/relist.do", method = RequestMethod.GET)
 	public String re_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(4);
@@ -136,20 +133,39 @@ public class CommunityController {
 		}
 		model.addAttribute("u_nick_list", unicklist);
 		model.addAttribute("c_group", 4);
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
 		mv.setViewName("c_group");
-		
+
 		return "community/relist";
 	}
 
 	
+	@RequestMapping(value = "/deleteCommunity.do", method = RequestMethod.GET)
+	public String cm_delete(int c_num, int c_group ,Model model){
+		
+		
+		
+		
+		
+		switch (c_group) {
+		case 2:
+			return "redirect:/onetwolist.do";
+		case 3:
+			return "redirect:/threelist.do";
+		case 4:
+			return "redirect:/relist.do";
+		default:
+			return "redirect:/onetwolist.do";
+		}
+	}
 	
 	
 	
 	
 	
+	//커뮤니티 게시글보기
 	@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
 	public String cm_detail(int c_num, Model model) {
 		CommunityDTO cdto = cmservice.cm_select(c_num);
@@ -157,18 +173,16 @@ public class CommunityController {
 		System.out.println(s);
 		CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
 				cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
-		
+
 		model.addAttribute("communityuserdto", cudto);
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("communitydto");
 		return "community/contentview";
 	}
+
 	
-	
-	
-	
-	
+	//게시글 쓰기
 	@RequestMapping(value = "/communityinsert.do", method = RequestMethod.GET)
 	public String communityinsert(int c_group, Model model) {
 		List<ForewordDTO> foreword = fservice.fore_selectForUser();
@@ -178,17 +192,11 @@ public class CommunityController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("foreword");
 		mv.setViewName("c_group");
-		
+
 		return "community/communityinsert";
 	}
-
 	
-	
-	
-	
-	
-	
-	
+	//게시글 쓰기
 	@RequestMapping(value = "/communityinsert.do", method = RequestMethod.POST)
 	public String communityinsertPost(int u_num, String f_foreword, int c_group, String c_title, String c_content,
 			Model model) {
@@ -208,20 +216,6 @@ public class CommunityController {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
