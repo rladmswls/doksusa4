@@ -35,6 +35,7 @@
       <th id="e_link">문제PDF</th>
       <th id="e_answer">답지PDF</th>
       <th id="e_solution">해설PDF</th>
+     <th>오답노트등록</th>
        <c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
 				 <th>삭제</th>
@@ -51,10 +52,11 @@
          <c:if test="${num==0}"><input type="hidden" name="e_grade" value="${list.e_grade}"></c:if>
          <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
          <td>${list.e_grade}</td>
-         <td>${list.e_subject}</td>
+         <td><input type="hidden" name="e_subject" value="${list.e_subject}">${list.e_subject}</td>
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>
+         <td><a href="wrongnote.do">오답노트</a></td>
          <c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
 				<td><input type="submit" value="삭제"></td>
