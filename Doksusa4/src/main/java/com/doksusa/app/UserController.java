@@ -53,9 +53,17 @@ public class UserController {
    
    @RequestMapping("/checkID.do")
    @ResponseBody
-   public String checkID(String u_id, Model model){
+   public String checkID(String u_id){
 	   UserDTO userdto = userservice.user_select(u_id);
-	   System.out.println("dddd");
+	   if(userdto==null) return "0";
+	   else return "1";
+
+   }
+   
+   @RequestMapping("/checkIDPW.do")
+   @ResponseBody
+   public String checkIDPW(String u_id, String u_pw){
+	   UserDTO userdto = userservice.login(u_id, u_pw);
 	   if(userdto==null) return "0";
 	   else return "1";
 
