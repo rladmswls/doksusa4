@@ -13,8 +13,8 @@
       
    <insert id="ap_insert" parameterType="apdto">
       insert into aptitude values (a_num_SEQ.nextval,#{a_year},#{a_school},#{a_title},#{a_link},#{a_answer})</insert>
-   <update id="ap_update" parameterType="apdto">
-      update aptitude set a_year=#{a_year},a_school=#{a_school}, a_subnum=#{a_subnum},a_answer=#{a_answer},a_link=#{a_link} where e_num=#{e_num}</update>
+   <!-- <update id="ap_update" parameterType="apdto">
+      update aptitude set a_year=#{a_year},a_school=#{a_school}, a_subnum=#{a_subnum},a_answer=#{a_answer},a_link=#{a_link} where e_num=#{e_num}</update> -->
    <delete id="ap_delete" parameterType="int">
       delete from aptitude where a_num=#{a_num}</delete>
       

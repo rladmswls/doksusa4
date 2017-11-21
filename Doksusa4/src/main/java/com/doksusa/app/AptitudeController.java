@@ -44,6 +44,13 @@ public class AptitudeController {
       return "aptitude/aptitudelist";
    }
    
+   @RequestMapping("/a_delete.do")
+   public String ap_delete(int a_num, String a_school, Model model){
+	   aptitudeservice.ap_delete(a_num);
+	   List<AptitudeDTO> list = aptitudeservice.ap_selectByA_school(a_school);
+	   model.addAttribute("aschoollist", list);
+	   return "aptitude/aschoollist";
+   }
    
    
    

@@ -16,10 +16,9 @@
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
 <h3>${a_school} 적성  리스트</h3>
-<form action="aschool.do" method="get">
+<form action="a_delete.do" method="get">
 <div class="container">
-   <table class="table" >
-
+    <table class="table">
    <thead class="hd">
    <tr>
       <th id="a_num">글번호</th>
@@ -40,7 +39,7 @@
    <c:forEach var="list" items="${aschoollist}">
    <tbody>
       <tr>
-         <td>${list.a_num}</td>
+         <td><input type="hidden" name="a_num" value="${list.a_num}">${list.a_num}</td>
          <td>${list.a_year}</td>
          <td><input type="hidden" name="a_school" value="${list.a_school}">${list.a_school}</td>
          <td>${list.a_title}</td>
@@ -49,11 +48,12 @@
        <c:choose>
          <c:when test="${sessionScope.u_id == 'dok'}">
          <!--    <td><input type="button" onclick="a_update.do" value="수정"></td> -->
-            <td><input type="button" onclick="a_delete.do" value="삭제"></td>
+            <td><input type="submit" value="삭제"></td>
             <td></td>
          </c:when>
       </c:choose>
       </tr>
+    </tbody>
    <c:set var="num" value="${num+1}"></c:set>
    <c:if test="${num%5==0}"><br></c:if> 
    </c:forEach>
