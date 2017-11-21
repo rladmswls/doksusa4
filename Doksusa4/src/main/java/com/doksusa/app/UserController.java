@@ -132,9 +132,7 @@ public class UserController {
    public String logout(HttpSession session, Model model) {
       List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
       model.addAttribute("ipsiInfo", ipsiInfo);
-      session.removeAttribute("user");
-      // session.invalidate();
-      System.out.println(session.getAttribute("user"));
+      session.invalidate();
       return "home";
    }
 
