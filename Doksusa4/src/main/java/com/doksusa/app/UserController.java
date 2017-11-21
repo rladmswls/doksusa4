@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.a_sub.A_subDTO;
@@ -48,6 +49,16 @@ public class UserController {
       List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
       model.addAttribute("ipsiInfo", ipsiInfo);
       return "home";
+   }
+   
+   @RequestMapping("/checkID.do")
+   @ResponseBody
+   public String checkID(String u_id, Model model){
+	   UserDTO userdto = userservice.user_select(u_id);
+	   System.out.println("dddd");
+	   if(userdto==null) return "0";
+	   else return "1";
+
    }
 
    @RequestMapping(value = "/check.do", method = RequestMethod.GET)
