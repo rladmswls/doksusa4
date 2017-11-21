@@ -28,6 +28,7 @@
 						<th id="u_nick">작성자</th>
 					</tr>
 				</thead>
+				<tbody>
 				<tr>
 
 					<c:set var="num" value="0"></c:set>
@@ -43,15 +44,16 @@
 						</tr>
 					</c:forEach>
 				</tr>
+			
+				</tbody>
 			</table>
 		</div>
-		<c:choose>
-			<c:when test="${sessionScope.u_id == 'dok'}">
-				<form action="threeinsert.do">
+			
+				<form action="communityinsert.do">
 					<input type="submit" value="등록">
+					<input type="hidden" name="c_group" id="c_group" value="${c_group}">
 				</form>
-			</c:when>
-		</c:choose>
+		
 	</div>
 </body>
 </html>

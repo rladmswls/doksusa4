@@ -120,8 +120,12 @@ public class CommunityController {
 			unicklist.add(cudto);
 		}
 		model.addAttribute("u_nick_list", unicklist);
+		model.addAttribute("c_group", 3);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
+		mv.setViewName("c_group");
+		
 		return "community/threelist";
 	}
 
@@ -137,8 +141,12 @@ public class CommunityController {
 			unicklist.add(cudto);
 		}
 		model.addAttribute("u_nick_list", unicklist);
+		model.addAttribute("c_group", 4);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("u_nick_list");
+		mv.setViewName("c_group");
+		
 		return "community/relist";
 	}
 
@@ -152,12 +160,12 @@ public class CommunityController {
 	public String communityinsert(int c_group, Model model) {
 		List<ForewordDTO> foreword = fservice.fore_selectForUser();
 		model.addAttribute("foreword", foreword);
-		model.addAttribute("c_group", foreword);
+		model.addAttribute("c_group", c_group);
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("foreword");
 		mv.setViewName("c_group");
-
+		
 		return "community/communityinsert";
 	}
 

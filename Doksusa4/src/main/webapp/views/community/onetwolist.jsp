@@ -31,7 +31,7 @@
 				<tbody>
 				<tr>
 
-					<c:set var="num" value="0"></c:set>
+					
 					<c:forEach var="list" items="${u_nick_list}">
 
 						<tr>
@@ -48,12 +48,12 @@
 				</tbody>
 			</table>
 		</div>
-			<c:choose>
+			
 				<form action="communityinsert.do">
 					<input type="submit" value="등록">
 					<input type="hidden" name="c_group" id="c_group" value="${c_group}">
 				</form>
-		</c:choose>
+		
 	</div>
 </body>
 </html>
