@@ -139,6 +139,7 @@ public class UserController {
          model.addAttribute("ipsiInfo", ipsiInfo);
          session.setAttribute("user", user);
          session.setAttribute("u_id", u_id);
+         session.setAttribute("u_num", user.getU_num());
          model.addAttribute("user", user);
          return "home";
       }

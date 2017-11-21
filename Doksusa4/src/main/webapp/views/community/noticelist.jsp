@@ -42,7 +42,7 @@
 							<td>${list.u_nick}</td>
 						</tr>
 					</c:forEach>
-				</tr>
+				
 			</table>
 		</div>
 		<c:choose>

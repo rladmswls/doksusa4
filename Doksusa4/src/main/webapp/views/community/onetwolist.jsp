@@ -18,7 +18,12 @@
 		<h3>고1&고2 커뮤니티</h3>
 
 		<div class="container">
-			<table class="table">
+		
+		
+		
+		
+		
+				<table class="table">
 				<thead class="hd">
 					<tr>
 						<th id="c_num">글번호</th>

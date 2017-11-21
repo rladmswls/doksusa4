@@ -49,14 +49,8 @@ public class CommunityController {
 		return "community/noticelist";
 	}
 
-	@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
-	public String cm_detail(int c_num, Model model) {
-		CommunityDTO cdto = cmservice.cm_select(c_num);
-		model.addAttribute("communitydto", cdto);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("communitydto");
-		return "community/contentview";
-	}
+	
+	
 
 	@RequestMapping(value = "/noticeinsert.do", method = RequestMethod.GET)
 	public String notice_insertGet(Model model) {
@@ -83,7 +77,7 @@ public class CommunityController {
 	
 	
 	
-	
+
 	
 	
 	
@@ -151,6 +145,25 @@ public class CommunityController {
 	}
 
 	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
+	public String cm_detail(int c_num, Model model) {
+		CommunityDTO cdto = cmservice.cm_select(c_num);
+		String s = cmservice.cm_selectUnick(cdto.getU_num());
+		System.out.println(s);
+		CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+				cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+		
+		model.addAttribute("communityuserdto", cudto);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("communitydto");
+		return "community/contentview";
+	}
 	
 	
 	
