@@ -31,8 +31,8 @@ public class CommunityController {
 	@Autowired
 	ForewordService fservice;
 	
-	@Autowired
-	Commnet
+	//@Autowired
+	//Commnet
 
 	// noticelist 보기
 	@RequestMapping(value = "/noticelist.do", method = RequestMethod.GET)
