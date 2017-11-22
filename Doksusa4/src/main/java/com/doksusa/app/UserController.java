@@ -35,7 +35,7 @@ public class UserController {
 		model.addAttribute("ipsiInfo", ipsiInfo);
 		return "home";
 	}
-
+	
 	@RequestMapping("/join.do")
 	public String join() {
 		return "join";

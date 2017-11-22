@@ -3,6 +3,8 @@ package com.doksusa.app;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +53,11 @@ public class ExamController {
 		mv.setViewName("egradelist");
 		return "exam/egradelist";
 	}
+
+	@RequestMapping("/u_wrongnote.do")
+	public String u_wrongnote() {
+		return "exam/u_wrongnote";
+	}
 	
 	@RequestMapping("/wrongnote.do")
 	public String omr(String e_subject, Model model){
@@ -68,7 +75,12 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value="/wrongnote.do", method=RequestMethod.POST)
-	public String wrongnote(){
+	public String wrongnote(int[] su){
+		/*for(int i : su)
+			System.out.println(i);*/
+		for(int i : su){
+			
+		}
 		return "exam/u_wrongnote";
 	}
 	

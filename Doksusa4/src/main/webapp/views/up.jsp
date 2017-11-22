@@ -76,7 +76,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="wrong.do">오답 노트</a></li>
+						<li><a href="u_wrongnote.do">오답 노트</a></li>
 						<li><a href="check.do">개인정보수정</a></li>
 					</ul></li>
 			</ul>

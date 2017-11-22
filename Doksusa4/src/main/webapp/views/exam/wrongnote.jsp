@@ -15,8 +15,8 @@
 <hr>
 <form action="wrongnote.do" method="post">
 	<c:set var="num" value="0"></c:set>
-			<c:forEach var="num" begin="1" end="${end }">
-		${num} <input type="checkbox" name="q" id="${su }" value="${su }">
+	<c:forEach var="num" begin="1" end="${end }">
+		${num} <input type="checkbox" name="su" id="${su }" value="${num }">
 		<c:if test="${num%5==0}"><br></c:if>
    </c:forEach>
    <input type="submit" value="제출">
