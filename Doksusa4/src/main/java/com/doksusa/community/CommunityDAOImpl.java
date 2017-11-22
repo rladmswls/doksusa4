@@ -30,8 +30,8 @@ public class CommunityDAOImpl implements CommunityDAO{
 	}
 
 	@Override
-	public int cm_update(int c_num) {
-		return session.update(namespace + "cm_update", c_num);
+	public int cm_update(CommunityDTO cmdto) {
+		return session.update(namespace + "cm_update", cmdto);
 	}
 
 	@Override

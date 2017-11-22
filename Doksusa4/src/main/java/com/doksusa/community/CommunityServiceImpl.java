@@ -40,8 +40,8 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public int cm_update(int c_num) {
-		return cm.cm_update(c_num);
+	public int cm_update(CommunityDTO cmdto) {
+		return cm.cm_update(cmdto);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public interface CommunityDAO {
 
 	public int cm_insert(CommunityDTO cmdto);
 
-	public int cm_update(int c_num);
+	public int cm_update(CommunityDTO cmdto);
 
 	public int cm_delete(int c_num);
 

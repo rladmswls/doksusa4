@@ -11,6 +11,7 @@ public class CommunityUserDTO {
 	String c_content;
 	Date c_date;
 	String u_nick;
+	
 	public CommunityUserDTO() {
 		super();
 		// TODO Auto-generated constructor stub

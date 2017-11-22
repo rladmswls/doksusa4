@@ -21,7 +21,7 @@ public class CommentDAOImpl implements CommentDAO{
 
 	@Override
 	public List<CommentDTO> ct_selectBy(int c_num) {
-		return session.selectOne(namespace + "ct_selectBy", c_num);
+		return session.selectList(namespace + "ct_selectBy", c_num);
 	}
 
 	@Override
