@@ -13,6 +13,9 @@
 	<select id="user_selectByNick" resultType="userdto" parameterType="string">
 		select * from users where u_nick=#{u_nick}
 	</select>
+	<select id="user_selectByPhone" resultType="userdto" parameterType="string">
+		select * from users where u_phone=#{u_phone}
+	</select>
 	<insert id="user_insert" parameterType="userdto">
 		insert into users (u_num,u_id,u_pw,u_nick,u_phone) values
 		(u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick},#{u_phone})
@@ -29,5 +32,8 @@
 	</select>
 	<select id="user_select2" resultType="userdto" parameterType="map">
 		select * from users where u_id=#{u_id} and u_pw=#{u_pw}
+	</select>
+	<select id="user_select3" resultType="userdto" parameterType="map">
+		select * from users where u_id=#{u_id} and u_nick=#{u_nick} and u_phone=#{u_phone}
 	</select>
 </mapper>

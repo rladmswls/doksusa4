@@ -9,6 +9,8 @@ public interface UserDAO {
    public UserDTO user_select(String u_id);
    
    public UserDTO user_selectByNick(String u_nick);
+   
+   public UserDTO user_selectByPhone(String u_phone);
 
    public int user_insert(UserDTO userdto);
 
@@ -19,6 +21,8 @@ public interface UserDAO {
    public UserDTO login(String u_id, String u_pw);
    
    public UserDTO user_select2(String u_id, String u_pw);
+
+   public UserDTO user_select3(String u_id,String u_nick,String u_phone);
 
 
 }

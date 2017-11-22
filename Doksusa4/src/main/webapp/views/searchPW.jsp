@@ -10,13 +10,12 @@
 <body>
 <jsp:include page="up.jsp" flush="false"/>
 <div id="here">
-<form name="f" method="post" action="">
+<form method="post" action="searchPW.do">
       <h3>패스워드 찾기</h3>
       <input type="text" name="u_id" placeholder="아이디 입력"><br>
-      <input type="password" name="u_pw" placeholder="비밀번호 입력"><br>
-      <button class="btn" onclick="login()" id="login">로그인</button>
-      <button class="btn" onclick="searchID()" id="login">아이디 찾기</button>
-      <button class="btn" onclick="searchPW()" id="login">비밀번호 찾기</button>
+      <input type="text" name="u_nick" placeholder="닉네임 입력"><br>
+       <input type="tel" name="u_phone" placeholder="전화번호입력"><br>
+      <input type="submit" value="패스워드 찾기">
    </form>
    </div>
 </body>

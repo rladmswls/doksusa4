@@ -24,155 +24,197 @@ import com.doksusa.user.UserService;
 @Controller
 public class UserController {
 
-   @Autowired
-   UserService userservice;
-   @Autowired
-   IpsiInfoService ipsiservice;
+	@Autowired
+	UserService userservice;
+	@Autowired
+	IpsiInfoService ipsiservice;
 
-   @RequestMapping("/home.do")
-   public String home(Model model) {
-      List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-      model.addAttribute("ipsiInfo", ipsiInfo);
-      return "home";
-   }
+	@RequestMapping("/home.do")
+	public String home(Model model) {
+		List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+		model.addAttribute("ipsiInfo", ipsiInfo);
+		return "home";
+	}
 
-   @RequestMapping("/join.do")
-   public String join() {
-      return "join";
-   }
+	@RequestMapping("/join.do")
+	public String join() {
+		return "join";
+	}
 
-   @RequestMapping(value = "/join.do", method = RequestMethod.POST)
-   public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
-      UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
-      userservice.user_insert(userdto);
-      model.addAttribute("userdto", userdto);
-      List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-      model.addAttribute("ipsiInfo", ipsiInfo);
-      return "home";
-   }
-   
-   @RequestMapping("/checkID.do")
-   @ResponseBody
-   public String checkID(String u_id){
-	   UserDTO userdto = userservice.user_select(u_id);
-	   if(userdto==null) return "0";
-	   else return "1";
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	public String userinsert(String u_id, String u_pw, String u_nick, String u_phone, Model model) {
+		UserDTO userdto = new UserDTO(0, u_id, u_pw, u_nick, u_phone);
+		userservice.user_insert(userdto);
+		model.addAttribute("userdto", userdto);
+		List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+		model.addAttribute("ipsiInfo", ipsiInfo);
+		return "home";
+	}
 
-   }
-   @RequestMapping("/checkNick.do")
-   @ResponseBody
-   public String checkNick(String u_nick){
-	   UserDTO userdto = userservice.user_selectByNick(u_nick);
-	   if(userdto==null) return "0";
-	   else return "1";
+	@RequestMapping("/checkID.do")
+	@ResponseBody
+	public String checkID(String u_id) {
+		UserDTO userdto = userservice.user_select(u_id);
+		if (userdto == null)
+			return "0";
+		else
+			return "1";
 
-   }
-   
-   @RequestMapping("/checkIDPW.do")
-   @ResponseBody
-   public String checkIDPW(String u_id, String u_pw){
-	   UserDTO userdto = userservice.login(u_id, u_pw);
-	   if(userdto==null) return "0";
-	   else return "1";
+	}
 
-   }
+	@RequestMapping("/checkNick.do")
+	@ResponseBody
+	public String checkNick(String u_nick) {
+		UserDTO userdto = userservice.user_selectByNick(u_nick);
+		if (userdto == null)
+			return "0";
+		else
+			return "1";
 
-   @RequestMapping(value = "/check.do", method = RequestMethod.GET)
-   public String check() {
-      return "check";
-   }
+	}
+	
+	@RequestMapping("/checkPhone.do")
+	@ResponseBody
+	public String checkPhone(String u_phone) {
+		UserDTO userdto = userservice.user_selectByPhone(u_phone);
+		if (userdto == null)
+			return "0";
+		else
+			return "1";
+		
+	}
 
-   @RequestMapping(value = "/check.do", method = RequestMethod.POST)
-   public String usercheck(String u_id, String u_pw, Model model, HttpSession session) {
-      UserDTO checkpw = userservice.user_select2(u_id, u_pw);
-      if (checkpw == null) {
-         model.addAttribute("message", "비밀번호가 틀립니다.");
-         return "message";
-      } else {
-         return "update";
-      }
-   }
+	@RequestMapping("/checkIDPW.do")
+	@ResponseBody
+	public String checkIDPW(String u_id, String u_pw) {
+		UserDTO userdto = userservice.login(u_id, u_pw);
+		if (userdto == null)
+			return "0";
+		else
+			return "1";
 
-   @RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-   public String Delete() {
+	}
 
-      return "delete";
-   }
+	@RequestMapping(value = "/check.do", method = RequestMethod.GET)
+	public String check() {
+		return "check";
+	}
 
-   @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
-   public String userDelete( String yesOrno,Model model, HttpSession session) {
-      System.out.println(yesOrno);
-      if (yesOrno.equals("예")) {
-         List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-         model.addAttribute("ipsiInfo", ipsiInfo);
-         String u_id = (String) session.getAttribute("u_id");
-         userservice.user_delete(u_id);
-         session.invalidate();
-         return "home";
-      }else{
-         List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-         model.addAttribute("ipsiInfo", ipsiInfo);
-         return "home";
-      }
-   }
+	@RequestMapping(value = "/check.do", method = RequestMethod.POST)
+	public String usercheck(String u_id, String u_pw, Model model, HttpSession session) {
+		UserDTO checkpw = userservice.user_select2(u_id, u_pw);
+		if (checkpw == null) {
+			model.addAttribute("message", "비밀번호가 틀립니다.");
+			return "message";
+		} else {
+			return "update";
+		}
+	}
 
-   @RequestMapping(value = "/update.do", method = RequestMethod.POST)
-   public String userupdate(String u_pw, String u_nick, String u_phone, Model model) {
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	public String Delete() {
 
-      return "";
-   }
+		return "delete";
+	}
 
-   @RequestMapping(value = "/login.do", method = RequestMethod.GET)
-   public String front() {
-      return "login";
-   }
+	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
+	public String userDelete(String yesOrno, Model model, HttpSession session) {
+		System.out.println(yesOrno);
+		if (yesOrno.equals("예")) {
+			List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+			model.addAttribute("ipsiInfo", ipsiInfo);
+			String u_id = (String) session.getAttribute("u_id");
+			userservice.user_delete(u_id);
+			session.invalidate();
+			return "home";
+		} else {
+			List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+			model.addAttribute("ipsiInfo", ipsiInfo);
+			return "home";
+		}
+	}
 
-   @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-   public String login(String u_id, String u_pw, Model model, HttpSession session) {
-      System.out.println(u_id);
-      UserDTO user = userservice.login(u_id, u_pw);
-      if (user == null) {
-         model.addAttribute("message", "등록된 회원이 아닙니다.");
-         return "login";
-      } else {
-         List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-         model.addAttribute("ipsiInfo", ipsiInfo);
-         session.setAttribute("user", user);
-         session.setAttribute("u_id", u_id);
-         session.setAttribute("u_num", user.getU_num());
-         model.addAttribute("user", user);
-         return "home";
-      }
-   }
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
+	public String userupdate(String u_pw, String u_nick, String u_phone, Model model) {
 
-   @RequestMapping("/logout.do")
-   public String logout(HttpSession session, Model model) {
-      List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-      model.addAttribute("ipsiInfo", ipsiInfo);
-      session.invalidate();
-      return "home";
-   }
+		return "";
+	}
 
-   @RequestMapping("/searchID.do")
-   public String searchID() {
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	public String front() {
+		return "login";
+	}
 
-      return "searchID";
-   }
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String login(String u_id, String u_pw, Model model, HttpSession session) {
+		System.out.println(u_id);
+		UserDTO user = userservice.login(u_id, u_pw);
+		if (user == null) {
+			model.addAttribute("message", "등록된 회원이 아닙니다.");
+			return "redirect:/login.do";
+		} else {
+			List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+			model.addAttribute("ipsiInfo", ipsiInfo);
+			session.setAttribute("user", user);
+			session.setAttribute("u_id", u_id);
+			session.setAttribute("u_num", user.getU_num());
+			model.addAttribute("user", user);
+			return "home";
+		}
+	}
 
-   @RequestMapping("/searchPW.do")
-   public String searchPW() {
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session, Model model) {
+		List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+		model.addAttribute("ipsiInfo", ipsiInfo);
+		session.invalidate();
+		return "home";
+	}
 
-      return "searchPW";
-   }
+	@RequestMapping(value = "/searchID.do", method = RequestMethod.GET)
+	public String searchID() {
+		return "searchID";
+	}
 
-   @RequestMapping("/userlist")
-   public String showList(Model model) {
-      List<UserDTO> list = userservice.user_selectAll();
-      model.addAttribute("userlist", list);
-      ModelAndView mv = new ModelAndView();
-      mv.addObject("user2", new A_subDTO());
-      mv.setViewName("userlist");
-      return "userlist";
-   }
+	@RequestMapping(value = "/searchID.do", method = RequestMethod.POST)
+	public String searchID2(String u_phone, Model model) {
+		System.out.println(u_phone);
+		System.out.println("====================================================");
+		UserDTO user = userservice.user_selectByPhone(u_phone);
+		if (user == null) {
+			model.addAttribute("message", "등록된 회원이 아닙니다.");
+			return "message";
+		} else {
+			model.addAttribute("message", "아이디는 " + user.getU_id() + "입니다.");
+			return "message2";
+		}
+	}
+
+	@RequestMapping(value = "/searchPW.do", method = RequestMethod.GET)
+	public String searchPW() {
+		return "searchPW";
+	}
+
+	@RequestMapping(value = "/searchPW.do", method = RequestMethod.POST)
+	public String searchPW2(String u_id,String u_nick,String u_phone,Model model) {
+		UserDTO user = userservice.user_select3(u_id, u_nick, u_phone);
+		if (user == null) {
+			model.addAttribute("message", "등록된 회원이 아닙니다.");
+			return "message";
+		} else {
+			model.addAttribute("message", "비밀번호는 " + user.getU_pw() + "입니다.");
+			return "message2";
+		}
+	}
+
+	@RequestMapping("/userlist")
+	public String showList(Model model) {
+		List<UserDTO> list = userservice.user_selectAll();
+		model.addAttribute("userlist", list);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("user2", new A_subDTO());
+		mv.setViewName("userlist");
+		return "userlist";
+	}
 
 }

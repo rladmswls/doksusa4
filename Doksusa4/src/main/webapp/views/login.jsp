@@ -40,10 +40,12 @@
 	
 	function searchID() {
 		f.action = "searchID.do";
+		f.method = "get";
 		f.submit();
 	}
 	function searchPW() {
 		f.action = "searchPW.do";
+		f.method = "get";
 		f.submit();
 	}
 </script>

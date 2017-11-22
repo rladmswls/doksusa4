@@ -5,16 +5,13 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script>
+   alert("${message}");
+   history.go(-2); 
+</script>
 <title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="up.jsp" flush="false"/>
-<div id="here">
-<form action="searchID.do" method="post" >
-      <h3>아이디 찾기</h3>
-      <input type="tel" name="u_phone" placeholder="전화번호입력"><br>
-      <input type="submit" value="아이디 찾기">
-   </form>
-   </div>
 </body>
 </html>

@@ -56,6 +56,22 @@
 			f.submit();
 		}
 	}
+	function checkPhone(){
+		$.ajax({
+			url : "checkPhone.do",
+			data : $("#myfrm").serialize(),
+			success : function(responsetext) {
+				if (responsetext == "1") {
+					alert("이미 존재하는 전화번호입니다.");
+					$("#u_nick").val("");
+
+				} else {
+					alert("사용가능한 전화번호입니다.");
+					check = true;
+				}
+			}
+		});
+	}
 </script>
 </head>
 <body>
@@ -82,6 +98,7 @@
 						</tr>
 						<tr>
 							<td><input type="tel" name="u_phone" placeholder="전번 입력하세요"></td>
+							<td><input type="button" onclick="checkPhone()" value="중복체크 "></td>
 						</tr>
 						<tr>
 							<td><input id="join" type="button" onclick = "goJoin()" value="회원등록"><input
