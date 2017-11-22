@@ -146,23 +146,16 @@ public class CommunityController {
 		System.out.println(c_num);
 		System.out.println(c_group);
 		List<CommentDTO> ctlist = new ArrayList<CommentDTO>();
-		ctlist = ctservice.ct_selectBy(c_num);
 		
-		if(ctlist.isEmpty()){
-			System.out.println();
-			System.out.println("=================================");
-		}
-		
-		
-		if (!ctlist.isEmpty()) {
+		if (ctservice.ct_selectBy(c_num)!=null) {
+			ctlist = ctservice.ct_selectBy(c_num);
 			for (CommentDTO ctdto : ctlist) {
 				ctservice.ct_delete(ctdto.getCt_num());
 			}
 		}
-		
 		cmservice.cm_delete(c_num);
 
-		System.out.println("게시글 삭제완료");
+		System.out.println(c_num+"===게시글 삭제완료===");
 
 		switch (c_group) {
 		case 2:

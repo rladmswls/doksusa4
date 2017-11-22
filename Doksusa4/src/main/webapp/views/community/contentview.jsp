@@ -32,6 +32,11 @@ function updateCommunity(){
 
 <hr>
 <textarea rows="20" cols="100">${communityuserdto.c_content }</textarea>
+
+
+
+
+
 	<c:choose>
 		<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
 			<form name="f" action="">
