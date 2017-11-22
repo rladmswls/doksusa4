@@ -5,10 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doksusa.comment.CommentDTO;
+import com.doksusa.comment.CommentService;
 import com.doksusa.community.CommunityDTO;
 import com.doksusa.community.CommunityService;
 import com.doksusa.community.CommunityUserDTO;
@@ -30,9 +29,8 @@ public class CommunityController {
 	CommunityService cmservice;
 	@Autowired
 	ForewordService fservice;
-	
 	@Autowired
-	Commnet
+	CommentService ctservice;
 
 	// noticelist 보기
 	@RequestMapping(value = "/noticelist.do", method = RequestMethod.GET)
@@ -62,7 +60,7 @@ public class CommunityController {
 		mv.setViewName("foreword");
 		return "community/noticeinsert";
 	}
-	
+
 	// notice insert
 	@RequestMapping(value = "/noticeinsert.do", method = RequestMethod.POST)
 	public String notice_insertPost(int u_num, String f_foreword, String c_title, String c_content, Model model) {
@@ -75,7 +73,7 @@ public class CommunityController {
 
 	}
 
-	//고1고2 커뮤니티 보기
+	// 고1고2 커뮤니티 보기
 	@RequestMapping(value = "/onetwolist.do", method = RequestMethod.GET)
 	public String onetwo_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(2);
@@ -97,7 +95,7 @@ public class CommunityController {
 		return "community/onetwolist";
 	}
 
-	//고3 커뮤니티보기
+	// 고3 커뮤니티보기
 	@RequestMapping(value = "/threelist.do", method = RequestMethod.GET)
 	public String three_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(3);
@@ -119,7 +117,7 @@ public class CommunityController {
 		return "community/threelist";
 	}
 
-	//n수생 커뮤니티보기
+	// n수생 커뮤니티보기
 	@RequestMapping(value = "/relist.do", method = RequestMethod.GET)
 	public String re_list(Model model) {
 		List<CommunityDTO> list = cmservice.cm_selectBy(4);
@@ -141,14 +139,29 @@ public class CommunityController {
 		return "community/relist";
 	}
 
-	
 	@RequestMapping(value = "/deleteCommunity.do", method = RequestMethod.GET)
-	public String cm_delete(int c_num, int c_group ,Model model){
+	public String cm_delete(int c_num, int c_group, Model model) {
+		System.out.println(c_num);
+		System.out.println(c_group);
+		List<CommentDTO> ctlist = new ArrayList<CommentDTO>();
+		ctlist = ctservice.ct_selectBy(c_num);
+		
+		if(ctlist.isEmpty()){
+			System.out.println();
+			System.out.println("=================================");
+		}
 		
 		
+		if (!ctlist.isEmpty()) {
+			for (CommentDTO ctdto : ctlist) {
+				ctservice.ct_delete(ctdto.getCt_num());
+			}
+		}
 		
-		
-		
+		cmservice.cm_delete(c_num);
+
+		System.out.println("게시글 삭제완료");
+
 		switch (c_group) {
 		case 2:
 			return "redirect:/onetwolist.do";
@@ -160,12 +173,8 @@ public class CommunityController {
 			return "redirect:/onetwolist.do";
 		}
 	}
-	
-	
-	
-	
-	
-	//커뮤니티 게시글보기
+
+	// 커뮤니티 게시글보기
 	@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
 	public String cm_detail(int c_num, Model model) {
 		CommunityDTO cdto = cmservice.cm_select(c_num);
@@ -181,8 +190,7 @@ public class CommunityController {
 		return "community/contentview";
 	}
 
-	
-	//게시글 쓰기
+	// 게시글 쓰기
 	@RequestMapping(value = "/communityinsert.do", method = RequestMethod.GET)
 	public String communityinsert(int c_group, Model model) {
 		List<ForewordDTO> foreword = fservice.fore_selectForUser();
@@ -195,8 +203,8 @@ public class CommunityController {
 
 		return "community/communityinsert";
 	}
-	
-	//게시글 쓰기
+
+	// 게시글 쓰기
 	@RequestMapping(value = "/communityinsert.do", method = RequestMethod.POST)
 	public String communityinsertPost(int u_num, String f_foreword, int c_group, String c_title, String c_content,
 			Model model) {
@@ -216,9 +224,6 @@ public class CommunityController {
 		}
 	}
 
-	
-	
-	
 	public Date date() {
 		Calendar calendar = Calendar.getInstance();
 		int year = calendar.get(Calendar.YEAR);
