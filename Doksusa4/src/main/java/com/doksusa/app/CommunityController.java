@@ -29,8 +29,10 @@ public class CommunityController {
 	CommunityService cmservice;
 	@Autowired
 	ForewordService fservice;
+
 	@Autowired
 	CommentService ctservice;
+
 
 	// noticelist 보기
 	@RequestMapping(value = "/noticelist.do", method = RequestMethod.GET)
