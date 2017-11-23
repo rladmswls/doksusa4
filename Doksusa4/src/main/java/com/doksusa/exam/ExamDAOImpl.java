@@ -36,7 +36,7 @@ public class ExamDAOImpl implements ExamDAO{
 
 	@Override
 	public ExamDTO exam_selectByEnum(int e_num) {
-		return session.selectOne(namespace + "exam_exam_selectByEnum", e_num);
+		return session.selectOne(namespace + "exam_selectByEnum", e_num);
 	}
 
 	@Override

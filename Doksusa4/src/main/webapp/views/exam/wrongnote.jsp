@@ -14,6 +14,7 @@
 (오답노트에 등록하고싶은 번호를 선택하세요.)<br>	
 <hr>
 <form action="wrongnote.do" method="post">
+<input type="hidden" id="e_num" name="e_num" value=${e_num }>
 	<c:set var="num" value="0"></c:set>
 	<c:forEach var="num" begin="1" end="${end }">
 		${num} <input type="checkbox" name="su" id="${su }" value="${num }">

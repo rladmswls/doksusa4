@@ -60,7 +60,7 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/wrongnote.do")
-	public String omr(String e_subject, Model model){
+	public String omr(String e_subject, Model model,String e_num){
 		int end=0;
 		
 		if(e_subject.equals("언어") || e_subject.equals("외국어")){
@@ -71,16 +71,21 @@ public class ExamController {
 			end = 20;
 		}
 		model.addAttribute("end", end);
+		model.addAttribute("e_num",e_num);
 		return "exam/wrongnote";
 	}
 	
 	@RequestMapping(value="/wrongnote.do", method=RequestMethod.POST)
-	public String wrongnote(int[] su){
-		/*for(int i : su)
-			System.out.println(i);*/
-		for(int i : su){
-			
+	public String wrongnote(int[] su, String e_num,Model model){
+		for(int i:su){
+			System.out.println(i);
 		}
+		ExamDTO edto = examservice.exam_selectByEnum(Integer.parseInt(e_num));
+		System.out.println(edto);
+		String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
+		
+		model.addAttribute("e_link",e_link);
+		model.addAttribute("wrong_list",su);
 		return "exam/u_wrongnote";
 	}
 	
