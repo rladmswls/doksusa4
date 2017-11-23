@@ -15,6 +15,7 @@
 <hr>
 <form action="wrongnote.do" method="post">
 <input type="hidden" id="e_num" name="e_num" value=${e_num }>
+<input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
 	<c:set var="num" value="0"></c:set>
 	<c:forEach var="num" begin="1" end="${end }">
 		${num} <input type="checkbox" name="su" id="${su }" value="${num }">

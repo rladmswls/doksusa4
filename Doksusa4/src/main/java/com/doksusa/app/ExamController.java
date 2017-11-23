@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doksusa.e_wrongnote.E_wrongMyNoteDTO;
+import com.doksusa.e_wrongnote.E_wrongnoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteService;
 import com.doksusa.exam.ExamDTO;
 import com.doksusa.exam.ExamService;
@@ -23,6 +25,7 @@ public class ExamController {
 	ExamService examservice;
 	@Autowired
 	E_wrongnoteService ewservice;
+	List<E_wrongMyNoteDTO> ewlist = new ArrayList<E_wrongMyNoteDTO>();
 	
 	@RequestMapping(value="/esubject.do", method=RequestMethod.GET)
 	public String showSubjectList(String e_subject,Model model){
@@ -76,18 +79,28 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value="/wrongnote.do", method=RequestMethod.POST)
-	public String wrongnote(int[] su, String e_num,Model model){
-		for(int i:su){
-			System.out.println(i);
-		}
-		ExamDTO edto = examservice.exam_selectByEnum(Integer.parseInt(e_num));
-		System.out.println(edto);
-		String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
+	public String wrongnote(int[] su, int e_num,Model model,int u_num){
 		
-		model.addAttribute("e_link",e_link);
-		model.addAttribute("wrong_list",su);
+		ExamDTO edto = examservice.exam_selectByEnum(e_num);
+		String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
+		for(int i:su){
+			ewservice.ew_insert(new E_wrongnoteDTO(e_num, i, u_num));
+		}
+		model.addAttribute("e_link", e_link);
+		model.addAttribute("u_num",u_num);
+		List<E_wrongnoteDTO> e_list = ewservice.ew_selectByU_num(u_num);
+		model.addAttribute("e_list",e_list);
+		
 		return "exam/u_wrongnote";
 	}
+	
+	@RequestMapping("/showE_wrong.do")
+	public String showWrong(E_wrongMyNoteDTO e_dto, Model model){
+		model.addAttribute("e_dto",e_dto);
+		System.out.println(e_dto);
+		return "exam/showE_wrong";
+	}
+	
 	
 	@RequestMapping("/e_insert.do")
 	public String insert(){

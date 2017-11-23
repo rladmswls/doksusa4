@@ -10,10 +10,12 @@
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
-<h3>${e_link } 오답</h3>
+<h3>오답 노트</h3>
  
-   <c:forEach var="wrong" items="${wrong_list}">
-      <img  src="exams/${e_link}/${wrong}.PNG"/>	<hr>	
+ 
+   <c:forEach var="e_dto" items="${e_list}">
+   
+      <a href="showE_wrong.do">${e_dto.e_link }</a>${e_dto.subnum }번<hr>	
    </c:forEach>
 </div>
 </body>
