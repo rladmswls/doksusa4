@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,22 @@ import com.doksusa.community.CommunityUserDTO;
 import com.doksusa.foreword.ForewordDTO;
 import com.doksusa.foreword.ForewordService;
 
+class communitycomp implements Comparator<CommunityUserDTO>{
+	@Override
+	public int compare(CommunityUserDTO o1, CommunityUserDTO o2) {
+		return o2.getC_num()-o1.getC_num(); 
+	}
+}
+
+class commentcomp implements Comparator<CommentUserDTO>{
+
+	@Override
+	public int compare(CommentUserDTO o1, CommentUserDTO o2) {
+		return o1.getCt_num() - o2.getCt_num();
+	}
+}
+
+
 @Controller
 public class CommunityController {
 
@@ -33,6 +51,7 @@ public class CommunityController {
 
 	@Autowired
 	CommentService ctservice;
+	
 
 	@RequestMapping(value = "/deleteComment.do", method = RequestMethod.GET)
 	public String ct_delete(int ct_num, int c_num, Model model) {
@@ -44,12 +63,6 @@ public class CommunityController {
 		return "redirect:/communityview.do";
 	}
 
-	
-	
-	
-	
-	
-	
 	// 고1고2 커뮤니티 보기
 	@RequestMapping(value = "/onetwolist.do", method = RequestMethod.GET)
 	public String onetwo_list(Model model) {
@@ -62,6 +75,8 @@ public class CommunityController {
 					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
 			unicklist.add(cudto);
 		}
+		
+		Collections.sort(unicklist, new communitycomp());
 		model.addAttribute("u_nick_list", unicklist);
 		model.addAttribute("c_group", 2);
 
@@ -84,6 +99,7 @@ public class CommunityController {
 					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
 			unicklist.add(cudto);
 		}
+		Collections.sort(unicklist, new communitycomp());
 		model.addAttribute("u_nick_list", unicklist);
 		model.addAttribute("c_group", 3);
 
@@ -106,6 +122,7 @@ public class CommunityController {
 					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
 			unicklist.add(cudto);
 		}
+		Collections.sort(unicklist, new communitycomp());
 		model.addAttribute("u_nick_list", unicklist);
 		model.addAttribute("c_group", 4);
 
@@ -130,7 +147,7 @@ public class CommunityController {
 			ctlist = ctservice.ct_selectBy(c_num);
 			for (CommentDTO ctdto : ctlist) {
 				ctservice.ct_delete(ctdto.getCt_num());
-			}
+			}			
 		}
 		cmservice.cm_delete(c_num);
 
@@ -207,6 +224,7 @@ public class CommunityController {
 						codto.getCt_comment(), codto.getCt_date(), ss);
 				ctulist.add(ctudto);
 			}
+			Collections.sort(ctulist,new commentcomp());
 		}
 
 		String s = cmservice.cm_selectUnick(cdto.getU_num());
@@ -214,6 +232,7 @@ public class CommunityController {
 		CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
 				cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
 
+		
 		model.addAttribute("communityuserdto", cudto);
 		model.addAttribute("commentuserlist", ctulist);
 
