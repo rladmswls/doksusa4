@@ -44,6 +44,12 @@ public class CommunityController {
 		return "redirect:/communityview.do";
 	}
 
+	
+	
+	
+	
+	
+	
 	// 고1고2 커뮤니티 보기
 	@RequestMapping(value = "/onetwolist.do", method = RequestMethod.GET)
 	public String onetwo_list(Model model) {
@@ -110,6 +116,10 @@ public class CommunityController {
 		return "community/relist";
 	}
 
+	
+	
+	
+	//커뮤니티 삭제
 	@RequestMapping(value = "/deleteCommunity.do", method = RequestMethod.GET)
 	public String cm_delete(int c_num, int c_group, Model model) {
 		System.out.println(c_num);
@@ -132,7 +142,7 @@ public class CommunityController {
 		case 3:
 			return "redirect:/threelist.do";
 		case 4:
-			return "redirect:/relist.do";
+			return "redirect:/relist.do";	
 		default:
 			return "redirect:/onetwolist.do";
 		}
@@ -169,16 +179,19 @@ public class CommunityController {
 		}
 	}
 
+	//댓글 추가
 	@RequestMapping(value = "/commentinsert.do", method = RequestMethod.POST)
-	public String ct_insert(int c_num, int u_num, String ct_comment, Model model) {
+	public String ct_insert(int c_num, int ctu_num, String ct_comment, Model model) {
+		System.out.println(ctu_num+"==================================================================================");
 		Date c_date = date();
-		CommentDTO ctdto = new CommentDTO(0, c_num, u_num, ct_comment, c_date);
+		CommentDTO ctdto = new CommentDTO(0, c_num, ctu_num, ct_comment, c_date);
 		ctservice.ct_insert(ctdto);
 
 		model.addAttribute("c_num", c_num);
 		return "redirect:/communityview.do";
 	}
 
+	
 	// 커뮤니티 게시글보기
 	@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
 	public String cm_detail(int c_num, Model model) {
@@ -187,11 +200,10 @@ public class CommunityController {
 		List<CommentUserDTO> ctulist = new ArrayList<CommentUserDTO>();
 		
 		if (ctservice.ct_selectBy(c_num) != null) {
-			System.out.println("=================************************************====================");
 			ctlist= ctservice.ct_selectBy(c_num);
 			for (CommentDTO codto : ctlist) {
-				String ss = cmservice.cm_selectUnick(codto.getU_num());
-				CommentUserDTO ctudto = new CommentUserDTO(codto.getCt_num(), codto.getC_num(), codto.getU_num(),
+				String ss = cmservice.cm_selectUnick(codto.getCtu_num());
+				CommentUserDTO ctudto = new CommentUserDTO(codto.getCt_num(), codto.getC_num(), codto.getCtu_num(),
 						codto.getCt_comment(), codto.getCt_date(), ss);
 				ctulist.add(ctudto);
 			}

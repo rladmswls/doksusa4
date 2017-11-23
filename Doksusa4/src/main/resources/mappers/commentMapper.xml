@@ -18,7 +18,7 @@
 
 	<insert id="ct_insert" parameterType="codto">
 		insert into comments values
-		(ct_num_SEQ.nextval,#{c_num}, #{u_num}, #{ct_comment}, #{ct_date})
+		(ct_num_SEQ.nextval,#{c_num}, #{ctu_num}, #{ct_comment}, #{ct_date})
 	</insert>
 
 	<update id="ct_update" parameterType="int">

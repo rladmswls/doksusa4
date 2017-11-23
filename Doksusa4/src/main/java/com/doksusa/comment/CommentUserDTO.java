@@ -6,7 +6,7 @@ public class CommentUserDTO {
 
 	int ct_num;
 	int c_num;
-	int u_num;
+	int ctu_num;
 	String ct_comment;
 	Date ct_date;
 	String u_nick;
@@ -15,11 +15,11 @@ public class CommentUserDTO {
 		super();
 	}
 	
-	public CommentUserDTO(int ct_num, int c_num, int u_num, String ct_comment, Date ct_date, String u_nick) {
+	public CommentUserDTO(int ct_num, int c_num, int ctu_num, String ct_comment, Date ct_date, String u_nick) {
 		super();
 		this.ct_num = ct_num;
 		this.c_num = c_num;
-		this.u_num = u_num;
+		this.ctu_num = ctu_num;
 		this.ct_comment = ct_comment;
 		this.ct_date = ct_date;
 		this.u_nick = u_nick;
@@ -27,7 +27,7 @@ public class CommentUserDTO {
 	
 	@Override
 	public String toString() {
-		return "CommentUserDTO [ct_num=" + ct_num + ", c_num=" + c_num + ", u_num=" + u_num + ", ct_comment="
+		return "CommentUserDTO [ct_num=" + ct_num + ", c_num=" + c_num + ", ctu_num=" + ctu_num + ", ct_comment="
 				+ ct_comment + ", ct_date=" + ct_date + ", u_nick=" + u_nick + "]";
 	}
 	public int getCt_num() {
@@ -42,11 +42,11 @@ public class CommentUserDTO {
 	public void setC_num(int c_num) {
 		this.c_num = c_num;
 	}
-	public int getU_num() {
-		return u_num;
+	public int getCtu_num() {
+		return ctu_num;
 	}
-	public void setU_num(int u_num) {
-		this.u_num = u_num;
+	public void setCtu_num(int ctu_num) {
+		this.ctu_num = ctu_num;
 	}
 	public String getCt_comment() {
 		return ct_comment;

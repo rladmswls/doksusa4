@@ -67,15 +67,13 @@
 							<td>${commentlist.u_nick}</td>
 							<td>${commentlist.ct_date}</td>
 							<c:choose>
-								<c:when test="${sessionScope.u_num == commentlist.u_num}">
+								<c:when test="${sessionScope.u_num == commentlist.ctu_num}">
 									<form name="cf" action="">
-										<input type="hidden" name="ct_num" id="ct_num"
-											value="${commentlist.ct_num}"> <input type="hidden"
-											name="c_num" id="c_num" value="${commentlist.c_num}">
-										<input type="hidden" name="u_num" id="u_num"
-											value="${commentlist.u_num}"> <input type="button"
-											onclick="updateComment()" value="댓글 수정하기"> <input
-											type="button" onclick="deleteComment()" value="댓글 삭제하기">
+										<input type="hidden" name="ct_num" id="ct_num" value="${commentlist.ct_num}"> 
+										<input type="hidden" name="c_num" id="c_num" value="${commentlist.c_num}">
+										<input type="hidden" name="ctu_num" id="ctu_num" value="${commentlist.ctu_num}"> 
+										<input type="button" onclick="updateComment()" value="수정">
+										<input type="button" onclick="deleteComment()" value="삭제">
 									</form>
 								</c:when>
 							</c:choose>
@@ -86,11 +84,10 @@
 		</table>
 
 		<form action="commentinsert.do" method="post">
-			<input type="hidden" name="c_num" id="c_num"
-				value="${communityuserdto.c_num}"> <input type="hidden"
-				name="u_num" id="u_num" value="${communityuserdto.u_num}"> <input
-				type="text" name="ct_comment" id="ct_comment"> <input
-				type="submit" value="댓글 작성">
+			<input type="hidden" name="c_num" id="c_num" value="${communityuserdto.c_num}"> 
+			<input type="hidden" name="ctu_num" id="ctu_num" value="${sessionScope.u_num}"> 
+			<input type="text" name="ct_comment" id="ct_comment"> 
+			<input type="submit" value="댓글 작성">
 		</form>
 
 

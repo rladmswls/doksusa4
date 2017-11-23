@@ -6,7 +6,7 @@ public class CommentDTO {
 
 	int ct_num;
 	int c_num;
-	int u_num;
+	int ctu_num;
 	String ct_comment;
 	Date ct_date;
 
@@ -14,11 +14,11 @@ public class CommentDTO {
 		super();
 	}
 
-	public CommentDTO(int ct_num, int c_num, int u_num, String ct_comment, Date ct_date) {
+	public CommentDTO(int ct_num, int c_num, int ctu_num, String ct_comment, Date ct_date) {
 		super();
 		this.ct_num = ct_num;
 		this.c_num = c_num;
-		this.u_num = u_num;
+		this.ctu_num = ctu_num;
 		this.ct_comment = ct_comment;
 		this.ct_date = ct_date;
 	}
@@ -39,12 +39,12 @@ public class CommentDTO {
 		this.c_num = c_num;
 	}
 
-	public int getU_num() {
-		return u_num;
+	public int getCtu_num() {
+		return ctu_num;
 	}
 
-	public void setU_num(int u_num) {
-		this.u_num = u_num;
+	public void setCtu_num(int ctu_num) {
+		this.ctu_num = ctu_num;
 	}
 
 	public String getCt_comment() {
@@ -65,7 +65,7 @@ public class CommentDTO {
 
 	@Override
 	public String toString() {
-		return "CommentDTO [ct_num=" + ct_num + ", c_num=" + c_num + ", u_num=" + u_num + ", ct_comment=" + ct_comment
+		return "CommentDTO [ct_num=" + ct_num + ", c_num=" + c_num + ", ctu_num=" + ctu_num + ", ct_comment=" + ct_comment
 				+ ", ct_date=" + ct_date + "]";
 	}
 
