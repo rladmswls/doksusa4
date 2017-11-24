@@ -48,17 +48,20 @@ public class CommunityController {
 	CommunityService cmservice;
 	@Autowired
 	ForewordService fservice;
-
 	@Autowired
 	CommentService ctservice;
 	
+	@RequestMapping(value = "/updateComment.do", method = RequestMethod.GET)
+	public String ct_update(CommentDTO codto,Model model) {
+		ctservice.ct_update(codto);
+		model.addAttribute("c_num", codto.getC_num());
+		return "redirect:/communityview.do";
+	}
 
 	@RequestMapping(value = "/deleteComment.do", method = RequestMethod.GET)
 	public String ct_delete(int ct_num, int c_num, Model model) {
 		ctservice.ct_delete(ct_num);
-
 		System.out.println(ct_num + "===댓글 삭제완료===");
-
 		model.addAttribute("c_num", c_num);
 		return "redirect:/communityview.do";
 	}

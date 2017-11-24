@@ -13,7 +13,6 @@ public interface CommentDAO {
 	
 	public int ct_insert(CommentDTO codto);
 
-	public int ct_update(int ct_num);
-
+	public int ct_update(CommentDTO codto);
 	
 }

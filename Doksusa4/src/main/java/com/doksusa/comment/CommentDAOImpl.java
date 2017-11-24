@@ -35,8 +35,8 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 
 	@Override
-	public int ct_update(int ct_num) {
-		return session.update(namespace + "ct_update", ct_num);
+	public int ct_update(CommentDTO codto) {
+		return session.update(namespace + "ct_update", codto);
 	}
 
 }

@@ -21,10 +21,9 @@
 		(ct_num_SEQ.nextval,#{c_num}, #{ctu_num}, #{ct_comment}, #{ct_date})
 	</insert>
 
-	<update id="ct_update" parameterType="int">
+	<update id="ct_update" parameterType="codto" >
 		update comments set
-		ct_comment=#{ct_comment} where ct_num=#{ct_num}{
+		ct_comment=#{ct_comment} where ct_num=#{ct_num}
 	</update>
-
 
 </mapper>

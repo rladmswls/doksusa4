@@ -36,8 +36,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int ct_update(int ct_num) {
-		return ct.ct_update(ct_num);
+	public int ct_update(CommentDTO codto) {
+		return ct.ct_update(codto);
 	}
 
 
