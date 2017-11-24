@@ -5,11 +5,6 @@
 <html>
 <head>
 <title>doksusa</title>
-<script>
-	$(function(){
-		$("#ipsi").on();
-	});
-</script>
 </head>
 <body>
 <jsp:include page="up.jsp" flush="false"/>

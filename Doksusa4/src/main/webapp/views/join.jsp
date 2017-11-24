@@ -101,7 +101,8 @@
 							<td><input type="button" onclick="checkPhone()" value="중복체크 "></td>
 						</tr>
 						<tr>
-							<td><input id="join" type="button" onclick = "goJoin()" value="회원등록"><input
+							<td><input class="btn btn-info" id="join" type="button" onclick = "goJoin()" value="회원등록">
+							<input class="btn btn-info"
 								type="reset" value="초기화"></td>
 						</tr>
 					</table>

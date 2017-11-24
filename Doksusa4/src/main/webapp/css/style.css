@@ -1,53 +1,63 @@
 @CHARSET "UTF-8";
 body,p {
-	background-color: lightgray;
-	margin: 50px;
-	padding: 0;
-	text-align: center;
+   margin: 50px;
+   padding: 0;
+   text-align: center;
 }
 aside{
-	width:15%;
-	height:70%;
-	float:left;
-	text-align: left;
-	margin-left: 10px;
-	margin-top: 10px;
+   width:15%;
+   height:70%;
+   float:left;
+   text-align: left;
+   margin-left: 10px;
+   margin-top: 10px;
 }
 .btn{
-	margin-top: 10px;
+   margin-top: 10px;
 }
 iframe{
-	border: 0px;
+   border: 0px;
 }
 .i{
-	border-right: solid 1px black; 
+   border-right: solid 1px black; 
 }
 div#here {
     padding: 10px;
     color: black;
-    background-color: white;
+    background-color: #e1f4ed;
 }
 div#footer {
     color: white;
 }
 #ipsi{
-	width: 200px;
-	height: 200px;
-	padding: 30px;
+   width: 200px;
+   height: 200px;
+   padding: 30px;
 }
 h1{
-	padding-bottom: 30px;
-	font-weight: bold;
-	font-family: myFirstFont;
+   padding-bottom: 30px;
+   font-weight: bold;
+   font-family: myFirstFont;
+   color:navy;
 }
 @font-face {
-	font-family: myFirstFont;
-	src: url("../font/NEXON Football Gothic B.otf");
+   font-family: myFirstFont;
+   src: url("../font/NEXON Football Gothic B.otf");
 }
 @font-face {
-	font-family: mySecondFont;
-	src: url("../font/DX하루B.ttf");
+   font-family: mySecondFont;
+   src: url("../font/DX하루B.ttf");
 }
 h3{
-	font-family: mySecondFont;
+   font-family: mySecondFont;
+    color:navy;
+}
+textarea{
+	border: solid 2px #525252;
+}
+.btn-info{
+	color: navy;
+}
+.table{
+	background-color: white;
 }

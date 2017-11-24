@@ -22,14 +22,14 @@
 	<header>
 		<h1>독하게 수능준비하는 사람들</h1>
 	</header>
-	<c:choose>
+	<%-- <c:choose>
 			<c:when test="${sessionScope.user == null}">
-				<div>==로그인 후 이용해 주세요==</div>
+				<div id="g">☆☆로그인 후 이용해 주세요☆☆</div>
 			</c:when>
 		<c:otherwise></c:otherwise>
-	</c:choose>
+	</c:choose> --%>
 
-	<nav class="navbar navbar-inverse">
+	<nav class="">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="home.do">Home</a></li>
