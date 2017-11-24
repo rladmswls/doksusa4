@@ -52,6 +52,36 @@ public class AptitudeController {
 	   return "aptitude/aschoollist";
    }
    
+   @RequestMapping("/au_wrongnote.do")
+   public String au_wrongnote(){
+	   return "aptitude/au_wrongnote";
+   }
+   
+   @RequestMapping("/a_wrongnote.do")
+   public String aomr(String a_school, Model model){
+	   int as_end=0;
+	   
+	   if(a_school.equals("고려대")){
+		   as_end = 40;
+	   }else if(a_school.equals("홍익대")|| a_school.equals("수원대")|| a_school.equals("을지대")){
+		   as_end = 60;
+	   }else if(a_school.equals("한신대")){
+		   as_end = 80;
+	   }else{
+		   as_end = 50;
+	   }
+	   model.addAttribute("as_end", as_end);
+	   return "aptitude/a_wrongnote";
+   }
+   
+   @RequestMapping(value="/a_wrongnote.do", method=RequestMethod.POST)
+   public String wrongnote(int[] asu){
+	   for(int i : asu){
+		   
+	   }
+	   return "aptitude/au_wrongnote";
+	   
+   }
    
    
 //   @RequestMapping("/examlist")

@@ -57,7 +57,6 @@
 						<li><a href="aschool.do?a_school=한신대">한신대</a></li>
 						<li><a href="aschool.do?a_school=가천대">가천대</a></li>
 						<li><a href="aschool.do?a_school=수원대">수원대</a></li>
-						<li><a href="aschool.do?a_school=강남대">강남대</a></li>
 						<li><a href="aschool.do?a_school=을지대">을지대</a></li>
 						<c:choose>
                      <c:when test="${sessionScope.u_id == 'dok'}">
