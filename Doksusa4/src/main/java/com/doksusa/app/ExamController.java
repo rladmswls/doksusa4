@@ -79,11 +79,11 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value="/wrongnote.do", method=RequestMethod.POST)
-	public String wrongnote(int[] su, int e_num,Model model,int u_num){
+	public String wrongnote(int[] e_subnum, int e_num,Model model,int u_num){
 		
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
 		String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
-		for(int i:su){
+		for(int i:e_subnum){
 			ewservice.ew_insert(new E_wrongnoteDTO(e_num, i, u_num));
 		}
 		model.addAttribute("e_link", e_link);

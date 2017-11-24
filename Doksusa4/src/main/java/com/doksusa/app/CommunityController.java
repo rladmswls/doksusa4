@@ -51,7 +51,7 @@ public class CommunityController {
 	@Autowired
 	CommentService ctservice;
 	
-	@RequestMapping(value = "/updateComment.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateComment.do", method = RequestMethod.POST)
 	public String ct_update(CommentDTO codto,Model model) {
 		ctservice.ct_update(codto);
 		model.addAttribute("c_num", codto.getC_num());

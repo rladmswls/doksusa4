@@ -4,8 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doksusa.ew">
 
-
-
-
-
+ 	<select id="ew_selectByU_num" parameterType="int" resultType="ewdto">
+		select * from e_wrongnote where u_num=#{u_num}
+	</select>
+	
+	<select id="ew_selectByE_num" parameterType="int" resultType="ewdto">
+		select * from e_wrongnote where e_num=#{e_num}
+	</select>
+	
+	<insert id="ew_insert" parameterType="ewdto">
+		insert into e_wrongnote values (#{e_num},#{e_subnum},#{u_num})
+	</insert>
+	
+	<delete id="ew_delete" parameterType="ewdto">
+		delete from e_wrongnote where e_subnum=#{e_subnum}
+	</delete>
 </mapper>

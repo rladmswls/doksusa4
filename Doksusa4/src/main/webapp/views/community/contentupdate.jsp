@@ -28,7 +28,7 @@
 	<input type="hidden" name="c_num" id="c_num" value="${cdto.c_num }">
 	<input type="hidden" name="u_num" id="u_num" value="${cdto.u_num }">
 	<input type="hidden" name="c_group" id="c_group" value="${cdto.c_group}">
-	<textarea rows="10" cols="100" name="c_content" id="c_content" value="${cdto.c_content}"></textarea><br><br>
+	<textarea rows="10" cols="100" name="c_content" id="c_content">${cdto.c_content}</textarea><br><br>
 	<input type="hidden" name="c_date" id="c_date" value="${cdto.c_date}">
 	<input type="submit" value="수정완료">
 </form>

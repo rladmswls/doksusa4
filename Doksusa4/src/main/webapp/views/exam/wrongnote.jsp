@@ -14,14 +14,14 @@
 (오답노트에 등록하고싶은 번호를 선택하세요.)<br>	
 <hr>
 <form action="wrongnote.do" method="post">
-<input type="hidden" id="e_num" name="e_num" value=${e_num }>
-<input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
-	<c:set var="num" value="0"></c:set>
-	<c:forEach var="num" begin="1" end="${end }">
-		${num} <input type="checkbox" name="su" id="${su }" value="${num }">
-		<c:if test="${num%5==0}"><br></c:if>
-   </c:forEach>
-   <input type="submit" value="제출">
+	<input type="hidden" id="e_num" name="e_num" value=${e_num }>
+	<input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
+		<c:set var="num" value="0"></c:set>
+		<c:forEach var="num" begin="1" end="${end }">
+			${num} <input type="checkbox" name="e_subnum" id="${e_subnum }" value="${num }">
+			<c:if test="${num%5==0}"><br></c:if>
+	   </c:forEach>
+	<input type="submit" value="제출">
 </form>
 </div>
 </body>

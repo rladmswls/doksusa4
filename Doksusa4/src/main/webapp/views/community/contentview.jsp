@@ -26,7 +26,8 @@
 
 	function deleteComment() {
 		cf.action = "deleteComment.do";
-		cf.submit();
+		cf.method = "post";
+ 		cf.submit();
 	}
 	function updateComment() {
 		cf.action = "updateComment.do";
@@ -43,7 +44,19 @@
 		<h6>${communityuserdto.c_date}</h6>
 
 		<hr>
-		<textarea rows="20" cols="100">${communityuserdto.c_content }</textarea>
+		<textarea rows="20" cols="100" readonly="readonly">${communityuserdto.c_content }</textarea>
+		
+		<c:choose>
+			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
+				<form name="f" action="">
+					<input type="hidden" name="c_num" id="c_num"
+						value="${communityuserdto.c_num}"> <input type="hidden"
+						name="c_group" id="c_group" value="${communityuserdto.c_group}">
+					<input type="button" onclick="updateCommunity()" value="수정하기">
+					<input type="button" onclick="deleteCommunity()" value="삭제하기">
+				</form>
+			</c:when>
+		</c:choose>
 
 		<br>
 		<hr>
@@ -99,19 +112,6 @@
 			<input type="submit" value="댓글 작성">
 		</form>
 
-
-
-		<c:choose>
-			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
-				<form name="f" action="">
-					<input type="hidden" name="c_num" id="c_num"
-						value="${communityuserdto.c_num}"> <input type="hidden"
-						name="c_group" id="c_group" value="${communityuserdto.c_group}">
-					<input type="button" onclick="updateCommunity()" value="수정하기">
-					<input type="button" onclick="deleteCommunity()" value="삭제하기">
-				</form>
-			</c:when>
-		</c:choose>
 	</div>
 </body>
 </html>
