@@ -135,18 +135,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
-	public String userupdate(UserDTO userdto, Model model) {
+	public String userupdate(UserDTO userdto, Model model,HttpSession session) {
 		userservice.user_update(userdto);
 		System.out.println(userdto.getU_num());
-		/*UserDTO userdto = new UserDTO();*/
-		/*
-		userdto.setU_num();
-		userdto.setU_id(u_id);
-		userdto.setU_pw(u_pw);
-		userdto.setU_nick(u_nick);
-		userdto.setU_phone(u_phone);
-		System.out.println(userdto);
-		userservice.user_update(userdto);*/
+		//입시 링크
+		List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+		model.addAttribute("ipsiInfo", ipsiInfo);
+		//수정 된 닉네임 바로 표시
+		session.setAttribute("user", userdto);
 		return "home";
 	}
 
