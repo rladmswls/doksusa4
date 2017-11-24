@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDTO user_update(String u_id, String u_pw) {
-		return user.user_update(u_id, u_pw);
+	public UserDTO user_update(UserDTO userdto) {
+		return user.user_update(userdto);
 	}
 
 	@Override

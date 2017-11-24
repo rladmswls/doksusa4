@@ -135,9 +135,19 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
-	public String userupdate(String u_pw, String u_nick, String u_phone, Model model) {
-
-		return "";
+	public String userupdate(UserDTO userdto, Model model) {
+		userservice.user_update(userdto);
+		System.out.println(userdto.getU_num());
+		/*UserDTO userdto = new UserDTO();*/
+		/*
+		userdto.setU_num();
+		userdto.setU_id(u_id);
+		userdto.setU_pw(u_pw);
+		userdto.setU_nick(u_nick);
+		userdto.setU_phone(u_phone);
+		System.out.println(userdto);
+		userservice.user_update(userdto);*/
+		return "home";
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
@@ -157,6 +167,7 @@ public class UserController {
 			model.addAttribute("ipsiInfo", ipsiInfo);
 			session.setAttribute("user", user);
 			session.setAttribute("u_id", u_id);
+			
 			session.setAttribute("u_num", user.getU_num());
 			model.addAttribute("user", user);
 			return "home";

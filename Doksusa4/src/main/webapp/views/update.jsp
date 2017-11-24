@@ -20,6 +20,8 @@
          <tr>
             <td><input type="tel" name="u_phone"  placeholder="수정 할 전화번호 입력"></td><br>
          </tr>
+		<input type="hidden" name="u_num" id="u_num" value="${sessionScope.u_num}" > 
+		<input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id}" > 
 		<input type="submit" value="저장">
 	</form>
 	<hr>

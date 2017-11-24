@@ -1,5 +1,6 @@
 package com.doksusa.app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doksusa.a_wrongnote.A_wrongMyNoteDTO;
+import com.doksusa.a_wrongnote.A_wrongnoteDTO;
+import com.doksusa.a_wrongnote.A_wrongnoteService;
 import com.doksusa.aptitude.AptitudeDTO;
 import com.doksusa.aptitude.AptitudeService;
 import com.doksusa.exam.ExamDTO;
@@ -18,6 +22,9 @@ public class AptitudeController {
 
    @Autowired
    AptitudeService aptitudeservice;
+   @Autowired
+   A_wrongnoteService awservice;
+   List<A_wrongMyNoteDTO> awlist = new ArrayList<A_wrongMyNoteDTO>();
    
    
    @RequestMapping(value="/aschool.do", method=RequestMethod.GET)
@@ -59,30 +66,44 @@ public class AptitudeController {
    
    @RequestMapping("/a_wrongnote.do")
    public String aomr(String a_school, Model model){
-	   int as_end=0;
-	   
-	   if(a_school.equals("고려대")){
-		   as_end = 40;
+	   int end=0;
+	   System.out.println("******************"+a_school);
+	   if(a_school.equals("고대세종")){
+		   end = 40;
 	   }else if(a_school.equals("홍익대")|| a_school.equals("수원대")|| a_school.equals("을지대")){
-		   as_end = 60;
+		   end = 60;
 	   }else if(a_school.equals("한신대")){
-		   as_end = 80;
+		   end = 80;
 	   }else{
-		   as_end = 50;
+		   end = 50;
 	   }
-	   model.addAttribute("as_end", as_end);
+	   model.addAttribute("end", end);
 	   return "aptitude/a_wrongnote";
    }
    
    @RequestMapping(value="/a_wrongnote.do", method=RequestMethod.POST)
-   public String wrongnote(int[] asu){
+   public String awrongnote(int[] asu, int a_num, Model model, int u_num){
+	   
+	   AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
+	   String a_link = adto.getA_link().substring(6,adto.getA_link().length()-4);
 	   for(int i : asu){
-		   
+		   awservice.aw_insert(new A_wrongnoteDTO(a_num, i, u_num));
 	   }
+	   model.addAttribute("a_link", a_link);
+	   model.addAttribute("u_num",u_num);
+	   List<A_wrongnoteDTO> a_list = awservice.aw_selectByU_num(u_num);
+	   model.addAttribute("a_ist",a_list);
+	   
 	   return "aptitude/au_wrongnote";
+   }
+
+   @RequestMapping("/showA_wrong.do")
+   public String showWrong(A_wrongMyNoteDTO a_dto, Model model){
+	   model.addAttribute("a_dto", a_dto);
+	   System.out.println(a_dto);
+	   return "aptitude/showA_wrong";
 	   
    }
-   
    
 //   @RequestMapping("/examlist")
 //   public String showList(Model model) {

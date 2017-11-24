@@ -9,7 +9,7 @@ public interface AptitudeService {
 	public List<AptitudeDTO> ap_selectByA_school(String a_school);
 	
 
-	public AptitudeDTO ap_select(int a_num);
+	public AptitudeDTO ap_selectByAnum(int a_num);
 
 	public int ap_insert(AptitudeDTO apdto);
 

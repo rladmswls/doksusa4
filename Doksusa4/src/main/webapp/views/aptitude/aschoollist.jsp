@@ -45,7 +45,7 @@
          <td>${list.a_title}</td>
          <td><a href="${list.a_link}"><img src="aptitude/pdf.png"/></a></td>
          <td><a href="${list.a_answer}"><img src="aptitude/pdf.png"/></a></td>
-         <td><a href="a_wrongnote.do">오답노트</a></td>
+         <td><a href="a_wrongnote.do?a_school=${list.a_school}&a_num=${list.a_num}">오답노트</a></td>
        <c:choose>
          <c:when test="${sessionScope.u_id == 'dok'}">
          <!--    <td><input type="button" onclick="a_update.do" value="수정"></td> -->

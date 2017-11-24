@@ -14,7 +14,7 @@ public interface UserDAO {
 
    public int user_insert(UserDTO userdto);
 
-   public UserDTO user_update(String u_id,String u_pw);
+   public UserDTO user_update(UserDTO userdto);
 
    public int user_delete(String u_id);
 

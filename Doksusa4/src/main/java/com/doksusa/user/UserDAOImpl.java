@@ -57,11 +57,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public UserDTO user_update(String u_id, String u_pw) {
-		Map<String, String> data = new HashMap<String, String>();
+	public UserDTO user_update(UserDTO userdto){
+		/*Map<String, String> data = new HashMap<String, String>();
+		data.put("u_num", u_num);
 		data.put("u_id", u_id);
 		data.put("u_pw", u_pw);
-		return session.selectOne(namespace + "user_update", data);
+		data.put("u_phone", u_phone);*/
+		return session.selectOne(namespace + "user_update", userdto);
 	}
 
 	@Override

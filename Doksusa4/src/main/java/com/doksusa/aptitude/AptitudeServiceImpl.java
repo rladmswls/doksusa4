@@ -29,7 +29,7 @@ public class AptitudeServiceImpl implements AptitudeService{
 	
 
 	@Override
-	public AptitudeDTO ap_select(int a_num) {
+	public AptitudeDTO ap_selectByAnum(int a_num) {
 		return ap.ap_select(a_num);
 	}
 

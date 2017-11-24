@@ -20,7 +20,7 @@
 		insert into users (u_num,u_id,u_pw,u_nick,u_phone) values
 		(u_num_SEQ.nextval,#{u_id},#{u_pw},#{u_nick},#{u_phone})
 	</insert>
-	<update id="user_update" parameterType="String">
+	<update id="user_update" parameterType="userdto">
 		update users set u_pw=#{u_pw},u_nick=#{u_nick}, u_phone=#{u_phone} where
 		u_num=#{u_num}
 	</update>
