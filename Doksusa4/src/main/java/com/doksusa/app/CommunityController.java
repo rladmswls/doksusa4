@@ -54,13 +54,8 @@ public class CommunityController {
 	@RequestMapping(value="/communitylist.do", method=RequestMethod.GET )
 	public String community_list(int c_group, Model model){
 		List<CommunityDTO> list1 = cmservice.cm_selectBy(c_group);
-		List<CommunityUserDTO> list2 = new ArrayList<CommunityUserDTO>();
-		for (CommunityDTO cdto : list1) {
-			String s = cmservice.cm_selectUnick(cdto.getU_num());
-			CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
-					cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
-			list2.add(cudto);
-		}
+		List<CommunityUserDTO> list2 = user_list(list1);
+		
 		Collections.sort(list2, new communitycomp());
 		model.addAttribute("c_group", c_group);
 		model.addAttribute("list", list2);
@@ -110,7 +105,6 @@ public class CommunityController {
 		//댓글 추가
 		@RequestMapping(value = "/commentinsert.do", method = RequestMethod.POST)
 		public String ct_insert(int c_num, int ctu_num, String ct_comment, Model model) {
-			System.out.println(ctu_num+"==================================================================================");
 			Date c_date = date();
 			CommentDTO ctdto = new CommentDTO(0, c_num, ctu_num, ct_comment, c_date);
 			ctservice.ct_insert(ctdto);
@@ -224,21 +218,23 @@ public class CommunityController {
 
 		@RequestMapping(value = "/searchlist.do", method = RequestMethod.GET)
 		public String search_list(int c_group,int search, String search_content, Model model) {
-			List<CommunityDTO> list = cmservice.cm_selectBy(c_group);
-			List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
-			for (CommunityDTO cdto : list) {
-				String s = cmservice.cm_selectUnick(cdto.getU_num());
-				System.out.println(s);
-				CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
-						cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
-				unicklist.add(cudto);
-			}
-			Collections.sort(unicklist, new communitycomp());
+		
+			List<CommunityDTO> list= new ArrayList<CommunityDTO>();
+			List<CommunityUserDTO> list2 = new ArrayList<CommunityUserDTO>();
+			List<CommunityUserDTO> list3 = new ArrayList<CommunityUserDTO>();
+			
+			model.addAttribute("c_group",c_group);
 			
 			switch(search){
 			case 1: 
-				
-				cmservice.cm_selectTitleBy(search_content);
+				list = cmservice.cm_selectTitleBy(search_content);
+				list2 = user_list(list);
+				for(CommunityUserDTO cudto : list2){
+					if(cudto.getC_group()== c_group){
+						list3.add(cudto);
+					}
+				}
+				model.addAttribute("list", list3);
 				break;
 			case 2:
 				cmservice.cm_selectForewordBy(search_content);
@@ -248,18 +244,13 @@ public class CommunityController {
 				break;
 			default:
 				break;
+				
+				
 					
 			}
+			return "community/onetwolist";
 			
 			
-			model.addAttribute("u_nick_list", unicklist);
-			model.addAttribute("c_group", c_group);
-
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("u_nick_list");
-			mv.setViewName("c_group");
-
-			return "community/relist";
 		}
 
 	
@@ -273,6 +264,19 @@ public class CommunityController {
 		
 //====================================================================================================================================================================
 	
+	public List<CommunityUserDTO> user_list(List<CommunityDTO> exlist){
+		List<CommunityUserDTO> final_list = new ArrayList<CommunityUserDTO>();
+		for(CommunityDTO cdto : exlist){
+				String s = cmservice.cm_selectUnick(cdto.getU_num());
+				CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+						cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+				final_list.add(cudto);
+			}
+		return final_list;
+	}
+		
+		
+		
 	public Date date() {
 		Calendar calendar = Calendar.getInstance();
 		int year = calendar.get(Calendar.YEAR);
