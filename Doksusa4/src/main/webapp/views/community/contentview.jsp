@@ -31,6 +31,7 @@
 	}
 	function updateComment() {
 		cf.action = "updateComment.do";
+		cf.method = "post";
 		cf.submit();
 	}
 </script>
@@ -44,7 +45,7 @@
 		<h6>${communityuserdto.c_date}</h6>
 
 		<hr>
-		<textarea rows="20" cols="100" readonly="readonly">${communityuserdto.c_content }</textarea>
+		<pre style="word-break:break-all;">${communityuserdto.c_content }</pre>
 		
 		<c:choose>
 			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">

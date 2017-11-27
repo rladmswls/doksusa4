@@ -17,11 +17,21 @@
 <div id="here">
 <h3>${e_subject} 모의고사  리스트</h3>
 <form action="egrade.do">
-<label class="radio-inline"><input type="radio" name="e_grade" value="1">고1</label>
-<label class="radio-inline"><input type="radio" name="e_grade" value="2">고2</label>
-<label class="radio-inline"><input type="radio" name="e_grade" value="3">고3</label> 
-<input type="hidden" name="e_subject" value="${e_subject}">
-<input type="submit" value="선택" class="btn btn-outline-dark">
+	<div class="container">
+		<div class="btn-group" data-toggle="buttons">
+		  <label class="btn btn-success">
+		    <input type="radio"  name="e_grade" value="1"> 고1
+		  </label>
+		  <label class="btn btn-success">
+		    <input type="radio" name="e_grade" value="2">고2
+		  </label>
+		  <label class="btn btn-success">
+		    <input type="radio" name="e_grade" value="3">고3
+		  </label>
+		</div>
+		<input type="hidden" name="e_subject" value="${e_subject}"> 
+		<input type="submit" value="선택" class="btn btn-outline-dark">
+	</div>
 </form>
 <form action="e_delete.do">
 <div class="container">

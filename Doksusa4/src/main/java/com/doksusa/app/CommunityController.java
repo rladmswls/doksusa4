@@ -58,7 +58,7 @@ public class CommunityController {
 		return "redirect:/communityview.do";
 	}
 
-	@RequestMapping(value = "/deleteComment.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/deleteComment.do", method = RequestMethod.POST)
 	public String ct_delete(int ct_num, int c_num, Model model) {
 		ctservice.ct_delete(ct_num);
 		System.out.println(ct_num + "===댓글 삭제완료===");
