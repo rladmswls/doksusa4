@@ -50,6 +50,21 @@ public class CommunityDAOImpl implements CommunityDAO{
 			return session.selectOne(namespace + "cm_selectUnick" , u_num);
 		
 	}
+
+	@Override
+	public List<CommunityDTO> cm_selectTitleBy(String str) {
+		return session.selectList(namespace + "cm_selectTitleBy" , str);
+	}
+
+	@Override
+	public List<CommunityDTO> cm_selectUserBy(String str) {
+		return session.selectList(namespace + "cm_selectUserBy" , str);
+	}
+
+	@Override
+	public List<CommunityDTO> cm_selectForewordBy(String str) {
+		return session.selectList(namespace + "cm_selectForewordBy" , str);
+	}
 	
 	
 	

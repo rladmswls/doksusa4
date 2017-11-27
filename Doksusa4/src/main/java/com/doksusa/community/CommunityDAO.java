@@ -10,8 +10,11 @@ public interface CommunityDAO {
 	
 	public String cm_selectUnick(int u_num);
 	
+	public List<CommunityDTO> cm_selectTitleBy(String str);
+	public List<CommunityDTO> cm_selectUserBy(String str);
+	public List<CommunityDTO> cm_selectForewordBy(String str);
 	
-	
+
 	
 	public CommunityDTO cm_select(int c_num);
 

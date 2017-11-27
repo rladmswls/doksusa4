@@ -31,7 +31,6 @@ class communitycomp implements Comparator<CommunityUserDTO>{
 		return o2.getC_num()-o1.getC_num(); 
 	}
 }
-
 class commentcomp implements Comparator<CommentUserDTO>{
 
 	@Override
@@ -39,7 +38,6 @@ class commentcomp implements Comparator<CommentUserDTO>{
 		return o1.getCt_num() - o2.getCt_num();
 	}
 }
-
 
 @Controller
 public class CommunityController {
@@ -137,6 +135,43 @@ public class CommunityController {
 	}
 
 	
+		@RequestMapping(value = "/searchlist.do", method = RequestMethod.GET)
+		public String search_list(int c_group,int search, String search_content, Model model) {
+			switch(search){
+			case 1: 
+				
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+				break;
+					
+			}
+			List<CommunityDTO> list = cmservice.cm_selectBy(c_group);
+			List<CommunityUserDTO> unicklist = new ArrayList<CommunityUserDTO>();
+			for (CommunityDTO cdto : list) {
+				String s = cmservice.cm_selectUnick(cdto.getU_num());
+				System.out.println(s);
+				CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
+						cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+				unicklist.add(cudto);
+			}
+			Collections.sort(unicklist, new communitycomp());
+			model.addAttribute("u_nick_list", unicklist);
+			model.addAttribute("c_group", c_group);
+
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("u_nick_list");
+			mv.setViewName("c_group");
+
+			return "community/relist";
+		}
+		
+		
+		
+		
 	
 	
 	//커뮤니티 삭제

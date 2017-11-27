@@ -12,6 +12,9 @@ public interface CommunityService {
 	
 	public String cm_selectUnick(int u_num);
 	
+	public List<CommunityDTO> cm_selectTitleBy(String str);
+	public List<CommunityDTO> cm_selectUserBy(String str);
+	public List<CommunityDTO> cm_selectForewordBy(String str);
 	
 	
 	

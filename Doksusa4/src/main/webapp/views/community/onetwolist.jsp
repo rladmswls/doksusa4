@@ -19,10 +19,6 @@
 
 		<div class="container">
 		
-		
-		
-		
-		
 				<table class="table">
 				<thead class="hd">
 					<tr>
@@ -35,10 +31,8 @@
 				</thead>
 				<tbody>
 				<tr>
-
 					
 					<c:forEach var="list" items="${u_nick_list}">
-
 						<tr>
 							<td>${list.c_num}</td>
 							<td>${list.f_foreword}</td>
@@ -49,10 +43,28 @@
 						</tr>
 					</c:forEach>
 				</tr>
-			
 				</tbody>
 			</table>
 		</div>
+			<form action="searchlist.do">
+			<div class="container">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-outline-secondary">
+          <input type="radio"  name="search" value="1"> 제목
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input type="radio" name="search" value="2">말머리
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input type="radio" name="search" value="3">작성자
+        </label>
+      </div>
+      <input type="text" name="search_content" id="search_content">
+      <input type="hidden" name="c_group" value="${c_group}"> <br>
+   
+      <input type="submit" value="검색" class="button1">
+   </div>
+</form>
 			
 				<form action="communityinsert.do">
 					<input type="submit" value="등록">

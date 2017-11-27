@@ -30,10 +30,7 @@ public class CommunityServiceImpl implements CommunityService{
 	public String cm_selectUnick(int u_num){
 		return cm.cm_selectUnick(u_num);
 	}
-	
-	
-	
-	
+		
 	@Override
 	public int cm_insert(CommunityDTO cmdto) {
 		return cm.cm_insert(cmdto);
@@ -52,6 +49,24 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public List<CommunityDTO> cm_selectBy(int c_group) {
 		return cm.cm_selectBy(c_group);
+	}
+	
+	
+	
+
+	@Override
+	public List<CommunityDTO> cm_selectTitleBy(String str) {
+		return cm.cm_selectTitleBy(str);
+	}
+
+	@Override
+	public List<CommunityDTO> cm_selectUserBy(String str) {
+		return cm.cm_selectUserBy(str);
+	}
+
+	@Override
+	public List<CommunityDTO> cm_selectForewordBy(String str) {
+		return cm.cm_selectForewordBy(str);
 	}
 
 }
