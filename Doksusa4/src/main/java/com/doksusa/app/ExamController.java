@@ -135,13 +135,14 @@ public class ExamController {
 	
 	@RequestMapping(value="/e_insert.do", method=RequestMethod.POST)
 	public String e_insert(Model model,int e_year, int e_grade, String e_subject, String e_link, String e_answer, String e_solution){
+		System.out.println(e_year);
 		ExamDTO examdto = new ExamDTO(0, e_year, e_grade, e_subject, e_link, e_answer, e_solution);
 		examservice.exam_insert(examdto);
 		List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
 		model.addAttribute("e_subject",e_subject);
 		model.addAttribute("e_grade",e_grade);
 		model.addAttribute("egradelist", list);
-		return "exam/egradelist";
+		return "exam/esubjectlist";
 	}
 
 	@RequestMapping("/e_delete.do")
