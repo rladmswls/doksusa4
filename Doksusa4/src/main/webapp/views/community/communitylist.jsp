@@ -15,7 +15,16 @@
 <body>
 	<jsp:include page="../up.jsp" flush="false" />
 	<div id="here">
-		<h3>고3 커뮤니티</h3>
+		<c:if test="${c_group=='1'}">
+		<h3>공지사항</h3></c:if>
+		<c:if test="${c_group=='2'}">
+		<h3>고1&고2 커뮤니티</h3></c:if>
+		<c:if test="${c_group=='3'}">
+		<h3>고3 커뮤니티</h3></c:if>
+		<c:if test="${c_group=='4'}">
+		<h3>N수생 커뮤니티</h3></c:if>
+		
+		
 
 		<div class="container">
 			<table class="table">
@@ -28,7 +37,6 @@
 						<th id="u_nick">작성자</th>
 					</tr>
 				</thead>
-				<tbody>
 				<tr>
 
 					<c:set var="num" value="0"></c:set>
@@ -43,16 +51,42 @@
 							<td>${comuserdto.u_nick}</td>
 						</tr>
 					</c:forEach>
-				</tr>
-			
-				</tbody>
+				
 			</table>
 		</div>
-			
+		<c:choose>
+			<c:when test="${sessionScope.u_id == 'dok'}" >
 				<form action="communityinsert.do">
+				<input type="hidden" name="c_group" value="1">
+					<input type="submit" value="등록">
+				</form>
+		 </c:when>
+		 <c:otherwise>
+		 <c:if test="${c_group !='1'}">
+		<form action="communityinsert.do">
 					<input type="submit" value="등록">
 					<input type="hidden" name="c_group" id="c_group" value="${c_group}">
 				</form>
+		 
+		 </c:if>
+		 </c:otherwise>
+		</c:choose>
+		
+			<form action="searchlist.do">
+			<div class="container">
+      <div class="btn-group" data-toggle="buttons">
+          <input type="radio"  name="search" value="1">제목
+    
+          <input type="radio" name="search" value="2">말머리
+          <input type="radio" name="search" value="3">작성자
+      </div>
+      <input type="text" name="search_content" id="search_content">
+      <input type="hidden" name="c_group" value="${c_group}"> 
+   
+      <input type="submit" value="검색" class="button1">
+   </div>
+</form>
+		
 		
 	</div>
 </body>

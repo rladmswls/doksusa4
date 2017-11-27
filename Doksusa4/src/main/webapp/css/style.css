@@ -80,3 +80,8 @@ textarea{
 .table{
 	background-color: white;
 }
+.table th,td{
+	text-align: center;
+	border-right: solid 1px white;
+	font-family: myFirstFont;
+}

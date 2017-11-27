@@ -50,7 +50,7 @@ public class CommunityController {
 	CommentService ctservice;
 	
 	
-	//list 보기
+	//list 蹂닿린
 	@RequestMapping(value="/communitylist.do", method=RequestMethod.GET )
 	public String community_list(int c_group, Model model){
 		List<CommunityDTO> list1 = cmservice.cm_selectBy(c_group);
@@ -60,22 +60,11 @@ public class CommunityController {
 		model.addAttribute("c_group", c_group);
 		model.addAttribute("list", list2);
 		
-		switch(c_group){
-		case 1:
-			return "community/noticelist";
-		case 2: 
-			return "community/onetwolist";
-		case 3:
-			return "community/threelist";
-		case 4:
-			return "community/relist";
-		default:
-			return "redirect:/home";
-		}
+		return "community/communitylist";
 	}
 	
 	
-		// 게시글 쓰기
+		// 寃뚯떆湲� �벐湲�
 		@RequestMapping(value = "/communityinsert.do", method = RequestMethod.GET)
 		public String communityinsert(int c_group, Model model) {
 			List<ForewordDTO> foreword;
@@ -102,7 +91,7 @@ public class CommunityController {
 		}
 	
 	
-		//댓글 추가
+		//�뙎湲� 異붽�
 		@RequestMapping(value = "/commentinsert.do", method = RequestMethod.POST)
 		public String ct_insert(int c_num, int ctu_num, String ct_comment, Model model) {
 			Date c_date = date();
@@ -113,7 +102,7 @@ public class CommunityController {
 			return "redirect:/communityview.do";
 		}
 
-	//게시글 업데이트
+	//寃뚯떆湲� �뾽�뜲�씠�듃
 	@RequestMapping(value = "/updateCommunity.do", method = RequestMethod.GET)
 	public String cm_update(int c_num, int c_group, Model model) {
 		List<ForewordDTO> foreword = fservice.fore_selectForUser();
@@ -136,7 +125,7 @@ public class CommunityController {
 	}
 	
 	
-	//댓글 업데이트
+	//�뙎湲� �뾽�뜲�씠�듃
 	@RequestMapping(value = "/updateComment.do", method = RequestMethod.POST)
 	public String ct_update(CommentDTO codto,Model model) {
 		ctservice.ct_update(codto);
@@ -145,7 +134,7 @@ public class CommunityController {
 	}
 
 	
-	//커뮤니티 삭제
+	//而ㅻ�ㅻ땲�떚 �궘�젣
 		@RequestMapping(value = "/deleteCommunity.do", method = RequestMethod.GET)
 		public String cm_delete(int c_num, int c_group, Model model) {
 			System.out.println(c_num);
@@ -159,17 +148,17 @@ public class CommunityController {
 				}			
 			}
 			cmservice.cm_delete(c_num);
-			System.out.println(c_num + "===게시글 삭제완료===");
+			System.out.println(c_num + "===寃뚯떆湲� �궘�젣�셿猷�===");
 			model.addAttribute("c_group",c_group);
 			
 			return "redirect:/communitylist.do";
 		}
 	
-	//댓글 삭제
+	//�뙎湲� �궘�젣
 	@RequestMapping(value = "/deleteComment.do", method = RequestMethod.POST)
 	public String ct_delete(int ct_num, int c_num, Model model) {
 		ctservice.ct_delete(ct_num);
-		System.out.println(ct_num + "===댓글 삭제완료===");
+		System.out.println(ct_num + "===�뙎湲� �궘�젣�셿猷�===");
 		model.addAttribute("c_num", c_num);
 		return "redirect:/communityview.do";
 	}
@@ -178,7 +167,7 @@ public class CommunityController {
 	
 	
 	
-	// 커뮤니티 게시글보기
+	// 而ㅻ�ㅻ땲�떚 寃뚯떆湲�蹂닿린
 		@RequestMapping(value = "/communityview.do", method = RequestMethod.GET)
 		public String cm_detail(int c_num, Model model) {
 			CommunityDTO cdto = cmservice.cm_select(c_num);
@@ -228,19 +217,12 @@ public class CommunityController {
 			switch(search){
 			case 1: 
 				list = cmservice.cm_selectTitleBy(search_content);
-				list2 = user_list(list);
-				for(CommunityUserDTO cudto : list2){
-					if(cudto.getC_group()== c_group){
-						list3.add(cudto);
-					}
-				}
-				model.addAttribute("list", list3);
 				break;
 			case 2:
-				cmservice.cm_selectForewordBy(search_content);
+				list = cmservice.cm_selectForewordBy(search_content);
 				break;
 			case 3:
-				cmservice.cm_selectUserBy(search_content);
+				list = cmservice.cm_selectUserBy(search_content);
 				break;
 			default:
 				break;
@@ -248,7 +230,15 @@ public class CommunityController {
 				
 					
 			}
-			return "community/onetwolist";
+			
+			list2 = user_list(list);
+			for(CommunityUserDTO cudto : list2){
+				if(cudto.getC_group()== c_group){
+					list3.add(cudto);
+				}
+			}
+			model.addAttribute("list", list3);
+			return "community/communitylist";
 			
 			
 		}
