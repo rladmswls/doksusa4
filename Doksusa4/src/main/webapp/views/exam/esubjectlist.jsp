@@ -19,18 +19,18 @@
 <form action="egrade.do">
 	<div class="container">
 		<div class="btn-group" data-toggle="buttons">
-		  <label class="btn btn-outline-secondary">
+		  <label class="btn btn-default">
 		    <input type="radio"  name="e_grade" value="1"> 고1
 		  </label>
-		  <label class="btn btn-outline-secondary">
+		  <label class="btn btn-default">
 		    <input type="radio" name="e_grade" value="2">고2
 		  </label>
-		  <label class="btn btn-outline-secondary">
+		  <label class="btn btn-default">
 		    <input type="radio" name="e_grade" value="3">고3
 		  </label>
 		</div>
 		<input type="hidden" name="e_subject" value="${e_subject}">
-		<input type="submit" value="선택" class="button1">
+		<input type="submit" value="선택" class="btn btn-default">
 	</div>
 </form>
 <form action="e_delete.do">
