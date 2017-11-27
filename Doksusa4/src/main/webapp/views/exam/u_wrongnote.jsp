@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
+
 </head>
 <body>
 	<jsp:include page="../up.jsp" flush="false" />
@@ -19,21 +20,20 @@
 				<thead class="hd">
 					<tr>
 						<th>오답번호</th>
-						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
-					
 
-					<tr>	<c:forEach var="ewdto" items="${e_list}">
-						<tr>
-							<td><a
-								href="showE_wrong.do?e_num=${ewdto.e_num}&e_subnum=${ewdto.e_subnum}">${ewdto.e_link }:
-								${ewdto.e_subnum }번</a></td>
-								<td><button>삭제</button></td>
-						</tr>
-					</c:forEach>
-						</tr>
+
+					<tr>
+						<c:forEach var="ewdto" items="${e_list}">
+							<tr>
+								<td><a
+									href="showE_wrong.do?e_num=${ewdto.e_num}&e_subnum=${ewdto.e_subnum}">${ewdto.e_link }:
+										${ewdto.e_subnum }번</a></td>
+							</tr>
+						</c:forEach>
+					</tr>
 				</tbody>
 			</table>
 
