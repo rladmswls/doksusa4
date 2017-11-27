@@ -11,15 +11,18 @@
 <div id="here">
 <h3>회원정보 수정</h3>
 	<form action="update.do" method="POST">
-		<tr>
-		 <td><input type="password" name="u_pw" value="${user.u_pw}"></td><br>
-         </tr>
-         <tr>
-            <td><input type="text" name="u_nick" value="${user.u_nick}"></td><br>
-         </tr>
-         <tr>
-            <td><input type="tel" name="u_phone"  value="${user.u_phone}"></td><br>
-         </tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="u_pw" value="${user.u_pw}"></td><br>
+	         </tr>
+	         <tr>
+	        	<th>닉네임</th>
+	            <td><input type="text" name="u_nick" value="${user.u_nick}"></td><br>
+	         </tr>
+	         <tr>
+	        	<th>전화번호</th>
+	            <td><input type="tel" name="u_phone"  value="${user.u_phone}"></td><br>
+	         </tr>
 		<input type="hidden" name="u_num" id="u_num" value="${sessionScope.u_num}" > 
 		<input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id}" > 
 		<input type="submit" value="저장">

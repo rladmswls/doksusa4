@@ -16,7 +16,7 @@
 <div id="here">
 <h3>본인 확인</h3>
 <form action="check.do" method="POST" >
-	<input type="text" name="u_id" placeholder="아이디 입력">
+	<input type="hidden" name="u_id" value="${u_id }">
 	<input type="password" name="u_pw" placeholder="비밀번호 입력">
 	<input type="submit" id="button">
 </form>
