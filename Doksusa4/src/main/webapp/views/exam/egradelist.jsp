@@ -15,22 +15,22 @@
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
 <div id="here">
-<h3>고${e_grade } 모의고사  리스트</h3>
+<h3>${e_subject} 고${e_grade } 모의고사  리스트</h3>
 <form action="egrade.do">
 	<div class="container">
 		<div class="btn-group" data-toggle="buttons">
-		  <label class="btn btn-success">
+		  <label class="btn btn-outline-secondary">
 		    <input type="radio"  name="e_grade" value="1"> 고1
 		  </label>
-		  <label class="btn btn-success">
+		  <label class="btn btn-outline-secondary">
 		    <input type="radio" name="e_grade" value="2">고2
 		  </label>
-		  <label class="btn btn-success">
+		  <label class="btn btn-outline-secondary">
 		    <input type="radio" name="e_grade" value="3">고3
 		  </label>
 		</div>
-		<input type="hidden" name="e_subject" value="${e_subject}"> 
-		<input type="submit" value="선택" class="btn btn-outline-dark">
+		<input type="hidden" name="e_subject" value="${e_subject}">
+		<input type="submit" value="선택" class="button1">
 	</div>
 </form>
 <form action="e_delete2.do">

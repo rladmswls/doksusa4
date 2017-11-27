@@ -19,15 +19,12 @@
 <script src="resources/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+
 	<header>
-		<h1>독하게 수능준비하는 사람들</h1>
+		<a href="home.do" >
+			<img name="logo" width="500" height="80" src="css/logo.PNG">
+		</a>
 	</header>
-	<%-- <c:choose>
-			<c:when test="${sessionScope.user == null}">
-				<div id="g">☆☆로그인 후 이용해 주세요☆☆</div>
-			</c:when>
-		<c:otherwise></c:otherwise>
-	</c:choose> --%>
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">

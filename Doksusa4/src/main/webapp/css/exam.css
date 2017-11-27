@@ -23,10 +23,10 @@ aside{
 .hd{
 	text-align: center;
 }
-div#here {
+#here {
     padding: 10px;
     color: black;
-    background-color: #ff0080;
+    background-color: #f2f2f2;
 }
 .btn{
 	margin-top: 10px;
@@ -37,10 +37,7 @@ iframe{
 .i{
 	border-right: solid 1px black; 
 }
-div#footer {
-    color: white;
-}
-img{
+tbody img{
 	width: 30px;
 	height: 30px;
 	/* padding: 30px; */

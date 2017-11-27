@@ -1,4 +1,26 @@
 @CHARSET "UTF-8";
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #797979;
+}
+.button1:hover {
+    background-color: #797979;
+    color: white;
+}
 body,p {
    margin: 50px;
    padding: 0;
@@ -12,22 +34,19 @@ aside{
    margin-left: 10px;
    margin-top: 10px;
 }
-.btn{
-   margin-top: 10px;
-}
 iframe{
    border: 0px;
 }
 .i{
    border-right: solid 1px black; 
 }
-div#here {
+#here {
     padding: 10px;
     color: black;
-    background-color: #e3dafe;
+    background-color: #f2f2f2;
 }
-div#footer {
-    color: white;
+.logo{
+	 position:fixed;
 }
 #ipsi{
    width: 200px;
@@ -38,7 +57,7 @@ h1{
    padding-bottom: 30px;
    font-weight: bold;
    font-family: myFirstFont;
-   color:navy;
+   color:#00004f;
 }
 @font-face {
    font-family: myFirstFont;
@@ -50,13 +69,13 @@ h1{
 }
 h3{
    font-family: mySecondFont;
-    color:navy;
+    color:#00004f;
 }
 textarea{
 	border: solid 2px #525252;
 }
 .btn-info{
-	color: navy;
+	color: #00004f;
 }
 .table{
 	background-color: white;
