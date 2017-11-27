@@ -73,7 +73,13 @@ public class ExamController {
 	public String u_wrongnote(HttpSession session,Model model) {
 		int u_num = (Integer)session.getAttribute("u_num");
 		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
-		model.addAttribute("ew_list",ew_list);
+		List<E_wrongMyNoteDTO> e_list = new ArrayList<E_wrongMyNoteDTO>();
+		for(E_wrongnoteDTO ewdto : ew_list){
+			ExamDTO edto = examservice.exam_selectByEnum(ewdto.getE_num());
+			String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
+			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
+		}
+		model.addAttribute("e_list",e_list);
 		return "exam/u_wrongnote";
 	}
 	
@@ -97,26 +103,27 @@ public class ExamController {
 	public String wrongnote(int[] e_subnum, int e_num,Model model,int u_num){
 		
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
-		String e_link = edto.getE_link().substring(0,edto.getE_link().length()-4);
+		String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
 		System.out.println(e_link);
 		for(int i:e_subnum){
 			ewservice.ew_insert(new E_wrongnoteDTO(e_num, i, u_num));
 		}
 		model.addAttribute("e_link", e_link);
 		model.addAttribute("u_num",u_num);
-		List<E_wrongnoteDTO> e_list = ewservice.ew_selectByE_num(e_num);
-		for(E_wrongnoteDTO ewdto : e_list){
-			System.out.println(ewdto);
+		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
+		List<E_wrongMyNoteDTO> e_list = new ArrayList<E_wrongMyNoteDTO>();
+		for(E_wrongnoteDTO ewdto : ew_list){
+			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
 		}
 		model.addAttribute("e_list",e_list);
 		
-		return "exam/e_wrongnote";
+		return "exam/u_wrongnote";
 	}
 	
 	@RequestMapping("/showE_wrong.do")
 	public String showWrong(int e_num, int e_subnum, Model model){
-		//String e_link = esubservice.searchLink(e_num, e_subnum);
-		//model.addAttribute("e_link",e_link);
+		String e_link = esubservice.searchLink(e_num, e_subnum);
+		model.addAttribute("e_link",e_link);
 		return "exam/showE_wrong";
 	}
 	
