@@ -31,15 +31,14 @@
 				</thead>
 				<tbody>
 				<tr>
-					
-					<c:forEach var="list" items="${u_nick_list}">
+					<c:forEach var="comuserdto" items="${list}">
 						<tr>
-							<td>${list.c_num}</td>
-							<td>${list.f_foreword}</td>
-							<td><a href="communityview.do?c_num=${list.c_num}"
-								class=notice>${list.c_title}</a></td>
-							<td>${list.c_date}</td>
-							<td>${list.u_nick}</td>
+							<td>${comuserdto.c_num}</td>
+							<td>${comuserdto.f_foreword}</td>
+							<td><a href="communityview.do?c_num=${comuserdto.c_num}"
+								class=notice>${comuserdto.c_title}</a></td>
+							<td>${comuserdto.c_date}</td>
+							<td>${comuserdto.u_nick}</td>
 						</tr>
 					</c:forEach>
 				</tr>
@@ -49,18 +48,13 @@
 			<form action="searchlist.do">
 			<div class="container">
       <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-outline-secondary">
-          <input type="radio"  name="search" value="1"> 제목
-        </label>
-        <label class="btn btn-outline-secondary">
+          <input type="radio"  name="search" value="1">제목
+    
           <input type="radio" name="search" value="2">말머리
-        </label>
-        <label class="btn btn-outline-secondary">
           <input type="radio" name="search" value="3">작성자
-        </label>
       </div>
       <input type="text" name="search_content" id="search_content">
-      <input type="hidden" name="c_group" value="${c_group}"> <br>
+      <input type="hidden" name="c_group" value="${c_group}"> <
    
       <input type="submit" value="검색" class="button1">
    </div>

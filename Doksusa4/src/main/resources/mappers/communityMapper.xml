@@ -15,7 +15,7 @@
 		 select u_nick from users where u_num=#{u_num}</select>
 		
 		<select id="cm_selectTitleBy" parameterType="string" resultType="cmdto">
-		select * from community where c_title like '%str=#{str}'</select>
+		select * from community where c_title like '%'||#{str}||'%'</select>
 		
 <!-- 		<select id="cm_selectUserBy" parameterType="string" resultType="cmdto">
 		select * from community where c_title like '%str=#{str}'</select> -->
@@ -23,7 +23,7 @@
 		
 		
 		<select id="cm_selectForewordBy" parameterType="string" resultType="cmdto">
-		select * from community where f_foreword like '%str=#{str}'</select>
+		select * from community where f_foreword like '%'||#{str}||'%'</select>
 		
 		
 		

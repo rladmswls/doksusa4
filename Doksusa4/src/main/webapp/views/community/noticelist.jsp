@@ -31,15 +31,15 @@
 				<tr>
 
 					<c:set var="num" value="0"></c:set>
-					<c:forEach var="list" items="${u_nick_list}">
+					<c:forEach var="comuserdto" items="${list}">
 
 						<tr>
-							<td>${list.c_num}</td>
-							<td>${list.f_foreword}</td>
-							<td><a href="communityview.do?c_num=${list.c_num}"
-								class=notice>${list.c_title}</a></td>
-							<td>${list.c_date}</td>
-							<td>${list.u_nick}</td>
+							<td>${comuserdto.c_num}</td>
+							<td>${comuserdto.f_foreword}</td>
+							<td><a href="communityview.do?c_num=${comuserdto.c_num}"
+								class=notice>${comuserdto.c_title}</a></td>
+							<td>${comuserdto.c_date}</td>
+							<td>${comuserdto.u_nick}</td>
 						</tr>
 					</c:forEach>
 				
@@ -47,7 +47,8 @@
 		</div>
 		<c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
-				<form action="noticeinsert.do">
+				<form action="communityinsert.do">
+				<input type="hidden" name="c_group" value="1">
 					<input type="submit" value="등록">
 				</form>
 			</c:when>
