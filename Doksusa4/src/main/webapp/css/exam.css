@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 body,p {
-	background-color: lightgray;
 	margin: 50px;
 	padding: 0;
 	text-align: center;
@@ -23,7 +22,11 @@ aside{
 }
 .hd{
 	text-align: center;
-	
+}
+div#here {
+    padding: 10px;
+    color: black;
+    background-color: #ff0080;
 }
 .btn{
 	margin-top: 10px;
@@ -33,11 +36,6 @@ iframe{
 }
 .i{
 	border-right: solid 1px black; 
-}
-div#here {
-    padding: 10px;
-    color: black;
-    background-color: lightgray;
 }
 div#footer {
     color: white;
