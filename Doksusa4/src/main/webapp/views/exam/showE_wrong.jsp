@@ -8,8 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="num" items="${e_dto.subnum}">
-		<img  src="exams/${e_dto.e_link}/${num}.PNG" />
-	</c:forEach>
+
+<jsp:include page="../up.jsp" flush="false" />
+	<div id="here">
+	<img src="${e_link}"/>
+</div>
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doksusa.e_sub.E_subService;
 import com.doksusa.e_wrongnote.E_wrongMyNoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteService;
@@ -25,7 +27,8 @@ public class ExamController {
 	ExamService examservice;
 	@Autowired
 	E_wrongnoteService ewservice;
-	List<E_wrongMyNoteDTO> ewlist = new ArrayList<E_wrongMyNoteDTO>();
+	@Autowired
+	E_subService esubservice;
 	
 	@RequestMapping(value="/esubject.do", method=RequestMethod.GET)
 	public String showSubjectList(String e_subject,Model model){
@@ -58,7 +61,10 @@ public class ExamController {
 	}
 
 	@RequestMapping("/u_wrongnote.do")
-	public String u_wrongnote() {
+	public String u_wrongnote(HttpSession session,Model model) {
+		int u_num = (Integer)session.getAttribute("u_num");
+		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
+		model.addAttribute("ew_list",ew_list);
 		return "exam/u_wrongnote";
 	}
 	
@@ -82,22 +88,26 @@ public class ExamController {
 	public String wrongnote(int[] e_subnum, int e_num,Model model,int u_num){
 		
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
-		String e_link = edto.getE_link().substring(6,edto.getE_link().length()-4);
+		String e_link = edto.getE_link().substring(0,edto.getE_link().length()-4);
+		System.out.println(e_link);
 		for(int i:e_subnum){
 			ewservice.ew_insert(new E_wrongnoteDTO(e_num, i, u_num));
 		}
 		model.addAttribute("e_link", e_link);
 		model.addAttribute("u_num",u_num);
-		List<E_wrongnoteDTO> e_list = ewservice.ew_selectByU_num(u_num);
+		List<E_wrongnoteDTO> e_list = ewservice.ew_selectByE_num(e_num);
+		for(E_wrongnoteDTO ewdto : e_list){
+			System.out.println(ewdto);
+		}
 		model.addAttribute("e_list",e_list);
 		
-		return "exam/u_wrongnote";
+		return "exam/e_wrongnote";
 	}
 	
 	@RequestMapping("/showE_wrong.do")
-	public String showWrong(E_wrongMyNoteDTO e_dto, Model model){
-		model.addAttribute("e_dto",e_dto);
-		System.out.println(e_dto);
+	public String showWrong(int e_num, int e_subnum, Model model){
+		String e_link = esubservice.searchLink(e_num, e_subnum);
+		model.addAttribute("e_link",e_link);
 		return "exam/showE_wrong";
 	}
 	

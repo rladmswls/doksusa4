@@ -21,4 +21,9 @@ public class E_subServiceImpl implements E_subService{
 		return esub.esub_selectAll();
 	}
 
+	@Override
+	public String searchLink(int e_num, int e_subnum) {
+		return esub.searchLink(e_num, e_subnum);
+	}
+
 }

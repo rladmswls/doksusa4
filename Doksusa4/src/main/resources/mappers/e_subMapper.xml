@@ -4,8 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.doksusa.es">
 
+	<select id="es_select" resultType="asdto" parameterType="int">
+		select *
+		from e_sub where e_num=#{e_num}</select>
 
+	<select id="es_searchLink" resultType="String" parameterType="map">
+		select e_sublink from e_sub where e_num=#{e_num} and
+		e_subnum=#{e_subnum}</select>
+	<insert id="es_insert" parameterType="asdto">
+		insert into e_sub
+		(e_num,e_subnum,e_sublink,e_subanswer,e_subsol) values
+		(#{e_num},#{e_subnum},#{e_sublink},#{e_subanswer},#{e_subsol})</insert>
 
-
+	<delete id="es_delete" parameterType="int">
+		delete from e_sub where
+		e_num=#{e_num}</delete>
 
 </mapper>

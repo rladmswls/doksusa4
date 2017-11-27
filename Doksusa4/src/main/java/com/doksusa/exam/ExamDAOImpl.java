@@ -31,9 +31,6 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 	
 	
-	
-	
-
 	@Override
 	public ExamDTO exam_selectByEnum(int e_num) {
 		return session.selectOne(namespace + "exam_selectByEnum", e_num);
@@ -53,6 +50,8 @@ public class ExamDAOImpl implements ExamDAO{
 	public int exam_delete(int e_num) {
 		return session.delete(namespace + "exam_delete", e_num);
 	}
+
+	
 
 	
 
