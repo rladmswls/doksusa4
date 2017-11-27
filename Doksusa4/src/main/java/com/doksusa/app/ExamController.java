@@ -42,13 +42,18 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value="/egrade.do", method=RequestMethod.GET)
-	public String showGradeList(String e_subject,int e_grade, Model model){
-		System.out.println(e_grade);
+	public String showGradeList(String e_subject,Integer e_grade, Model model){
 		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
 		List<ExamDTO> elist = new ArrayList<ExamDTO>();
-		for(ExamDTO edto : list){
-			if(e_grade == edto.getE_grade()){
-				elist.add(edto);
+		if(e_grade==null){
+			for(ExamDTO edto : list){
+					elist.add(edto);
+			}
+		}else{
+			for(ExamDTO edto : list){
+				if(e_grade == edto.getE_grade()){
+					elist.add(edto);
+				}
 			}
 		}
 		//List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
@@ -57,7 +62,11 @@ public class ExamController {
 		model.addAttribute("e_grade", e_grade);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("egradelist");
-		return "exam/egradelist";
+		if(e_grade==null){
+			return "redirect:esubject.do";
+		}else{
+			return "exam/egradelist";
+		}
 	}
 
 	@RequestMapping("/u_wrongnote.do")
@@ -106,8 +115,8 @@ public class ExamController {
 	
 	@RequestMapping("/showE_wrong.do")
 	public String showWrong(int e_num, int e_subnum, Model model){
-		String e_link = esubservice.searchLink(e_num, e_subnum);
-		model.addAttribute("e_link",e_link);
+		//String e_link = esubservice.searchLink(e_num, e_subnum);
+		//model.addAttribute("e_link",e_link);
 		return "exam/showE_wrong";
 	}
 	
