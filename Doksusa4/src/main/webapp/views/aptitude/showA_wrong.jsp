@@ -37,7 +37,6 @@ function showAnswer(){
 			<input id="show" type="button" onclick="showAnswer()" value="정답 확인">
 
 			<div id="answer" style="display:none">정답은 <img src="${answer_link}/${a_subnum}.PNG" />
-						<h2>${answer_link}/${a_subnum}.PNG*****************</h2>
 			</div>
 		</form>
 	</div>
