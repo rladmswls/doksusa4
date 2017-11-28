@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<% 
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect("home.do");
-    }
-%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,8 +43,7 @@
          <td><a href="a_wrongnote.do?a_school=${list.a_school}&a_num=${list.a_num}">오답노트</a></td>
        <c:choose>
          <c:when test="${sessionScope.u_id == 'dok'}">
-         <!--    <td><input type="button" onclick="a_update.do" value="수정"></td> -->
-            <td><input type="submit" value="삭제"></td>
+            <td><input  class="btn btn-default" type="submit" value="삭제"></td>
             <td></td>
          </c:when>
       </c:choose>

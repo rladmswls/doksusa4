@@ -65,7 +65,7 @@
          <td><a href="e_wrongnote.do?e_subject=${list.e_subject}&e_num=${list.e_num}">오답노트</a></td>
          <c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
-			<td><input type="submit" value="삭제"></td>
+			<td><input class="btn btn-default" type="submit" value="삭제"></td>
 			</c:when>
 		</c:choose>
 	</tr>

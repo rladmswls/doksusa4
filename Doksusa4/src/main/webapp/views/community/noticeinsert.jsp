@@ -23,7 +23,7 @@
 	<input type="text" name="c_title" id="c_title"><br><br>
 	<input type="hidden" name="u_num" id="u_num" value="${user.u_num }">
 	<textarea rows="10" cols="100" name="c_content" id="c_content"></textarea><br><br>
-	<input type="submit" value="저장">
+	<input class="btn btn-default" type="submit" value="저장">
 </form>
 </div>
 </body>

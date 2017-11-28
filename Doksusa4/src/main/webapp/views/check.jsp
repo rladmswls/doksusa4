@@ -13,7 +13,7 @@
 <form action="check.do" method="POST" >
 	<input type="hidden" name="u_id" value="${u_id }">
 	<input type="password" name="u_pw" placeholder="비밀번호 입력">
-	<input type="submit" id="button">
+	<input class="btn btn-default" type="submit" id="button">
 </form>
 </div>
 </body>

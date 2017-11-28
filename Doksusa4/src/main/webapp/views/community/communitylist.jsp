@@ -28,16 +28,13 @@
             <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
         </c:forEach>
     </select>
-    <input type="submit" value="검색">
+    <input class="btn btn-default" type="submit" value="검색">
     </form>
-   
-    
-
+   <br>
 		<div class="container">
 			<table class="table">
 				<thead class="hd">
 					<tr>
-						<th id="c_num">글번호</th>
 						<th id="f_foreword">머리말</th>
 						<th id="c_title">제목</th>
 						<th id="c_date">날짜</th>
@@ -50,7 +47,6 @@
 					<c:forEach var="comuserdto" items="${list}">
 
 						<tr>
-							<td>${comuserdto.c_num}</td>
 							<td>${comuserdto.f_foreword}</td>
 							<td><a href="communityview.do?c_num=${comuserdto.c_num}"
 								class=notice>${comuserdto.c_title}</a></td>
@@ -58,20 +54,19 @@
 							<td>${comuserdto.u_nick}</td>
 						</tr>
 					</c:forEach>
-				
 			</table>
 		</div>
 		<c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}" >
 				<form action="communityinsert.do">
 				<input type="hidden" name="c_group" value="1">
-					<input type="submit" value="등록">
+					<input class="btn btn-default" type="submit" value="등록">
 				</form>
 		 </c:when>
 		 <c:otherwise>
 		 <c:if test="${c_group !='1'}">
 		<form action="communityinsert.do">
-					<input type="submit" value="등록">
+					<input class="btn btn-default" type="submit" value="등록">
 					<input type="hidden" name="c_group" id="c_group" value="${c_group}">
 				</form>
 		 
@@ -81,22 +76,20 @@
 		
 			<form action="searchlist.do">
 			<div class="container">
-      <div class="btn-group" data-toggle="buttons">
-          <input type="radio"  name="search" value="1" checked="checked">제목
-          <input type="radio" name="search" value="2">작성자
-          <input type="radio" name="search" value="3">내용
-      </div>
-      <input type="text" name="search_content" id="search_content">
-      <input type="hidden" name="c_group" value="${c_group}"> 
-   
-      <input type="submit" value="검색" class="button1">
       
-
+		      <div class="btn-group" data-toggle="buttons">
+		          	<input type="radio"  name="search" value="1" checked="checked">제목
+		          	<input type="radio" name="search" value="2">작성자
+		          	<input type="radio" name="search" value="3">내용
+				</div>
+		
+		      <input type="text" name="search_content" id="search_content">
+		      <input type="hidden" name="c_group" value="${c_group}"> 
+		   
+		      <input class="btn btn-default" type="submit" value="검색" class="button1">
       
-   </div>
-</form>
-		
-		
+   			</div>
+		</form>
 	</div>
 </body>
 </html>

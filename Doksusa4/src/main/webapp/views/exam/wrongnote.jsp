@@ -46,7 +46,7 @@
 					<br>
 				</c:if>
 			</c:forEach>
-			<input type="button" value="제출"  onclick="checkWrong()">
+			<input class="btn btn-default" type="button" value="제출"  onclick="checkWrong()">
 		</form>
 	</div>
 </body>

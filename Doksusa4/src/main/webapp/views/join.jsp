@@ -85,7 +85,7 @@
 						<tr>
 							<td><input type="text" name="u_id" id="u_id"
 								placeholder="아이디를 입력하세요"></td>
-							<td><input type="button" onclick="checkID()" value="중복체크 "></td>
+							<td><input class="btn btn-default" type="button" onclick="checkID()" value="중복체크 "></td>
 						</tr>
 						<tr>
 							<td><input type="password" name="u_pw"
@@ -94,11 +94,11 @@
 						<tr>
 							<td><input type="text" id="u_nick" name="u_nick"
 								placeholder="닉네임을 설정하세요"></td>
-								<td><input type="button" onclick="checkNick()" value="중복체크 "></td>
+								<td><input class="btn btn-default" type="button" onclick="checkNick()" value="중복체크 "></td>
 						</tr>
 						<tr>
 							<td><input type="tel" name="u_phone" placeholder="전번 입력하세요"></td>
-							<td><input type="button" onclick="checkPhone()" value="중복체크 "></td>
+							<td><input class="btn btn-default" type="button" onclick="checkPhone()" value="중복체크 "></td>
 						</tr>
 						<tr>
 							<td><input class="btn btn-default" id="join" type="button" onclick = "goJoin()" value="회원등록">

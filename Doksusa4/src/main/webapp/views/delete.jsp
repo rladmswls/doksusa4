@@ -17,7 +17,7 @@
    <form name="f" action="delete.do" method="POST">
          <input type="radio"  name="yesOrno" onclick="go()" value="예">예
          <input type="radio"  name="yesOrno" onclick="go()" value="아니오">아니요<br>
-         <input type="submit" value="확인">
+         <input class="btn btn-default" type="submit" value="확인">
    </form>
 </div>
 </body>

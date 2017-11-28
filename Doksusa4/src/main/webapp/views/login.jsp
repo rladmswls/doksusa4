@@ -56,10 +56,10 @@
 		<h3>로그인</h3>
 		<form id="myfrm" name="f" action="" method="post">
 			<input type="text" name="u_id" id="u_id" placeholder="아이디 입력"><br>
-			<input type="password" name="u_pw" id="u_pw" placeholder="비밀번호 입력"><br>
-			<button class="btn" onclick="checkIDPW()" id="login1">로그인</button>
-			<button class="btn" onclick="searchID()" id="login2">아이디 찾기</button>
-			<button class="btn" onclick="searchPW()" id="login3">비밀번호 찾기</button>
+			<input type="password" name="u_pw" id="u_pw" placeholder="비밀번호 입력"><br><br>
+			<button class="btn btn-default" onclick="checkIDPW()" id="login1">로그인</button>
+			<button class="btn btn-default" onclick="searchID()" id="login2">아이디 찾기</button>
+			<button class="btn btn-default" onclick="searchPW()" id="login3">비밀번호 찾기</button>
 		</form>
 	</div>
 </body>

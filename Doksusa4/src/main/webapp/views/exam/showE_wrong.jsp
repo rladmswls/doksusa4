@@ -33,8 +33,8 @@ function showAnswer(){
 			<input type="hidden" name="e_subnum" id="e_subnum" value=${e_subnum }>
 			<img src="${e_link}" />
 			<hr>
-			<input type="button" onclick="deleteNote()" value="삭제">
-			<input id="show" type="button" onclick="showAnswer()" value="정답 확인">
+			<input class="btn btn-default" type="button" onclick="deleteNote()" value="삭제">
+			<input class="btn btn-default" id="show" type="button" onclick="showAnswer()" value="정답 확인">
 			<div id="answer" style="display:none">정답은 <img src="${answer_link}/${e_subnum}.PNG" /></div>
 		</form>
 	</div>

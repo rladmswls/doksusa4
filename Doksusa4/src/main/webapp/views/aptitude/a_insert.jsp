@@ -26,7 +26,7 @@
    <%-- <input type="hidden" name="u_num" id="u_num" value="${aptitude.a_num }"><br> --%>
    문제링크<input type="text" name="a_link"><br>
    답지링크<input type="text" name="a_answer"><br><br>
-   <input type="submit" value="등록"> 
+   <input class="btn btn-default" type="submit" value="등록"> 
 </form>
 </div>
 </body>

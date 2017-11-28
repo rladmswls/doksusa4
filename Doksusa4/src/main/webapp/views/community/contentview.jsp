@@ -48,8 +48,8 @@
 					<input type="hidden" name="c_num" id="c_num"
 						value="${communityuserdto.c_num}"> <input type="hidden"
 						name="c_group" id="c_group" value="${communityuserdto.c_group}">
-					<input type="button" onclick="updateCommunity()" value="수정하기">
-					<input type="button" onclick="deleteCommunity()" value="삭제하기">
+					<input class="btn btn-default" type="button" onclick="updateCommunity()" value="수정하기">
+					<input class="btn btn-default" type="button" onclick="deleteCommunity()" value="삭제하기">
 				</form>
 			</c:when>
 		</c:choose>
@@ -90,8 +90,8 @@
 											<input type="hidden" name="c_num" id="c_num" value="${communityuserdto.c_num}">
 											<input type="hidden" name="ctu_num" id="ctu_num" value="${commentlist.ctu_num}">
 											<input type="hidden" name="ct_date" id="ct_date" value="${commentlist.ct_date}">
-											<td><input type="button" onclick="updateComment()" value="수정"></td>
-											<td><input type="button" onclick="deleteComment()" value="삭제"></td>
+											<td><input class="btn btn-default" type="button" onclick="updateComment()" value="수정"></td>
+											<td><input class="btn btn-default" type="button" onclick="deleteComment()" value="삭제"></td>
 									</c:when>
 							</c:choose>
 						</tr>
@@ -105,7 +105,7 @@
 			<input type="hidden" name="c_num" id="c_num" value="${communityuserdto.c_num}"> 
 			<input type="hidden" name="ctu_num" id="ctu_num" value="${sessionScope.u_num}"> 
 			<input type="text" name="ct_comment" id="ct_comment"> 
-			<input type="submit" value="댓글 작성">
+			<input class="btn btn-default" type="submit" value="댓글 작성">
 		</form>
 
 	</div>

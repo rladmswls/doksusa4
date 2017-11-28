@@ -31,7 +31,7 @@
 	문제링크<input type="text" name="e_link"><br>
 	답지링크<input type="text" name="e_answer"><br>
 	해설링크<input type="text" name="e_solution"><br><br>
-	<input type="submit" value="등록"> 
+	<input class="btn btn-default" type="submit" value="등록"> 
 </form>
 </div>
 </body>

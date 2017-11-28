@@ -13,7 +13,7 @@
 <form action="searchID.do" method="post" >
       <h3>아이디 찾기</h3>
       <input type="tel" name="u_phone" placeholder="전화번호입력"><br>
-      <input type="submit" value="아이디 찾기">
+      <input class="btn btn-default" type="submit" value="아이디 찾기">
    </form>
    </div>
 </body>

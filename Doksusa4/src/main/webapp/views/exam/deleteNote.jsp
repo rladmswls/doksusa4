@@ -16,7 +16,7 @@
 			<input type="hidden" name="e_subnum" id="e_subnum" value=${e_subnum }>
 			<input type="radio" name="yesOrno" value="예">예 <input
 				type="radio" name="yesOrno" value="아니오">아니요<br> <input
-				type="submit" value="확인">
+				 class="btn btn-default" type="submit" value="확인">
 		</form>
 	</div>
 </body>

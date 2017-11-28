@@ -44,7 +44,7 @@
 		${num } <input type="checkbox" name="a_subnum" id="${a_subnum }" value="${num }">
 		<c:if test="${num%5==0 }"><br></c:if>
 	</c:forEach>
-	<input type="button" value="제출"  onclick="checka_Wrong()">
+	<input class="btn btn-default" type="button" value="제출"  onclick="checka_Wrong()">
 </form>
 </div>
 </body>

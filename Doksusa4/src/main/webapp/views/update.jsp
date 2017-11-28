@@ -27,11 +27,11 @@
 	</table>
 		<input type="hidden" name="u_num" id="u_num" value="${sessionScope.u_num}" > 
 		<input type="hidden" name="u_id" id="u_id" value="${sessionScope.u_id}" > 
-		<input type="submit" value="저장">
+		<input class="btn btn-default" type="submit" value="저장">
 	</form>
 	<hr>
 	<form action="delete.do">
-		<input type="submit" value="탈퇴">
+		<input class="btn btn-default" type="submit" value="탈퇴">
 	</form>
 </div>
 </body>
