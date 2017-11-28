@@ -17,6 +17,13 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="resources/jquery-3.2.1.min.js"></script>
+<script>
+	$(function(){
+		$("#check").on("click",function(){
+			if()
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -33,7 +40,7 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">모의고사<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="esubject.do?e_subject=언어">언어</a></li>
+						<li><a id="check" href="esubject.do?e_subject=언어">언어</a></li>
 						<li><a href="esubject.do?e_subject=수리-가형">수리-가형</a></li>
 						<li><a href="esubject.do?e_subject=수리-나형">수리-나형</a></li>
 						<li><a href="esubject.do?e_subject=외국어">외국어</a></li>
@@ -72,8 +79,8 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">마이페이지<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="u_ewrongnote.do">모의고사 오답 노트</a></li>
-						<li><a href="u_awrongnote.do">적성 오답 노트</a></li>
+						<li><a href="eu_wrongnote.do">모의고사 오답 노트</a></li>
+						<li><a href="au_wrongnote.do">적성 오답 노트</a></li>
 						<li><a href="check.do">개인정보수정</a></li>
 					</ul></li>
 			</ul>
