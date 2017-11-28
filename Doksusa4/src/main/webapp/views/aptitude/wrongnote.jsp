@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 
 <script>
-	function checkWrong() {
+	function checka_Wrong() {
 		//alert($("#myfrm").serialize());
 		$.ajax({
 			url : "a_checkWrong.do",
 			data : $("#myfrm").serialize(),
 			success : function(responsetext) {
+				alert("aaaaaa");
 				if (responsetext == "1") {
 					alert("이미 문제가 등록되어 있습니다");
 					$("input[type='checkbox']").prop("checked",false);
@@ -38,12 +39,12 @@
 <form id="myfrm" name="f" action="" method="post">
 <input type="hidden" id="a_num" name="a_num" value=${a_num }>
 <input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
-	<c:set var ="aw_num" value="0"></c:set>
-	<c:forEach var="aw_num" begin="1" end="${end }">
-		${aw_num } <input type="checkbox" name="a_subnum" id="${a_subnum }" value="${aw_num }">
-		<c:if test="${aw_num%5==0 }"><br></c:if>
+	<c:set var ="num" value="0"></c:set>
+	<c:forEach var="num" begin="1" end="${end }">
+		${num } <input type="checkbox" name="a_subnum" id="${a_subnum }" value="${num }">
+		<c:if test="${num%5==0 }"><br></c:if>
 	</c:forEach>
-	<input type="submit" value="제출"  onclick="checkWrong()">
+	<input type="button" value="제출"  onclick="checka_Wrong()">
 </form>
 </div>
 </body>

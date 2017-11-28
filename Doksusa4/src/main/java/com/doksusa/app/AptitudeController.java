@@ -68,6 +68,9 @@ public class AptitudeController {
    @RequestMapping("/a_checkWrong.do")
 	@ResponseBody
 	public String checkID(int[] a_subnum, int a_num) {
+	   for(int i : a_subnum){
+		   System.out.println(i);
+	   }
 		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByA_num(a_num);
 		for (A_wrongnoteDTO awdto : aw_list) {
 			for (int i : a_subnum) {
@@ -175,11 +178,11 @@ public class AptitudeController {
 		if (yesOrno.equals("예")) {
 			awservice.aw_delete(new A_wrongnoteDTO(a_num, a_subnum, u_num));
 		}
-		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByA_num(a_num);
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
 		List<A_wrongMyNoteDTO> a_list = new ArrayList<A_wrongMyNoteDTO>();
 		for (A_wrongnoteDTO awdto : aw_list) {
-			AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
-			String a_link = adto.getA_link().substring(6, adto.getA_link().length() - 4);
+			AptitudeDTO adto = aptitudeservice.ap_selectByAnum(awdto.getA_num());
+			String a_link = adto.getA_link().substring(9, adto.getA_link().length() - 4);
 			a_list.add(new A_wrongMyNoteDTO(awdto.getA_num(), awdto.getA_subnum(), u_num, a_link));
 		}
 		model.addAttribute("a_list", a_list);

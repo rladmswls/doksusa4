@@ -128,6 +128,8 @@ public class ExamController {
 		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
 		List<E_wrongMyNoteDTO> e_list = new ArrayList<E_wrongMyNoteDTO>();
 		for (E_wrongnoteDTO ewdto : ew_list) {
+			edto = examservice.exam_selectByEnum(ewdto.getE_num());
+			e_link = edto.getE_link().substring(6, edto.getE_link().length() - 4);
 			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
 		}
 		model.addAttribute("e_list", e_list);
