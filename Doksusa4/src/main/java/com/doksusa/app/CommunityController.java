@@ -57,7 +57,6 @@ public class CommunityController {
 		List<CommunityUserDTO> list2 = user_list(list1);
 		
 		List<ForewordDTO> foreword = foreword_list(c_group);
-	
 		model.addAttribute("foreword", foreword);
 		
 		Collections.sort(list2, new communitycomp());
@@ -85,6 +84,9 @@ public class CommunityController {
 		@RequestMapping(value = "/communityinsert.do", method = RequestMethod.POST)
 		public String communityinsertPost(int u_num, String f_foreword, int c_group, String c_title, String c_content,
 				Model model) {
+			
+			List<ForewordDTO> foreword = foreword_list(c_group);
+			model.addAttribute("foreword", foreword);
 			Date c_date = date();
 			CommunityDTO cdto = new CommunityDTO(0, u_num, f_foreword, c_group, c_title, c_content, c_date);
 			cmservice.cm_insert(cdto);
@@ -213,8 +215,10 @@ public class CommunityController {
 			List<CommunityDTO> list= new ArrayList<CommunityDTO>();
 			List<CommunityUserDTO> list2 = new ArrayList<CommunityUserDTO>();
 			List<CommunityUserDTO> list3 = new ArrayList<CommunityUserDTO>();
+			List<ForewordDTO> list4  = foreword_list(c_group);
 			
 			model.addAttribute("c_group",c_group);
+			model.addAttribute("foreword",list4);
 			
 			switch(search){
 			case 1: 
@@ -270,7 +274,7 @@ public class CommunityController {
 			model.addAttribute("foreword", flist);
 			return "community/communitylist";
 		}
-		
+	
 	
 	
 

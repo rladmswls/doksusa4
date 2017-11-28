@@ -19,6 +19,7 @@
 		<c:if test="${c_group=='4'}">
 		<h3>N수생 커뮤니티</h3></c:if>
 		
+		
 		<form action="searchforeword.do" >
         <input type="hidden" name="c_group" id="c_group" value="${c_group}">
       	말머리 :
@@ -29,7 +30,7 @@
     </select>
     <input type="submit" value="검색">
     </form>
-    
+   
     
 
 		<div class="container">
