@@ -20,7 +20,7 @@
 <script>
 	$(function(){
 		$(".check").on("click",function(){
-			if(${session.getAttribute("user") == null}){
+			if(${user == null}){
 				alert("로그인 후 이용하세요.");
 				$(".check").attr("href", "home.do")
 			}
@@ -75,7 +75,8 @@
 					data-toggle="dropdown" href="#">커뮤니티<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a class="check" href="communitylist.do?c_group=1">공지사항</a></li>
-						<li><a class="check" href="communitylist.do?c_group=2">고1 + 고2</a></li>
+						<li><a class="check" href="communitylist.do?c_group=2">고1
+								+ 고2</a></li>
 						<li><a class="check" href="communitylist.do?c_group=3">고3</a></li>
 						<li><a class="check" href="communitylist.do?c_group=4">N수생</a></li>
 					</ul></li>
