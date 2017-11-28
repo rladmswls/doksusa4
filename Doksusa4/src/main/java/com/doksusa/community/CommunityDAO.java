@@ -32,6 +32,7 @@ public interface CommunityDAO {
 	
 	public List<CommunityDTO> cm_selectUserBy(String str);
 	
+	public List<CommunityDTO> unum_selectBy(int u_num);
 	
 	
 	

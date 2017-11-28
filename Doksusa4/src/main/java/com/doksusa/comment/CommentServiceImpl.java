@@ -39,7 +39,11 @@ public class CommentServiceImpl implements CommentService {
 	public int ct_update(CommentDTO codto) {
 		return ct.ct_update(codto);
 	}
-
+	
+	@Override
+	public List<CommentDTO> ctu_selectBy(int ctu_num) {
+		return ct.ctu_selectBy(ctu_num);
+	}
 
 	
 	

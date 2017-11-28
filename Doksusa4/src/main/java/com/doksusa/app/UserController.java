@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.a_sub.A_subDTO;
+import com.doksusa.comment.CommentDTO;
+import com.doksusa.comment.CommentService;
+import com.doksusa.community.CommunityDTO;
+import com.doksusa.community.CommunityService;
 import com.doksusa.ipsiinfo.IpsiInfoDTO;
 import com.doksusa.ipsiinfo.IpsiInfoService;
 import com.doksusa.user.UserDTO;
@@ -28,6 +32,10 @@ public class UserController {
 	UserService userservice;
 	@Autowired
 	IpsiInfoService ipsiservice;
+	@Autowired
+	CommentService ctservice;
+	@Autowired
+	CommunityService cmservice;
 
 	@RequestMapping("/home.do")
 	public String home(Model model) {
@@ -120,16 +128,29 @@ public class UserController {
 	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
 	public String userDelete(String yesOrno, Model model, HttpSession session) {
 		System.out.println(yesOrno);
+		List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
+		model.addAttribute("ipsiInfo", ipsiInfo);
 		if (yesOrno.equals("예")) {
-			List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-			model.addAttribute("ipsiInfo", ipsiInfo);
-			String u_id = (String) session.getAttribute("u_id");
-			userservice.user_delete(u_id);
+			int u_num =(Integer) session.getAttribute("u_num");
+		
+		List<CommentDTO> list = ctservice.ctu_selectBy(u_num);
+			for(CommentDTO codto : list) {
+				ctservice.ct_delete(codto.getC_num());
+			}
+			
+		List<CommunityDTO> list2 = cmservice.unum_selectBy(u_num);
+			for(CommunityDTO cdto : list2){
+				cmservice.cm_delete(cdto.getC_num());
+			}	
+					
+			userservice.user_delete(u_num);
 			session.invalidate();
+		
 			return "home";
+		
+		
+		
 		} else {
-			List<IpsiInfoDTO> ipsiInfo = ipsiservice.ipsi_selectAll();
-			model.addAttribute("ipsiInfo", ipsiInfo);
 			return "home";
 		}
 	}

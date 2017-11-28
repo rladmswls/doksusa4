@@ -71,6 +71,11 @@ public class CommunityDAOImpl implements CommunityDAO{
 		return session.selectList(namespace + "cm_searchForewordBy" , f_foreword);
 	}
 
+	@Override
+	public List<CommunityDTO> unum_selectBy(int u_num) {
+		return session.selectList(namespace + "unum_selectBy" , u_num);
+	}
+
 
 	
 	

@@ -26,4 +26,10 @@
 		ct_comment=#{ct_comment} where ct_num=#{ct_num}
 	</update>
 
+
+<select id="ctu_selectBy" resultType="codto" parameterType="int">
+		select * from comments where ctu_num=#{ctu_num}
+	</select>
+	
+
 </mapper>

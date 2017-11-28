@@ -26,8 +26,11 @@
 		
 			<select id="cm_searchForewordBy" parameterType="string" resultType="cmdto">
 		select * from community where f_foreword =#{f_foreword}</select>
+	
 		
 		
+		<select id="unum_selectBy" resultType="cmdto" parameterType="int">
+		select * from community where u_num=#{u_num}</select>
 		
 <!-- 		<select id="cm_selectUserBy" parameterType="string" resultType="cmdto">
 		select * from community where c_title like '%str=#{str}'</select> -->

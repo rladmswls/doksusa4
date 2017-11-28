@@ -39,4 +39,9 @@ public class CommentDAOImpl implements CommentDAO{
 		return session.update(namespace + "ct_update", codto);
 	}
 
+	@Override
+	public List<CommentDTO> ctu_selectBy(int ctu_num) {
+		return session.selectList(namespace + "ctu_selectBy", ctu_num);
+	}
+
 }

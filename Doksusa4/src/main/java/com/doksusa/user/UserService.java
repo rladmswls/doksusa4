@@ -18,7 +18,7 @@ public interface UserService {
 
    public UserDTO user_update(UserDTO userdto);
 
-   public int user_delete(String u_id);
+   public int user_delete(int u_num);
 
    public UserDTO login(String u_id, String u_pw);
    

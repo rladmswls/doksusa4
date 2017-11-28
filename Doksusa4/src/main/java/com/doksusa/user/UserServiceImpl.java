@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int user_delete(String u_id) {
-		return user.user_delete(u_id);
+	public int user_delete(int u_num) {
+		return user.user_delete(u_num);
 	}
 
 	@Override

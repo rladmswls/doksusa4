@@ -75,6 +75,11 @@ public class CommunityServiceImpl implements CommunityService{
 		return cm.cm_searchForewordBy(f_foreword);
 	}
 
+	@Override
+	public List<CommunityDTO> unum_selectBy(int u_num) {
+		return cm.unum_selectBy(u_num);
+	}
+
 
 	
 

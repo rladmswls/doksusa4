@@ -15,4 +15,7 @@ public interface CommentService {
 
 	public int ct_update(CommentDTO codto);
 	
+	
+	
+	public List<CommentDTO> ctu_selectBy(int ctu_num);
 }

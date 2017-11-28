@@ -24,8 +24,8 @@
 		update users set u_pw=#{u_pw},u_nick=#{u_nick}, u_phone=#{u_phone} where
 		u_num=#{u_num}
 	</update>
-	<delete id="user_delete" parameterType="string">
-		delete from users where u_id=#{u_id}
+	<delete id="user_delete" parameterType="int">
+		delete from users where u_num=#{u_num}
 	</delete>
 	<select id="user_login" resultType="userdto" parameterType="map">
 		select * from users where u_id=#{u_id} and u_pw=#{u_pw}
