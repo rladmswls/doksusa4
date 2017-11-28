@@ -29,6 +29,7 @@
 	</div>
 </form>
 <form action="e_delete.do">
+	
 <div class="container">
 	<table class="table" >
    <thead class="hd">
@@ -49,11 +50,11 @@
    </thead>
    
   <c:set var="num" value="0"></c:set> 
-  
+   
    <c:forEach var="list" items="${esubjectlist}">
    <tbody>
       <tr>
-        
+       <input type="hidden" name="e_num" value="${list.e_num}">
          <td>${list.e_year}</td>
          <td>${list.e_grade}</td>
          <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
