@@ -82,8 +82,7 @@
 			<form action="searchlist.do">
 			<div class="container">
       <div class="btn-group" data-toggle="buttons">
-          <input type="radio"  name="search" value="1">제목
-    
+          <input type="radio"  name="search" value="1" checked="checked">제목
           <input type="radio" name="search" value="2">작성자
           <input type="radio" name="search" value="3">내용
       </div>

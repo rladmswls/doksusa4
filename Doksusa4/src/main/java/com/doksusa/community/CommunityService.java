@@ -29,10 +29,7 @@ public interface CommunityService {
 	public List<CommunityDTO> cm_searchForewordBy(String f_foreword);
 	
 	
-	
-	
-	
-	public List<CommunityDTO> cm_selectUserBy(String str);
+
 	
 	public List<CommunityDTO> unum_selectBy(int u_num);
 	

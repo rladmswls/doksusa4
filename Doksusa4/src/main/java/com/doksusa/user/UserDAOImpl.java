@@ -84,4 +84,9 @@ public class UserDAOImpl implements UserDAO {
 		return session.selectOne(namespace + "user_select3", data);
 	}
 
+	@Override
+	public List<UserDTO> user_search(String str) {
+		return session.selectList(namespace + "user_search", str);
+	}
+
 }

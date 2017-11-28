@@ -66,4 +66,10 @@ public class UserServiceImpl implements UserService {
 		return user.user_select3(u_id, u_nick, u_phone);
 	}
 
+	@Override
+	public List<UserDTO> user_search(String str) {
+		return user.user_search(str);
+	}
+	
+
 }

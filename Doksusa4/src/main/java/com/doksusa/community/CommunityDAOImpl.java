@@ -56,10 +56,7 @@ public class CommunityDAOImpl implements CommunityDAO{
 		return session.selectList(namespace + "cm_searchTitleBy" , str);
 	}
 
-	@Override
-	public List<CommunityDTO> cm_selectUserBy(String str) {
-		return session.selectList(namespace + "cm_selectUserBy" , str);
-	}
+
 
 	@Override
 	public List<CommunityDTO> cm_searchContentBy(String str) {

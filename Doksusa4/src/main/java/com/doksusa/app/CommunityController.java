@@ -24,6 +24,8 @@ import com.doksusa.community.CommunityService;
 import com.doksusa.community.CommunityUserDTO;
 import com.doksusa.foreword.ForewordDTO;
 import com.doksusa.foreword.ForewordService;
+import com.doksusa.user.UserDTO;
+import com.doksusa.user.UserService;
 
 class communitycomp implements Comparator<CommunityUserDTO>{
 	@Override
@@ -48,6 +50,8 @@ public class CommunityController {
 	ForewordService fservice;
 	@Autowired
 	CommentService ctservice;
+	@Autowired
+	UserService userservice;
 	
 	
 	//list 蹂닿린
@@ -210,12 +214,14 @@ public class CommunityController {
 		
 
 		@RequestMapping(value = "/searchlist.do", method = RequestMethod.GET)
-		public String search_list(int c_group,int search, String search_content, Model model) {
+		public String search_list(int c_group,Integer search, String search_content, Model model) {
 		
 			List<CommunityDTO> list= new ArrayList<CommunityDTO>();
+			List<CommunityDTO> list6= new ArrayList<CommunityDTO>();
 			List<CommunityUserDTO> list2 = new ArrayList<CommunityUserDTO>();
 			List<CommunityUserDTO> list3 = new ArrayList<CommunityUserDTO>();
 			List<ForewordDTO> list4  = foreword_list(c_group);
+			List<UserDTO> list5= new ArrayList<UserDTO>();
 			
 			model.addAttribute("c_group",c_group);
 			model.addAttribute("foreword",list4);
@@ -225,13 +231,19 @@ public class CommunityController {
 				list = cmservice.cm_searchTitleBy(search_content);
 				break;
 			case 2:
-				list = cmservice.cm_selectUserBy(search_content);
+				list5 = userservice.user_search(search_content);
+				for(UserDTO udto : list5){
+					list6 = cmservice.unum_selectBy(udto.getU_num());
+					for(CommunityDTO cdto: list6){
+						list.add(cdto);
+					}
+				}
 				break;
 			case 3:
 				list = cmservice.cm_searchContentBy(search_content);
 				break;
 			default:
-				break;
+				return "redirect:communitylist.do";
 			}
 			
 			

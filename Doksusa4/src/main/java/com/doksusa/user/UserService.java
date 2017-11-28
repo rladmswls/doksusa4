@@ -24,4 +24,5 @@ public interface UserService {
    
    public UserDTO user_select3(String u_id,String u_nick,String u_phone);
 
+   public List<UserDTO> user_search(String str);
 }

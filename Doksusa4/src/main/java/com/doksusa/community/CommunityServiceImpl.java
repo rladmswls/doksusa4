@@ -64,12 +64,6 @@ public class CommunityServiceImpl implements CommunityService{
 		return cm.cm_searchContentBy(str);
 	}
 	
-	
-	@Override
-	public List<CommunityDTO> cm_selectUserBy(String str) {
-		return cm.cm_selectUserBy(str);
-	}
-
 	@Override
 	public List<CommunityDTO> cm_searchForewordBy(String f_foreword) {
 		return cm.cm_searchForewordBy(f_foreword);

@@ -36,4 +36,11 @@
 	<select id="user_select3" resultType="userdto" parameterType="map">
 		select * from users where u_id=#{u_id} and u_nick=#{u_nick} and u_phone=#{u_phone}
 	</select>
+	
+		<select id="user_search" resultType="userdto" parameterType="string">
+		select * from users where u_nick like '%'||#{str}||'%'</select>
+	
+	
+	
+	
 </mapper>
