@@ -232,17 +232,18 @@ public class CommunityController {
 			
 			
 			list2 = user_list(list);
-			for(CommunityUserDTO cudto : list2){
-				if(cudto.getC_group()== c_group){
-					list3.add(cudto);
+			if(search_content == null){
+				return "redirect:communitylist.do";
+			}else{
+				for(CommunityUserDTO cudto : list2){
+					if(cudto.getC_group()== c_group){
+						list3.add(cudto);
+					}
 				}
+				Collections.sort(list3, new communitycomp());
+				model.addAttribute("list", list3);
+				return "community/communitylist";
 			}
-			
-			Collections.sort(list3, new communitycomp());
-			model.addAttribute("list", list3);
-			return "community/communitylist";
-			
-			
 		}
 
 	
