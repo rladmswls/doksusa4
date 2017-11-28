@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 <script>
 function deleteNote(){
-	f.action="deleteNote.do";
+	f.action="e_deleteNote.do";
 	f.submit();
 }
 function showAnswer(){
 	$.ajax({
-		url : "showAnswer.do",
+		url : "showE_Answer.do",
 		data : $("#myfrm").serialize(),
 		success : function(responsetext) {
 			if (responsetext == "1") {

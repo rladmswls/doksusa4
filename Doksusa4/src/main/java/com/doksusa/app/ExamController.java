@@ -71,7 +71,7 @@ public class ExamController {
 		}
 	}
 
-	@RequestMapping("/checkWrong.do")
+	@RequestMapping("/e_checkWrong.do")
 	@ResponseBody
 	public String checkID(int[] e_subnum, int e_num) {
 		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByE_num(e_num);
@@ -84,7 +84,7 @@ public class ExamController {
 		return "0";
 	}
 
-	@RequestMapping("/u_wrongnote.do")
+	@RequestMapping("/u_ewrongnote.do")
 	public String u_wrongnote(HttpSession session, Model model) {
 		int u_num = (Integer) session.getAttribute("u_num");
 		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
@@ -98,7 +98,7 @@ public class ExamController {
 		return "exam/u_wrongnote";
 	}
 
-	@RequestMapping("/wrongnote.do")
+	@RequestMapping("/e_wrongnote.do")
 	public String omr(String e_subject, Model model, String e_num) {
 		int end = 0;
 
@@ -114,7 +114,7 @@ public class ExamController {
 		return "exam/wrongnote";
 	}
 
-	@RequestMapping(value = "/wrongnote.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/e_wrongnote.do", method = RequestMethod.POST)
 	public String wrongnote(int[] e_subnum, int e_num, Model model, int u_num) {
 
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
@@ -147,7 +147,7 @@ public class ExamController {
 		return "exam/showE_wrong";
 	}
 
-	@RequestMapping("/showAnswer.do")
+	@RequestMapping("/showE_Answer.do")
 	@ResponseBody
 	public String showAnswer(int e_num, int e_subnum, Model model) {
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
@@ -161,14 +161,14 @@ public class ExamController {
 		return "1";
 	}
 	
-	@RequestMapping("/deleteNote.do")
+	@RequestMapping("/e_deleteNote.do")
 	public String noteDelete(int e_num, int e_subnum, Model model) {
 		model.addAttribute("e_num", e_num);
 		model.addAttribute("e_subnum", e_subnum);
 		return "exam/deleteNote";
 	}
 
-	@RequestMapping(value = "/deleteNote.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/e_deleteNote.do", method = RequestMethod.POST)
 	public String userDelete(int e_num, int e_subnum, String yesOrno, Model model, HttpSession session) {
 		System.out.println(yesOrno);
 		int u_num = (Integer) session.getAttribute("u_num");

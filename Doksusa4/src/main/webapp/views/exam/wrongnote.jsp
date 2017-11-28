@@ -10,7 +10,7 @@
 	function checkWrong() {
 		//alert($("#myfrm").serialize());
 		$.ajax({
-			url : "checkWrong.do",
+			url : "e_checkWrong.do",
 			data : $("#myfrm").serialize(),
 			success : function(responsetext) {
 				if (responsetext == "1") {
@@ -18,7 +18,7 @@
 					$("input[type='checkbox']").prop("checked",false);
 
 				} else {
-					f.action = "wrongnote.do";
+					f.action = "e_wrongnote.do";
 					f.submit();
 				}
 			}

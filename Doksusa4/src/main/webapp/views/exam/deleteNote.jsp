@@ -11,7 +11,7 @@
 	<div id="here">
 		<h3>오답문제 삭제</h3>
 		정말 삭제하시겠습니까?
-		<form name="f" action="deleteNote.do" method="POST">
+		<form name="f" action="e_deleteNote.do" method="POST">
 			<input type="hidden" name="e_num" id="e_num" value=${e_num }>
 			<input type="hidden" name="e_subnum" id="e_subnum" value=${e_subnum }>
 			<input type="radio" name="yesOrno" value="예">예 <input
