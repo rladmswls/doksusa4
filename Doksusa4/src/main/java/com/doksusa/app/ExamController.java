@@ -84,7 +84,7 @@ public class ExamController {
 		return "0";
 	}
 
-	@RequestMapping("/u_ewrongnote.do")
+	@RequestMapping("/eu_wrongnote.do")
 	public String u_wrongnote(HttpSession session, Model model) {
 		int u_num = (Integer) session.getAttribute("u_num");
 		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
@@ -95,7 +95,7 @@ public class ExamController {
 			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
 		}
 		model.addAttribute("e_list", e_list);
-		return "exam/u_wrongnote";
+		return "exam/eu_wrongnote";
 	}
 
 	@RequestMapping("/e_wrongnote.do")
@@ -132,7 +132,7 @@ public class ExamController {
 		}
 		model.addAttribute("e_list", e_list);
 
-		return "exam/u_wrongnote";
+		return "exam/eu_wrongnote";
 	}
 
 	@RequestMapping("/showE_wrong.do")
@@ -183,7 +183,7 @@ public class ExamController {
 			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
 		}
 		model.addAttribute("e_list", e_list);
-		return "exam/u_wrongnote";
+		return "exam/eu_wrongnote";
 	}
 
 	@RequestMapping("/e_insert.do")

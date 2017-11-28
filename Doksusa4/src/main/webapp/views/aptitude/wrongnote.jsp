@@ -6,6 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<script>
+	function checkWrong() {
+		//alert($("#myfrm").serialize());
+		$.ajax({
+			url : "a_checkWrong.do",
+			data : $("#myfrm").serialize(),
+			success : function(responsetext) {
+				if (responsetext == "1") {
+					alert("이미 문제가 등록되어 있습니다");
+					$("input[type='checkbox']").prop("checked",false);
+
+				} else {
+					f.action = "a_wrongnote.do";
+					f.submit();
+				}
+			}
+
+		});
+
+	}
+</script>
 </head>
 <body>
 <jsp:include page="../up.jsp" flush="false"/>
@@ -18,10 +40,10 @@
 <input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
 	<c:set var ="aw_num" value="0"></c:set>
 	<c:forEach var="aw_num" begin="1" end="${end }">
-		${aw_num } <input type="checkbox" name="asu" id="${asu }" value="${aw_num }">
+		${aw_num } <input type="checkbox" name="a_subnum" id="${a_subnum }" value="${aw_num }">
 		<c:if test="${aw_num%5==0 }"><br></c:if>
 	</c:forEach>
-	<input type="submit" value="제출">
+	<input type="submit" value="제출"  onclick="checkWrong()">
 </form>
 </div>
 </body>

@@ -62,7 +62,7 @@
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>
-         <td><a href="wrongnote.do?e_subject=${list.e_subject}&e_num=${list.e_num}">오답노트</a></td>
+         <td><a href="e_wrongnote.do?e_subject=${list.e_subject}&e_num=${list.e_num}">오답노트</a></td>
          <c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}">
 			<td><input type="submit" value="삭제"></td>
