@@ -16,7 +16,6 @@
     <table class="table">
    <thead class="hd">
    <tr>
-      <th id="a_num">글번호</th>
       <th id="a_year">년도</th>
       <th id="a_school">학교</th>
       <th id="a_title">제목</th>
@@ -34,15 +33,15 @@
    <c:forEach var="list" items="${aschoollist}">
    <tbody>
       <tr>
-         <td><input type="hidden" name="a_num" value="${list.a_num}">${list.a_num}</td>
          <td>${list.a_year}</td>
-         <td><input type="hidden" name="a_school" value="${list.a_school}">${list.a_school}</td>
+         <td><c:if test="${num==0}"><input type="hidden" name="a_school" value="${list.a_school}">${list.a_school}</c:if></td>
          <td>${list.a_title}</td>
          <td><a href="${list.a_link}"><img src="aptitude/pdf.png"/></a></td>
          <td><a href="${list.a_answer}"><img src="aptitude/pdf.png"/></a></td>
          <td><a href="a_wrongnote.do?a_school=${list.a_school}&a_num=${list.a_num}">오답노트</a></td>
        <c:choose>
          <c:when test="${sessionScope.u_id == 'dok'}">
+	         <input type="hidden" name="a_num" value="${list.a_num}">
             <td><input  class="btn btn-default" type="submit" value="삭제"></td>
             <td></td>
          </c:when>

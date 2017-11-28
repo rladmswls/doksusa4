@@ -54,15 +54,14 @@ public class AptitudeController {
       aptitudeservice.ap_insert(aptitudedto);
       List<AptitudeDTO> list = aptitudeservice.ap_selectByA_school(a_school);
       model.addAttribute("aschoollist", list);
-      return "aptitude/aptitudelist";
+      return "aptitude/aschoollist";
    }
    
    @RequestMapping("/a_delete.do")
    public String ap_delete(int a_num, String a_school, Model model){
 	   aptitudeservice.ap_delete(a_num);
-	   List<AptitudeDTO> list = aptitudeservice.ap_selectByA_school(a_school);
-	   model.addAttribute("aschoollist", list);
-	   return "aptitude/aschoollist";
+	   model.addAttribute("a_school", a_school);
+	   return "redirect:aschool.do";
    }
    
    @RequestMapping("/a_checkWrong.do")
