@@ -9,7 +9,7 @@
 		select * from a_wrongnote where u_num=#{u_num}
 	</select>
 	
-	<select id="aw_selectByE_num" parameterType="int" resultType="awdto">
+	<select id="aw_selectByA_num" parameterType="int" resultType="awdto">
 		select * from a_wrongnote where a_num=#{a_num}
 	</select>
 	
@@ -20,7 +20,6 @@
 	<delete id="aw_delete" parameterType="awdto">
 		delete from a_wrongnote where a_num=#{a_num} and a_subnum=#{a_subnum}
 	</delete>
-
 
 
 </mapper>

@@ -9,7 +9,7 @@
 
 <script>
 	function checka_Wrong() {
-		//alert($("#myfrm").serialize());
+		alert($("#myfrm").serialize());
 		$.ajax({
 			url : "a_checkWrong.do",
 			data : $("#myfrm").serialize(),
@@ -37,7 +37,7 @@
 (오답노트에 등록하고 싶은 번호를 선택하세요.)<br>
 <hr>
 <form id="myfrm" name="f" action="" method="post">
-<input type="hidden" id="a_num" name="a_num" value=${a_num }>
+<input type="hidden" id="a_num" name="a_num" value=${param.a_num }>
 <input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
 	<c:set var ="num" value="0"></c:set>
 	<c:forEach var="num" begin="1" end="${end }">
