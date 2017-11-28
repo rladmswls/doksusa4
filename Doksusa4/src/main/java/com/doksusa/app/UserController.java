@@ -132,24 +132,25 @@ public class UserController {
 		model.addAttribute("ipsiInfo", ipsiInfo);
 		if (yesOrno.equals("예")) {
 			int u_num =(Integer) session.getAttribute("u_num");
-		
+		//댓글 삭제
 		List<CommentDTO> list = ctservice.ctu_selectBy(u_num);
 			for(CommentDTO codto : list) {
 				ctservice.ct_delete(codto.getC_num());
 			}
+		
 			
+		//게시글 삭제	
 		List<CommunityDTO> list2 = cmservice.unum_selectBy(u_num);
 			for(CommunityDTO cdto : list2){
 				cmservice.cm_delete(cdto.getC_num());
 			}	
-					
+			
 			userservice.user_delete(u_num);
 			session.invalidate();
-		
+			
 			return "home";
-		
-		
-		
+
+			
 		} else {
 			return "home";
 		}
