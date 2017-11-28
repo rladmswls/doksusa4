@@ -9,7 +9,7 @@
    alert("${message}");
    history.go(-1); 
 </script>
-<title>Insert title here</title>
+<title>Doksusa</title>
 </head>
 <body>
 <jsp:include page="up.jsp" flush="false"/>

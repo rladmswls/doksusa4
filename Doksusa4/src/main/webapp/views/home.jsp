@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <html>
 <head>
-<title>doksusa</title>
+<title>Doksusa</title>
 </head>
 <body>
 <jsp:include page="up.jsp" flush="false"/>

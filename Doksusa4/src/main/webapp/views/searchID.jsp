@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Doksusa</title>
 </head>
 <body>
 <jsp:include page="up.jsp" flush="false"/>

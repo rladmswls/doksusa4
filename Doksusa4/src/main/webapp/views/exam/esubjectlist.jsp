@@ -4,7 +4,7 @@
 <!DOCTYPE>
 <html>
 <head>
-<title>Insert title here</title>
+<title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
 </head>
 <body>
