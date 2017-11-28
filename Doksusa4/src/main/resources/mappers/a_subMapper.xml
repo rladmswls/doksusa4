@@ -5,12 +5,24 @@
 <mapper namespace="com.doksusa.as">
 
 	<select id="as_select" resultType="asdto" parameterType="int">
-		select * from a_solution where a_num=#{a_num}</select>	
+		select *
+		from a_solution where a_num=#{a_num}
+	</select>
 	<insert id="as_insert" parameterType="asdto">
-		insert into a_solution (a_num,a_sol) values (#{a_num},#{a_sol})</insert>
+		insert into a_solution
+		(a_num,a_sol) values (#{a_num},#{a_sol})
+	</insert>
 	<update id="as_update" parameterType="int">
-		update a_solution set a_sol=#{a_sol} where a_num=#{a_num}</update>
+		update a_solution set
+		a_sol=#{a_sol} where a_num=#{a_num}
+	</update>
 	<delete id="as_delete" parameterType="int">
-		delete from a_solution where a_num=#{a_num}</delete>
+		delete from a_solution
+		where a_num=#{a_num}
+	</delete>
+	<select id="as_searchLink" resultType="String" parameterType="map">
+		select a_sublink from a_sub where a_num=#{a_num} and
+		a_subnum=#{a_subnum}
+	</select>
 
 </mapper>

@@ -24,8 +24,8 @@ public class A_wrongnoteServiceImpl implements A_wrongnoteService {
 
 
 	@Override
-	public List<A_wrongnoteDTO> aw_selectByE_num(int e_num) {
-		return aw.aw_selectByE_num(e_num);
+	public List<A_wrongnoteDTO> aw_selectByA_num(int a_num) {
+		return aw.aw_selectByA_num(a_num);
 	}
 
 

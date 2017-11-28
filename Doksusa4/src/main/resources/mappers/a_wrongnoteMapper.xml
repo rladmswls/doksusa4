@@ -5,6 +5,21 @@
 <mapper namespace="com.doksusa.aw">
 
 
+ 	<select id="aw_selectByU_num" parameterType="int" resultType="awdto">
+		select * from a_wrongnote where u_num=#{u_num}
+	</select>
+	
+	<select id="aw_selectByE_num" parameterType="int" resultType="awdto">
+		select * from a_wrongnote where a_num=#{a_num}
+	</select>
+	
+	<insert id="aw_insert" parameterType="awdto">
+		insert into a_wrongnote values (#{a_num},#{a_subnum},#{u_num})
+	</insert>
+	
+	<delete id="aw_delete" parameterType="ewdto">
+		delete from a_wrongnote where a_subnum=#{a_subnum}
+	</delete>
 
 
 

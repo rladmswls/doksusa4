@@ -68,7 +68,7 @@ public class AptitudeController {
    @RequestMapping("/a_checkWrong.do")
 	@ResponseBody
 	public String checkID(int[] a_subnum, int a_num) {
-		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByE_num(a_num);
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByA_num(a_num);
 		for (A_wrongnoteDTO awdto : aw_list) {
 			for (int i : a_subnum) {
 				if (awdto.getA_subnum() == i)
@@ -85,7 +85,8 @@ public class AptitudeController {
 		List<A_wrongMyNoteDTO> a_list = new ArrayList<A_wrongMyNoteDTO>();
 		for (A_wrongnoteDTO awdto : aw_list) {
 			AptitudeDTO adto = aptitudeservice.ap_selectByAnum(awdto.getA_num());
-			String a_link = adto.getA_link().substring(6, adto.getA_link().length() - 4);
+			String a_link = adto.getA_link().substring(9, adto.getA_link().length() - 4);
+			System.out.println(a_link);
 			a_list.add(new A_wrongMyNoteDTO(awdto.getA_num(), awdto.getA_subnum(), u_num, a_link));
 		}
 		model.addAttribute("a_list", a_list);
@@ -114,7 +115,7 @@ public class AptitudeController {
 	public String wrongnote(int[] a_subnum, int a_num, Model model, int u_num) {
 
 		AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
-		String a_link = adto.getA_link().substring(6, adto.getA_link().length() - 4);
+		String a_link = adto.getA_link().substring(9, adto.getA_link().length() - 4);
 		System.out.println(a_link);
 		for (int i : a_subnum) {
 			awservice.aw_insert(new A_wrongnoteDTO(a_num, i, u_num));
@@ -133,11 +134,12 @@ public class AptitudeController {
 
 	@RequestMapping("/showA_wrong.do")
 	public String showWrong(int a_num, int a_subnum, Model model) {
-		//String a_link = asubservice.searchLink(a_num, a_subnum);
+		String a_link = asubservice.searchLink(a_num, a_subnum);
+		System.out.println(a_link);
 		AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
 		String answer_link = adto.getA_answer().substring(0,adto.getA_answer().length()-4);
 		model.addAttribute("answer_link", answer_link);
-		//model.addAttribute("a_link", a_link);
+		model.addAttribute("a_link", a_link);
 		model.addAttribute("a_num", a_num);
 		model.addAttribute("a_subnum", a_subnum);
 		return "aptitude/showA_wrong";
@@ -171,7 +173,7 @@ public class AptitudeController {
 		if (yesOrno.equals("예")) {
 			awservice.aw_delete(new A_wrongnoteDTO(a_num, a_subnum, u_num));
 		}
-		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByE_num(a_num);
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByA_num(a_num);
 		List<A_wrongMyNoteDTO> a_list = new ArrayList<A_wrongMyNoteDTO>();
 		for (A_wrongnoteDTO awdto : aw_list) {
 			AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);

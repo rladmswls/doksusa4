@@ -35,7 +35,7 @@
 <h3>오답노트등록</h3>
 (오답노트에 등록하고 싶은 번호를 선택하세요.)<br>
 <hr>
-<form action="a_wrongnote.do" method="post">
+<form id="myfrm" name="f" action="" method="post">
 <input type="hidden" id="a_num" name="a_num" value=${a_num }>
 <input type="hidden" id="u_num" name="u_num" value=${sessionScope.u_num }>
 	<c:set var ="aw_num" value="0"></c:set>

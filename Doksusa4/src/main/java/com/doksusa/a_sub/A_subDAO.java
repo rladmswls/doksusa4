@@ -9,5 +9,6 @@ public interface A_subDAO {
 	public int as_update(int a_num);
 	
 	public int as_delete(int a_num);*/
+	public String searchLink(int a_num, int a_subnum);
 
 }

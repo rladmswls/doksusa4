@@ -20,8 +20,8 @@ public class A_wrongnoteDAOImpl implements A_wrongnoteDAO{
 	}
 
 	@Override
-	public List<A_wrongnoteDTO> aw_selectByE_num(int e_num) {
-		return session.selectList(namespace+"aw_selectByE_num", e_num);
+	public List<A_wrongnoteDTO> aw_selectByA_num(int a_num) {
+		return session.selectList(namespace+"aw_selectByA_num", a_num);
 	}
 
 	@Override

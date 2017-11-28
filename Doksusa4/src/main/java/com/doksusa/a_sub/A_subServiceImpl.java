@@ -13,6 +13,13 @@ public class A_subServiceImpl implements A_subService {
 	public void setAs(A_subDAO as) {
 		this.as = as;
 	}
+
+
+	@Override
+	public String searchLink(int a_num, int a_subnum) {
+		// TODO Auto-generated method stub
+		return as.searchLink(a_num, a_subnum);
+	}
 	
 /*
 	@Override

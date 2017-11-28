@@ -1,5 +1,8 @@
 package com.doksusa.a_sub;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +14,14 @@ public class A_subDAOImpl implements A_subDAO{
 	SqlSession session;
 	
 	String namespace = "com.doksusa.as.";
+
+	@Override
+	public String searchLink(int a_num, int a_subnum) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("a_num", a_num);
+		map.put("a_subnum", a_subnum);
+		return session.selectOne(namespace+"as_searchLink",map);
+	}
 	
 /*	@Override
 	public A_subDTO as_select(int a_num) {

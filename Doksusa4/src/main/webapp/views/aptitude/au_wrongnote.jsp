@@ -6,15 +6,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/exam.css">
+
 </head>
 <body>
-<jsp:include page="../up.jsp" flush="false"/>
-<div id="here">
-<h3>오답노트</h3>
- <c:forEach var="a_dto" items="${a_list}">
-   
-      <a href="showA_wrong.do">${a_dto.a_link }</a>${a_dto.a_subnum }번<hr>	
-   </c:forEach>
-</div>
+	<jsp:include page="../up.jsp" flush="false" />
+	<div id="here">
+		<h3>오답 노트</h3>
+
+		<div class="container">
+
+			<table class="table">
+				<thead class="hd">
+					<tr>
+						<th>오답번호</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					<tr>
+						<c:forEach var="a_dto" items="${a_list}">
+							<tr>
+								<td><a
+									href="showA_wrong.do">${a_dto.a_link } : ${a_dto.a_subnum }번</a></td>
+							</tr>
+						</c:forEach>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
 </body>
 </html>
