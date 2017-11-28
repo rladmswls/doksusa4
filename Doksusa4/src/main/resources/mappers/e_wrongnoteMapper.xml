@@ -17,6 +17,6 @@
 	</insert>
 	
 	<delete id="ew_delete" parameterType="ewdto">
-		delete from e_wrongnote where e_subnum=#{e_subnum}
+		delete from e_wrongnote where e_num=#{e_num} and e_subnum=#{e_subnum}
 	</delete>
 </mapper>

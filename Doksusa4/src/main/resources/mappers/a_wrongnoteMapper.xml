@@ -17,8 +17,8 @@
 		insert into a_wrongnote values (#{a_num},#{a_subnum},#{u_num})
 	</insert>
 	
-	<delete id="aw_delete" parameterType="ewdto">
-		delete from a_wrongnote where a_subnum=#{a_subnum}
+	<delete id="aw_delete" parameterType="awdto">
+		delete from a_wrongnote where a_num=#{a_num} and a_subnum=#{a_subnum}
 	</delete>
 
 

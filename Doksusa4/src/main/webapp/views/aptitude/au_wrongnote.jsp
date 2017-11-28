@@ -29,7 +29,7 @@
 						<c:forEach var="a_dto" items="${a_list}">
 							<tr>
 								<td><a
-									href="showA_wrong.do">${a_dto.a_link } : ${a_dto.a_subnum }번</a></td>
+									href="showA_wrong.do?a_num=${a_dto.a_num}&a_subnum=${a_dto.a_subnum}">${a_dto.a_link } : ${a_dto.a_subnum }번</a></td>
 							</tr>
 						</c:forEach>
 					</tr>
