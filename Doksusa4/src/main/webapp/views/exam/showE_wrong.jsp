@@ -11,24 +11,31 @@ function deleteNote(){
 	f.action="deleteNote.do";
 	f.submit();
 }
-
 function showAnswer(){
-	f.action="showAnswer.do";
-	f.submit();
+	$.ajax({
+		url : "showAnswer.do",
+		data : $("#myfrm").serialize(),
+		success : function(responsetext) {
+			if (responsetext == "1") {
+				//$("#answer").css("display","block");
+				$("#answer").toggle();
+			}
+		}
+	});
 }
 </script>
 </head>
 <body>
-
 	<jsp:include page="../up.jsp" flush="false" />
 	<div id="here">
-		<form name="f" action="" >
+		<form id="myfrm" name="f" action="" >
 			<input type="hidden" name="e_num" id="e_num" value=${e_num }>
 			<input type="hidden" name="e_subnum" id="e_subnum" value=${e_subnum }>
 			<img src="${e_link}" />
 			<hr>
 			<input type="button" onclick="deleteNote()" value="삭제">
-			<input type="button" onclick="showAnswer()" value="정답 확인">
+			<input id="show" type="button" onclick="showAnswer()" value="정답 확인">
+			<div id="answer" style="display:none">정답은 <img src="${answer_link}/${e_subnum}.PNG" /></div>
 		</form>
 	</div>
 </body>

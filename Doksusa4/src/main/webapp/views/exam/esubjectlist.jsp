@@ -5,7 +5,7 @@
     if (session.getAttribute("user") == null) {
         response.sendRedirect("home.do");
     }
-%> 
+%>
 <!DOCTYPE>
 <html>
 <head>
@@ -63,7 +63,7 @@
          <td>${list.e_year}</td>
          <td>${list.e_grade}</td>
          <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
-         <td><input type="hidden" name="e_subject" value="${list.e_subject}">${list.e_subject}</td>
+         <td>${list.e_subject}</td>
          <td><a href="${list.e_link}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>

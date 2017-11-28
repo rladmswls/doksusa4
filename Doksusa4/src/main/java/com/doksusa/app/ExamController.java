@@ -33,6 +33,7 @@ public class ExamController {
 
 	@RequestMapping(value = "/esubject.do", method = RequestMethod.GET)
 	public String showSubjectList(String e_subject, Model model) {
+		System.out.println(e_subject);
 		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
 		model.addAttribute("e_subject", e_subject);
 		model.addAttribute("esubjectlist", list);
@@ -137,6 +138,9 @@ public class ExamController {
 	@RequestMapping("/showE_wrong.do")
 	public String showWrong(int e_num, int e_subnum, Model model) {
 		String e_link = esubservice.searchLink(e_num, e_subnum);
+		ExamDTO edto = examservice.exam_selectByEnum(e_num);
+		String answer_link = edto.getE_answer().substring(0,edto.getE_answer().length()-4);
+		model.addAttribute("answer_link", answer_link);
 		model.addAttribute("e_link", e_link);
 		model.addAttribute("e_num", e_num);
 		model.addAttribute("e_subnum", e_subnum);
@@ -144,16 +148,17 @@ public class ExamController {
 	}
 
 	@RequestMapping("/showAnswer.do")
+	@ResponseBody
 	public String showAnswer(int e_num, int e_subnum, Model model) {
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
-		String e_link = edto.getE_answer().substring(0,edto.getE_answer().length()-4);
+		String answer_link = edto.getE_answer().substring(0,edto.getE_answer().length()-4);
 		
-		System.out.println(e_link);
+		System.out.println(answer_link);
 		System.out.println(e_subnum);
-		model.addAttribute("e_link", e_link);
+		model.addAttribute("answer_link", answer_link);
 		model.addAttribute("e_num", e_num);
 		model.addAttribute("e_subnum", e_subnum);
-		return "exam/showAnswer";
+		return "1";
 	}
 	
 	@RequestMapping("/deleteNote.do")
@@ -196,17 +201,14 @@ public class ExamController {
 		model.addAttribute("e_subject", e_subject);
 		model.addAttribute("e_grade", e_grade);
 		model.addAttribute("egradelist", list);
-		return "exam/esubjectlist";
+		return "redirect:esubject.do";
 	}
 
 	@RequestMapping("/e_delete.do")
 	public String e_delete(int e_num, String e_subject, Model model) {
-		System.out.println(e_subject);
 		examservice.exam_delete(e_num);
-		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
 		model.addAttribute("e_subject", e_subject);
-		model.addAttribute("esubjectlist", list);
-		return "exam/esubjectlist";
+		return "redirect:esubject.do";
 	}
 
 	@RequestMapping("/e_delete2.do")
@@ -216,7 +218,7 @@ public class ExamController {
 		model.addAttribute("e_subject", e_subject);
 		model.addAttribute("e_grade", e_grade);
 		model.addAttribute("egradelist", list);
-		return "exam/egradelist";
+		return "redirect:egrade.do";
 	}
 
 	// @RequestMapping("/examlist")
