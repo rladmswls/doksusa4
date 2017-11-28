@@ -18,5 +18,8 @@
 		
 		<select id="fore_selectForUser" resultType="foredto">
 		select * from foreword where f_foreword !='[공지]'</select>
+		
+
+
 
 </mapper>

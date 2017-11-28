@@ -46,4 +46,6 @@ public class ForewordServiceImpl implements ForewordService{
 		return fore.fore_selectForUser();
 	}
 
+	
+
 }

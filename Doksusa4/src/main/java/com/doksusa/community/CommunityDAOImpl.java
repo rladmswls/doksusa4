@@ -52,7 +52,7 @@ public class CommunityDAOImpl implements CommunityDAO{
 	}
 
 	@Override
-	public List<CommunityDTO> cm_selectTitleBy(String str) {
+	public List<CommunityDTO> cm_searchTitleBy(String str) {
 		return session.selectList(namespace + "cm_selectTitleBy" , str);
 	}
 
@@ -62,9 +62,16 @@ public class CommunityDAOImpl implements CommunityDAO{
 	}
 
 	@Override
-	public List<CommunityDTO> cm_selectForewordBy(String str) {
-		return session.selectList(namespace + "cm_selectForewordBy" , str);
+	public List<CommunityDTO> cm_searchContentBy(String str) {
+		return session.selectList(namespace + "cm_searchContentBy" , str);
 	}
+
+	@Override
+	public List<CommunityDTO> cm_searchForewordBy(String f_foreword) {
+		return session.selectList(namespace + "cm_searchForewordBy" , f_foreword);
+	}
+
+
 	
 	
 	

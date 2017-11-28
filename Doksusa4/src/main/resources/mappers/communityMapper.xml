@@ -14,16 +14,27 @@
 		<select id="cm_selectUnick" resultType="string" parameterType="int">
 		 select u_nick from users where u_num=#{u_num}</select>
 		
-		<select id="cm_selectTitleBy" parameterType="string" resultType="cmdto">
+		<select id="cm_searchTitleBy" parameterType="string" resultType="cmdto">
 		select * from community where c_title like '%'||#{str}||'%'</select>
+		
+		
+		
+		
+		<select id="cm_searchContentBy" parameterType="string" resultType="cmdto">
+		select * from community where c_content like '%'||#{str}||'%'</select>
+		
+		
+			<select id="cm_searchForewordBy" parameterType="string" resultType="cmdto">
+		select * from community where f_foreword =#{f_foreword}</select>
+		
+		
 		
 <!-- 		<select id="cm_selectUserBy" parameterType="string" resultType="cmdto">
 		select * from community where c_title like '%str=#{str}'</select> -->
 		
 		
 		
-		<select id="cm_selectForewordBy" parameterType="string" resultType="cmdto">
-		select * from community where f_foreword like '%'||#{str}||'%'</select>
+
 		
 		
 		

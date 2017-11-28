@@ -44,4 +44,6 @@ public class ForewordDAOImpl implements ForewordDAO{
 		return session.selectList(namespace + "fore_selectForUser");
 	}
 
+
+
 }

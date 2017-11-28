@@ -55,18 +55,27 @@ public class CommunityServiceImpl implements CommunityService{
 	
 
 	@Override
-	public List<CommunityDTO> cm_selectTitleBy(String str) {
-		return cm.cm_selectTitleBy(str);
+	public List<CommunityDTO> cm_searchTitleBy(String str) {
+		return cm.cm_searchTitleBy(str);
 	}
 
+	@Override
+	public List<CommunityDTO> cm_searchContentBy(String str) {
+		return cm.cm_searchContentBy(str);
+	}
+	
+	
 	@Override
 	public List<CommunityDTO> cm_selectUserBy(String str) {
 		return cm.cm_selectUserBy(str);
 	}
 
 	@Override
-	public List<CommunityDTO> cm_selectForewordBy(String str) {
-		return cm.cm_selectForewordBy(str);
+	public List<CommunityDTO> cm_searchForewordBy(String f_foreword) {
+		return cm.cm_searchForewordBy(f_foreword);
 	}
+
+
+	
 
 }

@@ -11,13 +11,6 @@ public interface CommunityService {
 	public CommunityDTO cm_select(int c_num);
 	
 	public String cm_selectUnick(int u_num);
-	
-	public List<CommunityDTO> cm_selectTitleBy(String str);
-	public List<CommunityDTO> cm_selectUserBy(String str);
-	public List<CommunityDTO> cm_selectForewordBy(String str);
-	
-	
-	
 
 	public int cm_insert(CommunityDTO cmdto);
 
@@ -25,4 +18,19 @@ public interface CommunityService {
 	
 	public int cm_delete(int c_num);
 
+	
+	public List<CommunityDTO> cm_searchTitleBy(String str);
+	
+	
+	public List<CommunityDTO> cm_searchContentBy(String str);
+	
+	
+
+	public List<CommunityDTO> cm_searchForewordBy(String f_foreword);
+	
+	
+	
+	
+	
+	public List<CommunityDTO> cm_selectUserBy(String str);
 }

@@ -56,6 +56,10 @@ public class CommunityController {
 		List<CommunityDTO> list1 = cmservice.cm_selectBy(c_group);
 		List<CommunityUserDTO> list2 = user_list(list1);
 		
+		List<ForewordDTO> foreword = foreword_list(c_group);
+	
+		model.addAttribute("foreword", foreword);
+		
 		Collections.sort(list2, new communitycomp());
 		model.addAttribute("c_group", c_group);
 		model.addAttribute("list", list2);
@@ -64,15 +68,16 @@ public class CommunityController {
 	}
 	
 	
+	
+	
+	
+	
+	
 		// 寃뚯떆湲� �벐湲�
 		@RequestMapping(value = "/communityinsert.do", method = RequestMethod.GET)
 		public String communityinsert(int c_group, Model model) {
-			List<ForewordDTO> foreword;
-			if(c_group!=1){
-			foreword = fservice.fore_selectForUser();
-			}else{
-			foreword = fservice.fore_selectAll();
-			}
+			List<ForewordDTO> foreword = foreword_list(c_group);
+			
 			model.addAttribute("foreword", foreword);
 			model.addAttribute("c_group", c_group);
 			return "community/communityinsert";
@@ -105,14 +110,11 @@ public class CommunityController {
 	//寃뚯떆湲� �뾽�뜲�씠�듃
 	@RequestMapping(value = "/updateCommunity.do", method = RequestMethod.GET)
 	public String cm_update(int c_num, int c_group, Model model) {
-		List<ForewordDTO> foreword = fservice.fore_selectForUser();
+		List<ForewordDTO> foreword = foreword_list(c_group);
 		model.addAttribute("foreword", foreword);
 		CommunityDTO cdto = cmservice.cm_select(c_num);
 		model.addAttribute("cdto", cdto);
 
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("foreword");
-		mv.setViewName("cdto");
 		return "community/contentupdate";
 	}
 	@RequestMapping(value = "/updateCommunity.do", method = RequestMethod.POST)
@@ -216,20 +218,18 @@ public class CommunityController {
 			
 			switch(search){
 			case 1: 
-				list = cmservice.cm_selectTitleBy(search_content);
+				list = cmservice.cm_searchTitleBy(search_content);
 				break;
 			case 2:
-				list = cmservice.cm_selectForewordBy(search_content);
+				list = cmservice.cm_selectUserBy(search_content);
 				break;
 			case 3:
-				list = cmservice.cm_selectUserBy(search_content);
+				list = cmservice.cm_searchContentBy(search_content);
 				break;
 			default:
 				break;
-				
-				
-					
 			}
+			
 			
 			list2 = user_list(list);
 			for(CommunityUserDTO cudto : list2){
@@ -237,6 +237,8 @@ public class CommunityController {
 					list3.add(cudto);
 				}
 			}
+			
+			Collections.sort(list3, new communitycomp());
 			model.addAttribute("list", list3);
 			return "community/communitylist";
 			
@@ -246,7 +248,28 @@ public class CommunityController {
 	
 	
 	
-	
+		@RequestMapping(value = "/searchforeword.do", method = RequestMethod.GET)
+		public String search_foreword(int c_group, String f_foreword, Model model) {
+			List<CommunityDTO> list = new ArrayList<CommunityDTO>();
+			List<CommunityUserDTO> list2 = new ArrayList<CommunityUserDTO>();
+			List<CommunityUserDTO> list3 = new ArrayList<CommunityUserDTO>();
+			model.addAttribute("c_group",c_group);
+			
+			list = cmservice.cm_searchForewordBy(f_foreword);
+			list2 = user_list(list);
+			for(CommunityUserDTO cudto : list2){
+				if(cudto.getC_group()== c_group){
+					list3.add(cudto);
+				}
+			}
+			
+			List<ForewordDTO> flist = foreword_list(c_group);
+			
+			model.addAttribute("list", list3);
+			model.addAttribute("foreword", flist);
+			return "community/communitylist";
+		}
+		
 	
 	
 
@@ -265,6 +288,17 @@ public class CommunityController {
 		return final_list;
 	}
 		
+	
+	public List<ForewordDTO> foreword_list(int c_group){
+		List<ForewordDTO> foreword;
+		if(c_group!=1){
+		foreword = fservice.fore_selectForUser();
+		}else{
+		foreword = fservice.fore_selectAll();
+		}
+		
+		return foreword;
+	}
 		
 		
 	public Date date() {
