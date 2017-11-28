@@ -33,7 +33,6 @@
 <table class="table">
    <thead class="hd">
    <tr>
-      <th id="e_num">글번호</th>
       <th id="e_year">년도</th>
       <th id="e_grade">학년</th>
       <th id="e_subject">과목</th>
@@ -52,7 +51,7 @@
    <c:forEach var="list" items="${egradelist}">
    <tbody>
       <tr>
-         <td><input type="hidden" name="e_num" value="${list.e_num}">${list.e_num}</td>
+        
          <td>${list.e_year}</td>
          <c:if test="${num==0}"><input type="hidden" name="e_grade" value="${list.e_grade}"></c:if>
          <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
