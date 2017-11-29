@@ -118,8 +118,8 @@ public class ExamController {
 	}
 
 	@RequestMapping(value = "/e_wrongnote.do", method = RequestMethod.POST)
-	public String wrongnote(int[] e_subnum, int e_num, Model model, int u_num) {
-
+	public String wrongnote(int[] e_subnum, int e_num, Model model, HttpSession session) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
 		String e_link = edto.getE_link().substring(6, edto.getE_link().length() - 4);
 		System.out.println(e_link);
@@ -144,7 +144,93 @@ public class ExamController {
 	public String showWrong(int e_num, int e_subnum, Model model) {
 		String e_link = esubservice.searchLink(e_num, e_subnum);
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
-		String answer_link = edto.getE_answer().substring(0,edto.getE_answer().length()-4);
+		String answer_link = edto.getE_answer().substring(0, edto.getE_answer().length() - 4);
+		String show_link;
+		if(e_subnum>9) show_link = e_link.substring(6,e_link.length() - 7);
+		else show_link = e_link.substring(6,e_link.length() - 6);
+		model.addAttribute("show_link", show_link);
+		model.addAttribute("answer_link", answer_link);
+		model.addAttribute("e_link", e_link);
+		model.addAttribute("e_num", e_num);
+		model.addAttribute("e_subnum", e_subnum);
+		return "exam/showE_wrong";
+	}
+
+	@RequestMapping("/check_e_Before.do")
+	@ResponseBody
+	public String checkBefore(HttpSession session, int e_num, int e_subnum) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
+
+		E_wrongnoteDTO e_dto = ew_list.get(0);
+		if (e_dto.getE_num() == e_num && e_dto.getE_subnum() == e_subnum) {
+			return "1"; //첫 페이지!
+		}
+
+		return "0";
+	}
+	
+	@RequestMapping("/check_e_Next.do")
+	@ResponseBody
+	public String checkNext(HttpSession session, int e_num, int e_subnum) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
+
+		E_wrongnoteDTO e_dto = ew_list.get(ew_list.size()-1);
+		if (e_dto.getE_num() == e_num && e_dto.getE_subnum() == e_subnum) {
+			return "1"; //마지막 페이지!
+		}
+
+		return "0";
+	}
+
+	@RequestMapping("/e_before.do")
+	public String showBeforeWrong(int e_num, int e_subnum, Model model, HttpSession session) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
+		for (int i = 1; i < ew_list.size(); i++) {
+			E_wrongnoteDTO e_dto = ew_list.get(i);
+			if (e_dto.getE_num() == e_num && e_dto.getE_subnum() == e_subnum) {
+				i--;
+				e_num = ew_list.get(i).getE_num();
+				e_subnum = ew_list.get(i).getE_subnum();
+				break;
+			}
+		}
+		String e_link = esubservice.searchLink(e_num, e_subnum);
+		ExamDTO edto = examservice.exam_selectByEnum(e_num);
+		String answer_link = edto.getE_answer().substring(0, edto.getE_answer().length() - 4);
+		String show_link;
+		if(e_subnum>9) show_link = e_link.substring(6,e_link.length() - 7);
+		else show_link = e_link.substring(6,e_link.length() - 6);
+		model.addAttribute("show_link", show_link);
+		model.addAttribute("answer_link", answer_link);
+		model.addAttribute("e_link", e_link);
+		model.addAttribute("e_num", e_num);
+		model.addAttribute("e_subnum", e_subnum);
+		return "exam/showE_wrong";
+	}
+
+	@RequestMapping("/e_next.do")
+	public String showNextWrong(int e_num, int e_subnum, Model model, HttpSession session) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
+		for (int i = 0; i < ew_list.size() - 1; i++) {
+			E_wrongnoteDTO e_dto = ew_list.get(i);
+			if (e_dto.getE_num() == e_num && e_dto.getE_subnum() == e_subnum) {
+				i++;
+				e_num = ew_list.get(i).getE_num();
+				e_subnum = ew_list.get(i).getE_subnum();
+				break;
+			}
+		}
+		String e_link = esubservice.searchLink(e_num, e_subnum);
+		ExamDTO edto = examservice.exam_selectByEnum(e_num);
+		String answer_link = edto.getE_answer().substring(0, edto.getE_answer().length() - 4);
+		String show_link;
+		if(e_subnum>9) show_link = e_link.substring(6,e_link.length() - 7);
+		else show_link = e_link.substring(6,e_link.length() - 6);
+		model.addAttribute("show_link", show_link);
 		model.addAttribute("answer_link", answer_link);
 		model.addAttribute("e_link", e_link);
 		model.addAttribute("e_num", e_num);
@@ -156,8 +242,8 @@ public class ExamController {
 	@ResponseBody
 	public String showAnswer(int e_num, int e_subnum, Model model) {
 		ExamDTO edto = examservice.exam_selectByEnum(e_num);
-		String answer_link = edto.getE_answer().substring(0,edto.getE_answer().length()-4);
-		
+		String answer_link = edto.getE_answer().substring(0, edto.getE_answer().length() - 4);
+
 		System.out.println(answer_link);
 		System.out.println(e_subnum);
 		model.addAttribute("answer_link", answer_link);
@@ -165,7 +251,7 @@ public class ExamController {
 		model.addAttribute("e_subnum", e_subnum);
 		return "1";
 	}
-	
+
 	@RequestMapping("/e_deleteNote.do")
 	public String noteDelete(int e_num, int e_subnum, Model model) {
 		model.addAttribute("e_num", e_num);

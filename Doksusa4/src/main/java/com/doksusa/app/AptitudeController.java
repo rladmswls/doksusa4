@@ -21,6 +21,8 @@ import com.doksusa.a_wrongnote.A_wrongnoteDTO;
 import com.doksusa.a_wrongnote.A_wrongnoteService;
 import com.doksusa.aptitude.AptitudeDTO;
 import com.doksusa.aptitude.AptitudeService;
+import com.doksusa.e_wrongnote.E_wrongnoteDTO;
+import com.doksusa.exam.ExamDTO;
 
 class aptitudecomp implements Comparator<AptitudeDTO>{
 
@@ -157,6 +159,66 @@ public class AptitudeController {
 		System.out.println(a_link);
 		AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
 		String answer_link = adto.getA_answer().substring(0, adto.getA_answer().length() - 4);
+		String show_link;
+		if(a_subnum>9) show_link = a_link.substring(9,a_link.length() - 8);
+		else show_link = a_link.substring(9,a_link.length() - 7);
+		model.addAttribute("answer_link", answer_link);
+		model.addAttribute("show_link", show_link);
+		model.addAttribute("a_link", a_link);
+		model.addAttribute("a_num", a_num);
+		model.addAttribute("a_subnum", a_subnum);
+		return "aptitude/showA_wrong";
+	}
+
+	@RequestMapping("/check_a_Before.do")
+	@ResponseBody
+	public String checkBefore(HttpSession session, int a_num, int a_subnum) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
+
+		A_wrongnoteDTO a_dto = aw_list.get(0);
+		if (a_dto.getA_num() == a_num && a_dto.getA_subnum() == a_subnum) {
+			return "1"; //첫 페이지!
+		}
+
+		return "0";
+	}
+	
+	@RequestMapping("/check_a_Next.do")
+	@ResponseBody
+	public String checkNext(HttpSession session, int a_num, int a_subnum) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
+
+		A_wrongnoteDTO a_dto = aw_list.get(aw_list.size()-1);
+		if (a_dto.getA_num() == a_num && a_dto.getA_subnum() == a_subnum) {
+			return "1"; //마지막 페이지!
+		}
+
+		return "0";
+	}
+	
+	
+	@RequestMapping("/a_before.do")
+	public String showBeforeWrong(int a_num, int a_subnum, Model model,HttpSession session){
+		int u_num = (Integer)(session.getAttribute("u_num"));
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
+		for(int i=1;i<aw_list.size();i++){
+			A_wrongnoteDTO a_dto = aw_list.get(i);
+			if(a_dto.getA_num()==a_num && a_dto.getA_subnum()==a_subnum){
+				i--;
+				a_num = aw_list.get(i).getA_num();
+				a_subnum = aw_list.get(i).getA_subnum();
+				break;
+			}
+		}
+		String a_link = asubservice.searchLink(a_num, a_subnum);
+		AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
+		String answer_link = adto.getA_answer().substring(0,adto.getA_answer().length()-4);
+		String show_link;
+		if(a_subnum>9) show_link = a_link.substring(9,a_link.length() - 8);
+		else show_link = a_link.substring(9,a_link.length() - 7);
+		model.addAttribute("show_link", show_link);
 		model.addAttribute("answer_link", answer_link);
 		model.addAttribute("a_link", a_link);
 		model.addAttribute("a_num", a_num);
@@ -164,6 +226,34 @@ public class AptitudeController {
 		return "aptitude/showA_wrong";
 	}
 
+	@RequestMapping("/a_next.do")
+	public String showNextWrong(int a_num, int a_subnum, Model model,HttpSession session){
+		int u_num = (Integer)(session.getAttribute("u_num"));
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
+		for(int i=0;i<aw_list.size()-1;i++){
+			A_wrongnoteDTO a_dto = aw_list.get(i);
+			if(a_dto.getA_num()==a_num && a_dto.getA_subnum()==a_subnum){
+				i++;
+				a_num = aw_list.get(i).getA_num();
+				a_subnum = aw_list.get(i).getA_subnum();
+				break;
+			}
+		}
+		String a_link = asubservice.searchLink(a_num, a_subnum);
+		AptitudeDTO adto = aptitudeservice.ap_selectByAnum(a_num);
+		String answer_link = adto.getA_answer().substring(0,adto.getA_answer().length()-4);
+		String show_link;
+		if(a_subnum>9) show_link = a_link.substring(9,a_link.length() - 8);
+		else show_link = a_link.substring(9,a_link.length() - 7);
+		model.addAttribute("show_link", show_link);
+		model.addAttribute("answer_link", answer_link);
+		model.addAttribute("a_link", a_link);
+		model.addAttribute("a_num", a_num);
+		model.addAttribute("a_subnum", a_subnum);
+		return "aptitude/showA_wrong";
+	}
+	
+	
 	@RequestMapping("/showA_Answer.do")
 	@ResponseBody
 	public String showAnswer(int a_num, int a_subnum, Model model) {
