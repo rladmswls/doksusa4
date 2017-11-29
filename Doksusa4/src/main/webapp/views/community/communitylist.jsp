@@ -21,7 +21,7 @@
 		
 		<form action="searchforeword.do" >
         <input type="hidden" name="c_group" id="c_group" value="${c_group}">
-		<select name="f_foreword">
+		<select class="btn btn-default " name="f_foreword">
 	        <c:forEach var="foreword" items="${foreword}">
 	            <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
 	        </c:forEach>
