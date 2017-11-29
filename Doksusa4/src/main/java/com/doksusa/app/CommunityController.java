@@ -169,8 +169,9 @@ public class CommunityController {
          Collections.sort(ctulist, new commentcomp());
       }
       String s = cmservice.cm_selectUnick(cdto.getU_num());
+      int num = ctservice.ct_selectBy(cdto.getC_num()).size();
       CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
-            cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+            cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s,num);
       model.addAttribute("communityuserdto", cudto);
       model.addAttribute("commentuserlist", ctulist);
 
@@ -248,8 +249,9 @@ public class CommunityController {
       List<CommunityUserDTO> final_list = new ArrayList<CommunityUserDTO>();
       for (CommunityDTO cdto : exlist) {
          String s = cmservice.cm_selectUnick(cdto.getU_num());
+         int num = ctservice.ct_selectBy(cdto.getC_num()).size();
          CommunityUserDTO cudto = new CommunityUserDTO(cdto.getC_num(), cdto.getU_num(), cdto.getF_foreword(),
-               cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s);
+               cdto.getC_group(), cdto.getC_title(), cdto.getC_content(), cdto.getC_date(), s,num);
          final_list.add(cudto);
       }
       return final_list;

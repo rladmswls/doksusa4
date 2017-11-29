@@ -11,12 +11,18 @@ public class CommunityUserDTO {
 	String c_content;
 	Date c_date;
 	String u_nick;
+	int comment_num;
 	
 	public CommunityUserDTO() {
-		super();
+	}
+	public int getComment_num() {
+		return comment_num;
+	}
+	public void setComment_num(int comment_num) {
+		this.comment_num = comment_num;
 	}
 	public CommunityUserDTO(int c_num, int u_num, String f_foreword, int c_group, String c_title, String c_content,
-			Date c_date, String u_nick) {
+			Date c_date, String u_nick, int comment_num) {
 		super();
 		this.c_num = c_num;
 		this.u_num = u_num;
@@ -26,12 +32,7 @@ public class CommunityUserDTO {
 		this.c_content = c_content;
 		this.c_date = c_date;
 		this.u_nick = u_nick;
-	}
-	@Override
-	public String toString() {
-		return "CommunityUserDTO [c_num=" + c_num + ", u_num=" + u_num + ", f_foreword=" + f_foreword + ", c_group="
-				+ c_group + ", c_title=" + c_title + ", c_content=" + c_content + ", c_date=" + c_date + ", u_nick="
-				+ u_nick + "]";
+		this.comment_num = comment_num;
 	}
 	public int getC_num() {
 		return c_num;

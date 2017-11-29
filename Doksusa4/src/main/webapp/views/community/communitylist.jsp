@@ -46,7 +46,7 @@
 						<tr>
 							<td>${comuserdto.f_foreword}</td>
 							<td><a href="communityview.do?c_num=${comuserdto.c_num}"
-								class=notice>${comuserdto.c_title}</a></td>
+								class=notice>${comuserdto.c_title}</a>-[${comuserdto.comment_num}]</td>
 							<td>${comuserdto.c_date}</td>
 							<td>${comuserdto.u_nick}</td>
 						</tr>
