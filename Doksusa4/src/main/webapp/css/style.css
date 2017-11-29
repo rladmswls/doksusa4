@@ -1,25 +1,6 @@
 @CHARSET "UTF-8";
-.button {
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-.button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #797979;
-}
-.button1:hover {
-    background-color: #797979;
-    color: white;
+.btn{
+	font-family: mySecondFont;
 }
 body,p {
    margin: 50px;
@@ -41,7 +22,7 @@ iframe{
    border-right: solid 1px black; 
 }
 .container{
-    padding: 15px;
+    padding: 5px;
 }
 #here {
 	 padding: 15px;

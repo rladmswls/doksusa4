@@ -90,8 +90,8 @@
 											<input type="hidden" name="c_num" id="c_num" value="${communityuserdto.c_num}">
 											<input type="hidden" name="ctu_num" id="ctu_num" value="${commentlist.ctu_num}">
 											<input type="hidden" name="ct_date" id="ct_date" value="${commentlist.ct_date}">
-											<td><input class="btn btn-default" type="button" onclick="updateComment()" value="수정"></td>
-											<td><input class="btn btn-default" type="button" onclick="deleteComment()" value="삭제"></td>
+											<td><input  class="btn btn-default btn-sm" type="button" onclick="updateComment()" value="수정"></td>
+											<td><input  class="btn btn-default btn-sm" type="button" onclick="deleteComment()" value="삭제"></td>
 									</c:when>
 							</c:choose>
 						</tr>
