@@ -66,7 +66,7 @@ function showAnswer(){
 	<jsp:include page="../up.jsp" flush="false" />
 	<div id="here">
 		<form id="myfrm" name="f" action="" >
-		<h1>♥${show_link } - ${a_subnum }번♥</h1>
+		<h3>♥${show_link } - ${a_subnum }번♥</h3>
 			<input type="hidden" name="a_num" id="a_num" value=${a_num }>
 			<input type="hidden" name="a_subnum" id="a_subnum" value=${a_subnum }>
 			<img src="${a_link}" />
