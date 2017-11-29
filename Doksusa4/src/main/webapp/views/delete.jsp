@@ -13,10 +13,10 @@
 <jsp:include page="up.jsp" flush="false"/>
 <div id="here">
 <h3>회원 탈퇴</h3>
-정말 탈퇴하시겠습니까?
+<h5>정말 탈퇴하시겠습니까?</h5>
    <form name="f" action="delete.do" method="POST">
-         <input type="radio"  name="yesOrno" onclick="go()" value="예">예
-         <input type="radio"  name="yesOrno" onclick="go()" value="아니오">아니요<br>
+         <input type="radio"  name="yesOrno" onclick="go()" value="예"><h5>예</h5>
+         <input type="radio"  name="yesOrno" onclick="go()" value="아니오"><h5>아니요</h5><br>
          <input class="btn btn-default" type="submit" value="확인">
    </form>
 </div>
