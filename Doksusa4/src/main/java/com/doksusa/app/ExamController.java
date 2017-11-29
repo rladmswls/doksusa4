@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doksusa.a_wrongnote.A_wrongnoteDTO;
 import com.doksusa.e_sub.E_subService;
 import com.doksusa.e_wrongnote.E_wrongMyNoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteDTO;
@@ -73,11 +74,13 @@ public class ExamController {
 
 	@RequestMapping("/e_checkWrong.do")
 	@ResponseBody
-	public String checkID(int[] e_subnum, int e_num) {
-		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByE_num(e_num);
-		for (E_wrongnoteDTO ewdto : ew_list) {
+	public String checkWrong(int[] e_subnum, int e_num, HttpSession session) {
+		int u_num = (Integer) (session.getAttribute("u_num"));
+		List<E_wrongnoteDTO> e_u_list = ewservice.ew_selectByU_num(u_num);
+		for (E_wrongnoteDTO e_u_dto : e_u_list) {
+
 			for (int i : e_subnum) {
-				if (ewdto.getE_subnum() == i)
+				if (e_u_dto.getE_num() == e_num && e_u_dto.getE_subnum() == i)
 					return "1";// 중복 존재
 			}
 		}
