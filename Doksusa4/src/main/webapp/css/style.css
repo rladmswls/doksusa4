@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+.navbar{
+		font-family: myFirstFont;
+}
 .btn{
 	font-family: mySecondFont;
 }
