@@ -29,9 +29,7 @@
     	<input class="btn btn-default btn-sm" type="submit" value="검색">
     	</form>
    <br>
-   
-   
-		<div class="container">
+   <div class="container">
 			<table class="table">
 				<thead class="hd">
 					<tr>
@@ -41,8 +39,7 @@
 						<th id="u_nick">작성자</th>
 					</tr>
 				</thead>
-				<tr>
-
+				<tbody>
 					<c:set var="num" value="0"></c:set>
 					<c:forEach var="comuserdto" items="${list}">
 
@@ -54,8 +51,9 @@
 							<td>${comuserdto.u_nick}</td>
 						</tr>
 					</c:forEach>
+				</tbody>
 			</table>
-		</div>
+			</div>
 		<c:choose>
 			<c:when test="${sessionScope.u_id == 'dok'}" >
 				<form action="communityinsert.do">

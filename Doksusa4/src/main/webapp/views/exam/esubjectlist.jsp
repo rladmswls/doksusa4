@@ -29,32 +29,31 @@
 	</div>
 </form>
 <form action="e_delete.do">
-	
-<div class="container">
+	<div class="container">
 	<table class="table" >
-   <thead class="hd">
-   <tr>
-      <th id="e_year">년도</th>
-      <th id="e_grade">학년</th>
-      <th id="e_subject">과목</th>
-      <th id="e_link">문제PDF</th>
-      <th id="e_answer">답지PDF</th>
-      <th id="e_solution">해설PDF</th>
-       <th>오답노트등록</th>
-       <c:choose>
-			<c:when test="${sessionScope.u_id == 'dok'}">
-				 <th>삭제</th>
-			</c:when>
-		</c:choose>
-   </tr>
-   </thead>
+	   <thead class="hd">
+	   <tr>
+	      <th id="e_year">년도</th>
+	      <th id="e_grade">학년</th>
+	      <th width="100" id="e_subject">과목</th>
+	      <th id="e_link">문제PDF</th>
+	      <th id="e_answer">답지PDF</th>
+	      <th id="e_solution">해설PDF</th>
+	       <th>오답노트등록</th>
+	       <c:choose>
+				<c:when test="${sessionScope.u_id == 'dok'}">
+					 <th>삭제</th>
+				</c:when>
+			</c:choose>
+	   </tr>
+	   </thead>
    
   <c:set var="num" value="0"></c:set> 
    
    <c:forEach var="list" items="${esubjectlist}">
    <tbody>
       <tr>
-       <input type="hidden" name="e_num" value="${list.e_num}">
+       	<input type="hidden" name="e_num" value="${list.e_num}">
          <td>${list.e_year}</td>
          <td>${list.e_grade}</td>
          <c:if test="${num==0}"><input type="hidden" name="e_subject" value="${list.e_subject}"></c:if>
@@ -73,8 +72,8 @@
    <c:set var="num" value="${num+1}"></c:set>
 	<c:if test="${num%5==0}"><br></c:if> 
    </c:forEach>
-</table>	
-</div>
+</table>
+</div>	
 </form>
 </div>
 

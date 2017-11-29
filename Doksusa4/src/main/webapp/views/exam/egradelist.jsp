@@ -12,7 +12,6 @@
 <div id="here">
 <h3>${e_subject} 고${e_grade } 모의고사  리스트</h3>
 <form action="egrade.do">
-	<div class="container">
 		<div class="btn-group" data-toggle="buttons">
 		  <label class="btn btn-default">
 		    <input type="radio"  name="e_grade" value="1"> 고1
@@ -27,7 +26,6 @@
 		<input type="hidden" name="e_subject" value="${e_subject}">
 	
 		<input type="submit" value="선택" class="btn btn-default">
-	</div>
 </form>
 <form action="e_delete2.do">
 	<input type="hidden" name="e_num" value="${list.e_num}">

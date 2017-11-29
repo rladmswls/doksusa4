@@ -40,8 +40,10 @@ iframe{
 .i{
    border-right: solid 1px black; 
 }
+.container{
+    padding: 15px;
+}
 #here {
-    padding: 10px;
     color: black;
     background-color: #f2f2f2;
 }
@@ -78,10 +80,11 @@ textarea{
 	color: #00004f;
 }
 .table{
-	background-color: white;
-}
-.table th,td{
 	text-align: center;
-	border-right: solid 1px white;
-	font-family: myFirstFont;
+	background-color: white;
+	width: 97.5%!important;
+	font-family: mySecondFont;
+}
+ .table th{
+	text-align: center;
 }
