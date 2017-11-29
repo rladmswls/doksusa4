@@ -12,9 +12,9 @@
 <div id="here">
 <form method="post" action="searchPW.do">
       <h3>패스워드 찾기</h3>
-      <input type="text" name="u_id" placeholder="아이디 입력"><br>
-      <input type="text" name="u_nick" placeholder="닉네임 입력"><br>
-       <input type="tel" name="u_phone" placeholder="전화번호입력"><br>
+      <input class="btn btn-default" type="text" name="u_id" placeholder="아이디 입력"><br>
+      <input class="btn btn-default" type="text" name="u_nick" placeholder="닉네임 입력"><br>
+       <input class="btn btn-default" type="tel" name="u_phone" placeholder="전화번호입력"><br>
       <input class="btn btn-default" type="submit" value="패스워드 찾기">
    </form>
    </div>

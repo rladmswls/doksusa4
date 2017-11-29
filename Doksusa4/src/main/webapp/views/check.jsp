@@ -12,7 +12,7 @@
 <h3>본인 확인</h3>
 <form action="check.do" method="POST" >
 	<input type="hidden" name="u_id" value="${u_id }">
-	<input type="password" name="u_pw" placeholder="비밀번호 입력">
+	<input class="btn btn-default" type="password" name="u_pw" placeholder="비밀번호 입력">
 	<input class="btn btn-default" type="submit" id="button">
 </form>
 </div>

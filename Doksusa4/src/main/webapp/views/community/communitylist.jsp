@@ -82,7 +82,7 @@
 		          	<input type="radio" name="search" value="3">내용
 				</div>
 		
-		      <input  class="btn btn-default " type="text" name="search_content" id="search_content">
+		      <input  class="btn btn-default" type="text" name="search_content" id="search_content">
 		      <input type="hidden" name="c_group" value="${c_group}"> 
 		   
 		      <input class="btn btn-default btn-sm" type="submit" value="검색" class="button1">

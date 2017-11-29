@@ -14,15 +14,15 @@
 	<table align="center">
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="u_pw" value="${user.u_pw}"></td>
+				<td><input class="btn btn-default" type="password" name="u_pw" value="${user.u_pw}"></td>
 	         </tr>
 	         <tr>
 	        	<th>닉네임</th>
-	            <td><input type="text" name="u_nick" value="${user.u_nick}"></td>
+	            <td><input class="btn btn-default" type="text" name="u_nick" value="${user.u_nick}"></td>
 	         </tr>
 	         <tr>
 	        	<th>전화번호</th>
-	            <td><input type="tel" name="u_phone"  value="${user.u_phone}"></td>
+	            <td><input class="btn btn-default" type="tel" name="u_phone"  value="${user.u_phone}"></td>
 	         </tr>
 	</table>
 		<input type="hidden" name="u_num" id="u_num" value="${sessionScope.u_num}" > 

@@ -83,21 +83,21 @@
 				<form id="myfrm" name="f" action="" method="post">
 					<table>
 						<tr>
-							<td><input type="text" name="u_id" id="u_id"
+							<td><input class="btn btn-default" type="text" name="u_id" id="u_id"
 								placeholder="아이디를 입력하세요"></td>
 							<td><input class="btn btn-default" type="button" onclick="checkID()" value="중복체크 "></td>
 						</tr>
 						<tr>
-							<td><input type="password" name="u_pw"
+							<td><input class="btn btn-default" type="password" name="u_pw"
 								placeholder="비밀번호를 입력하세요"></td>
 						</tr>
 						<tr>
-							<td><input type="text" id="u_nick" name="u_nick"
+							<td><input class="btn btn-default" type="text" id="u_nick" name="u_nick"
 								placeholder="닉네임을 설정하세요"></td>
 								<td><input class="btn btn-default" type="button" onclick="checkNick()" value="중복체크 "></td>
 						</tr>
 						<tr>
-							<td><input type="tel" name="u_phone" placeholder="전번 입력하세요"></td>
+							<td><input class="btn btn-default" type="tel" name="u_phone" placeholder="전번 입력하세요"></td>
 							<td><input class="btn btn-default" type="button" onclick="checkPhone()" value="중복체크 "></td>
 						</tr>
 						<tr>
