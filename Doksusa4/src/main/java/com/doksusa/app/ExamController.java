@@ -1,6 +1,8 @@
 package com.doksusa.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,14 +15,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doksusa.a_wrongnote.A_wrongnoteDTO;
+import com.doksusa.aptitude.AptitudeDTO;
 import com.doksusa.e_sub.E_subService;
 import com.doksusa.e_wrongnote.E_wrongMyNoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteService;
 import com.doksusa.exam.ExamDTO;
 import com.doksusa.exam.ExamService;
-import com.doksusa.user.UserDTO;
+
+class examcomp implements Comparator<ExamDTO>{
+	@Override
+	public int compare(ExamDTO o1, ExamDTO o2) {
+		if( o2.getE_year()==o1.getE_year())
+			return o2.getE_grade()-o1.getE_grade();
+		else
+			return o2.getE_year()-o1.getE_year();
+	}
+}
 
 @Controller
 public class ExamController {
@@ -36,6 +47,7 @@ public class ExamController {
 	public String showSubjectList(String e_subject, Model model) {
 		System.out.println(e_subject);
 		List<ExamDTO> list = examservice.exam_selectBySubject(e_subject);
+		Collections.sort(list, new examcomp());
 		model.addAttribute("e_subject", e_subject);
 		model.addAttribute("esubjectlist", list);
 		ModelAndView mv = new ModelAndView();
@@ -59,6 +71,7 @@ public class ExamController {
 				}
 			}
 		}
+		Collections.sort(elist,new examcomp());
 		// List<ExamDTO> list = examservice.exam_selectByGrade(e_grade);
 		model.addAttribute("egradelist", elist);
 		model.addAttribute("e_subject", e_subject);

@@ -25,12 +25,10 @@ import com.doksusa.e_wrongnote.E_wrongnoteDTO;
 import com.doksusa.exam.ExamDTO;
 
 class aptitudecomp implements Comparator<AptitudeDTO>{
-
 	@Override
 	public int compare(AptitudeDTO o1, AptitudeDTO o2) {
 		return o2.getA_year()-o1.getA_year();
 	}
-	
 }
 
 
