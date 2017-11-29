@@ -66,7 +66,7 @@
 	<jsp:include page="../up.jsp" flush="false" />
 	<div id="here">
 		<form id="myfrm" name="f" action="">
-			<h1>♥${show_link } - ${e_subnum }번♥</h1>
+			<h3>♥${show_link } - ${e_subnum }번♥</h3>
 			<input type="hidden" name="e_num" id="e_num" value=${e_num }>
 			<input type="hidden" name="e_subnum" id="e_subnum" value=${e_subnum }>
 			<img src="${e_link}" />
