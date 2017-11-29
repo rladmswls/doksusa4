@@ -13,17 +13,17 @@
 <h3>게시글 등록</h3>
 <hr>
 <form action="communityinsert.do" method="post">
-	말머리 :
+	<h5>말머리 :</h5>
 	<select class="btn btn-default" name="f_foreword">
         <c:forEach var="foreword" items="${foreword}">
             <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
         </c:forEach>
     </select>
-	제목 :
+	<h5>제목 :</h5>
 	<input class="btn btn-default" type="text" name="c_title" id="c_title"><br><br>
 	<input type="hidden" name="u_num" id="u_num" value="${user.u_num }">
 	<input type="hidden" name="c_group" id="c_group" value="${c_group }">
-	<textarea rows="10" cols="100" name="c_content" id="c_content"></textarea><br><br>
+	<textarea class="btn btn-default" rows="10" cols="100" name="c_content" id="c_content"></textarea><br><br>
 	<input class="btn btn-default" type="submit" value="저장">
 </form>
 </div>

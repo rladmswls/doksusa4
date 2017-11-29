@@ -36,11 +36,11 @@
 	<div id="here">
 
 		<h3>${communityuserdto.f_foreword }${communityuserdto.c_title }</h3>
-		<h6>${communityuserdto.u_nick}</h6>
-		<h6>${communityuserdto.c_date}</h6>
+		<h5>${communityuserdto.u_nick}</h5><br>
+		<h5>${communityuserdto.c_date}</h5>
 
 		<hr>
-		<textarea rows="20" cols="80" readonly="readonly">${communityuserdto.c_content }</textarea>
+		<textarea class="btn btn-default" rows="20" cols="80" readonly="readonly">${communityuserdto.c_content }</textarea>
 		
 		<c:choose>
 			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
@@ -76,7 +76,7 @@
 						<tr>
 							<c:choose>
 								<c:when test="${sessionScope.u_num == commentlist.ctu_num}">
-									<td><input type="text" name="ct_comment" id="ct_comment" value="${commentlist.ct_comment}"></td>
+									<td><input class="btn btn-default btn-sm" type="text" name="ct_comment" id="ct_comment" value="${commentlist.ct_comment}"></td>
 								</c:when>
 								<c:otherwise>
 									<td>${commentlist.ct_comment}</td>

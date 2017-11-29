@@ -32,7 +32,7 @@
 	<jsp:include page="../up.jsp" flush="false" />
 	<div id="here">
 		<h3>오답노트등록</h3>
-		(오답노트에 등록하고싶은 번호를 선택하세요.)<br>
+		<h5>(오답노트에 등록하고싶은 번호를 선택하세요.)</h5><br>
 		<hr>
 		<form id="myfrm" name="f" action="" method="post">
 			<input type="hidden" id="e_num" name="e_num" value=${e_num }>
@@ -40,7 +40,7 @@
 				value=${sessionScope.u_num }>
 			<c:set var="num" value="0"></c:set>
 			<c:forEach var="num" begin="1" end="${end }">
-			${num} <input type="checkbox" name="e_subnum" id="${e_subnum }"
+			<h5>${num}</h5> <input type="checkbox" name="e_subnum" id="${e_subnum }"
 					value="${num }" >
 				<c:if test="${num%5==0}">
 					<br>

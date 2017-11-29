@@ -11,8 +11,8 @@
 <div id="here">
 <h3>적성고사 등록</h3>
 <form action="a_insert.do" method="post">
-   연도<input type="number" min="1996" max="2018" value="2018" name="a_year"><br>
-   학교<select name="a_school">
+   <h5>연도</h5><input class="btn btn-default" type="number" min="1996" max="2018" value="2018" name="a_year"><br>
+   <h5>학교</h5><select class="btn btn-default" name="a_school">
       <option>----</option>
       <option value="고대세종">고대세종</option>
       <option value="홍익대">홍익대</option>
@@ -22,10 +22,10 @@
       <option value="강남대">강남대</option>
       <option value="을지대">을지대</option>
    </select><br>
-제목<input type="text" name="a_title" id="a_title"><br>
+<h5>제목</h5><input class="btn btn-default" type="text" name="a_title" id="a_title"><br>
    <%-- <input type="hidden" name="u_num" id="u_num" value="${aptitude.a_num }"><br> --%>
-   문제링크<input type="text" name="a_link"><br>
-   답지링크<input type="text" name="a_answer"><br><br>
+   <h5>문제링크</h5><input class="btn btn-default" type="text" name="a_link"><br>
+   <h5>답지링크</h5><input class="btn btn-default" type="text" name="a_answer"><br><br>
    <input class="btn btn-default" type="submit" value="등록"> 
 </form>
 </div>

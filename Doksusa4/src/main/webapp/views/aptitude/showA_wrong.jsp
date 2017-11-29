@@ -77,7 +77,7 @@ function showAnswer(){
 			<input class="btn btn-default" type="button" onclick="next()" value="다음▶">
 			<input class="btn btn-default" type="button" onclick="goList()" value="목록으로">
 
-			<div id="answer" style="display:none">정답은 <img src="${answer_link}/${a_subnum}.PNG" />
+			<div id="answer" style="display:none"><h5>정답은</h5> <img src="${answer_link}/${a_subnum}.PNG" />
 			</div>
 		</form>
 	</div>
