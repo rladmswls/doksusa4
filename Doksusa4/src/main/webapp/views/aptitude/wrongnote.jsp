@@ -9,12 +9,12 @@
 
 <script>
 	function checka_Wrong() {
-		alert($("#myfrm").serialize());
+		//alert($("#myfrm").serialize());
 		$.ajax({
 			url : "a_checkWrong.do",
 			data : $("#myfrm").serialize(),
 			success : function(responsetext) {
-				alert("aaaaaa");
+				//alert("aaaaaa");
 				if (responsetext == "1") {
 					alert("이미 문제가 등록되어 있습니다");
 					$("input[type='checkbox']").prop("checked",false);
