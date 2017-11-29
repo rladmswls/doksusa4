@@ -140,7 +140,7 @@ public class UserController {
 		//댓글 삭제
 		List<CommentDTO> list = ctservice.ctu_selectBy(u_num);
 			for(CommentDTO codto : list) {
-				ctservice.ct_delete(codto.getC_num());
+				ctservice.ct_delete(codto.getCtu_num());
 			}
 		
 			
