@@ -81,7 +81,7 @@
 			<input class="btn btn-default" type="button" onclick="goList()"
 				value="목록으로">
 			<div id="answer" style="display: none">
-				정답은 <img src="${answer_link}/${e_subnum}.PNG" />
+				<h5>정답은</h5> <img src="${answer_link}/${e_subnum}.PNG" />
 			</div>
 		</form>
 	</div>

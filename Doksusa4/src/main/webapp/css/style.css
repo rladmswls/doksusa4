@@ -58,6 +58,11 @@ h3{
    font-family: mySecondFont;
     color:#00004f;
 }
+h5{
+	display: inline-block;
+   font-family: mySecondFont;
+    color:#00004f;
+}
 textarea{
 	border: solid 2px #525252;
 }

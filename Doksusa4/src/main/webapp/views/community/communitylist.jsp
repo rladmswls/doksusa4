@@ -75,9 +75,9 @@
 			<div class="container">
       
 		      <div class="btn-group" data-toggle="buttons">
-		          	<input type="radio"  name="search" value="1" checked="checked">제목
-		          	<input type="radio" name="search" value="2">작성자
-		          	<input type="radio" name="search" value="3">내용
+		          	<input type="radio"  name="search" value="1" checked="checked"><h5>제목</h5>
+		          	<input type="radio" name="search" value="2"><h5>작성자</h5>
+		          	<input type="radio" name="search" value="3"><h5>내용</h5>
 				</div>
 		
 		      <input  class="btn btn-default" type="text" name="search_content" id="search_content">
