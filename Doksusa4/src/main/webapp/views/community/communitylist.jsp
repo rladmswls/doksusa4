@@ -19,18 +19,18 @@
 		<c:if test="${c_group=='4'}">
 		<h3>N수생 커뮤니티</h3></c:if>
 		
-		
 		<form action="searchforeword.do" >
         <input type="hidden" name="c_group" id="c_group" value="${c_group}">
-      	말머리 :
-	<select name="f_foreword">
-        <c:forEach var="foreword" items="${foreword}">
-            <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
-        </c:forEach>
-    </select>
-    <input class="btn btn-default" type="submit" value="검색">
-    </form>
+		<select name="f_foreword">
+	        <c:forEach var="foreword" items="${foreword}">
+	            <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
+	        </c:forEach>
+	    </select>
+    	<input class="btn btn-default btn-sm" type="submit" value="검색">
+    	</form>
    <br>
+   
+   
 		<div class="container">
 			<table class="table">
 				<thead class="hd">
@@ -62,16 +62,15 @@
 				<input type="hidden" name="c_group" value="1">
 					<input class="btn btn-default" type="submit" value="등록">
 				</form>
-		 </c:when>
-		 <c:otherwise>
-		 <c:if test="${c_group !='1'}">
-		<form action="communityinsert.do">
-					<input class="btn btn-default" type="submit" value="등록">
-					<input type="hidden" name="c_group" id="c_group" value="${c_group}">
-				</form>
-		 
-		 </c:if>
-		 </c:otherwise>
+		 	</c:when>
+			<c:otherwise>
+				<c:if test="${c_group !='1'}">
+					<form action="communityinsert.do">
+							<input class="btn btn-default" type="submit" value="등록">
+							<input type="hidden" name="c_group" id="c_group" value="${c_group}">
+					</form>
+				 </c:if>
+			</c:otherwise>
 		</c:choose>
 		
 			<form action="searchlist.do">
@@ -86,7 +85,7 @@
 		      <input type="text" name="search_content" id="search_content">
 		      <input type="hidden" name="c_group" value="${c_group}"> 
 		   
-		      <input class="btn btn-default" type="submit" value="검색" class="button1">
+		      <input class="btn btn-default btn-sm" type="submit" value="검색" class="button1">
       
    			</div>
 		</form>
