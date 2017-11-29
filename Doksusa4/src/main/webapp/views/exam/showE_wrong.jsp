@@ -71,9 +71,10 @@
 			<input type="hidden" name="e_subnum" id="e_subnum" value=${e_subnum }>
 			<img src="${e_link}" />
 			<hr>
+			<input class="btn btn-default" type="button"
+				onclick="deleteNote()" value="삭제">
 			<input class="btn btn-default" type="button" onclick="before()"
-				value="◀이전"> <input class="btn btn-default" type="button"
-				onclick="deleteNote()" value="삭제"> <input
+				value="◀이전">  <input
 				class="btn btn-default" id="show" type="button"
 				onclick="showAnswer()" value="정답 확인"> <input
 				class="btn btn-default" type="button" onclick="next()" value="다음▶">

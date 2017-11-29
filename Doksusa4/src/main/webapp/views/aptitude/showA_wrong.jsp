@@ -71,8 +71,8 @@ function showAnswer(){
 			<input type="hidden" name="a_subnum" id="a_subnum" value=${a_subnum }>
 			<img src="${a_link}" />
 			<hr>
-			<input class="btn btn-default" type="button" onclick="before()" value="◀이전">
 			<input class="btn btn-default" type="button" onclick="deleteNote()" value="삭제">
+			<input class="btn btn-default" type="button" onclick="before()" value="◀이전">
 			<input class="btn btn-default" id="show" type="button" onclick="showAnswer()" value="정답 확인">
 			<input class="btn btn-default" type="button" onclick="next()" value="다음▶">
 			<input class="btn btn-default" type="button" onclick="goList()" value="목록으로">
