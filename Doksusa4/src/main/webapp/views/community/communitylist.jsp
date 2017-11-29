@@ -21,7 +21,7 @@
 		
 		<form action="searchforeword.do" >
         <input type="hidden" name="c_group" id="c_group" value="${c_group}">
-		<select class="btn btn-default " name="f_foreword">
+		<select class="btn btn-default" name="f_foreword">
 	        <c:forEach var="foreword" items="${foreword}">
 	            <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
 	        </c:forEach>
@@ -82,7 +82,7 @@
 		          	<input type="radio" name="search" value="3">내용
 				</div>
 		
-		      <input type="text" name="search_content" id="search_content">
+		      <input  class="btn btn-default " type="text" name="search_content" id="search_content">
 		      <input type="hidden" name="c_group" value="${c_group}"> 
 		   
 		      <input class="btn btn-default btn-sm" type="submit" value="검색" class="button1">
