@@ -4,22 +4,23 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doksusa.a_sub.A_subDTO;
+import com.doksusa.a_wrongnote.A_wrongnoteDTO;
+import com.doksusa.a_wrongnote.A_wrongnoteService;
 import com.doksusa.comment.CommentDTO;
 import com.doksusa.comment.CommentService;
 import com.doksusa.community.CommunityDTO;
 import com.doksusa.community.CommunityService;
+import com.doksusa.e_wrongnote.E_wrongnoteDTO;
+import com.doksusa.e_wrongnote.E_wrongnoteService;
 import com.doksusa.ipsiinfo.IpsiInfoDTO;
 import com.doksusa.ipsiinfo.IpsiInfoService;
 import com.doksusa.user.UserDTO;
@@ -36,6 +37,10 @@ public class UserController {
 	CommentService ctservice;
 	@Autowired
 	CommunityService cmservice;
+	@Autowired
+	A_wrongnoteService awservice;
+	@Autowired
+	E_wrongnoteService ewservice;
 
 	@RequestMapping("/home.do")
 	public String home(Model model) {
@@ -144,6 +149,17 @@ public class UserController {
 			for(CommunityDTO cdto : list2){
 				cmservice.cm_delete(cdto.getC_num());
 			}	
+			
+		List<A_wrongnoteDTO> list3 = awservice.aw_selectByU_num(u_num);
+		for(A_wrongnoteDTO awdto : list3){
+			awservice.aw_delete(awdto);
+		}
+		
+		List<E_wrongnoteDTO> list4 = ewservice.ew_selectByU_num(u_num);
+		for(E_wrongnoteDTO ewdto : list4){
+			ewservice.ew_delete(ewdto);
+		}
+		
 			
 			userservice.user_delete(u_num);
 			session.invalidate();
