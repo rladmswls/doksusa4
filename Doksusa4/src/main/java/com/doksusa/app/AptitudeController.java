@@ -1,6 +1,8 @@
 package com.doksusa.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,17 @@ import com.doksusa.a_wrongnote.A_wrongnoteService;
 import com.doksusa.aptitude.AptitudeDTO;
 import com.doksusa.aptitude.AptitudeService;
 
+class aptitudecomp implements Comparator<AptitudeDTO>{
+
+	@Override
+	public int compare(AptitudeDTO o1, AptitudeDTO o2) {
+		return o2.getA_year()-o1.getA_year();
+	}
+	
+}
+
+
+
 @Controller
 public class AptitudeController {
 
@@ -33,6 +46,9 @@ public class AptitudeController {
 	@RequestMapping(value = "/aschool.do", method = RequestMethod.GET)
 	public String showSchoolList(String a_school, Model model) {
 		List<AptitudeDTO> list = aptitudeservice.ap_selectByA_school(a_school);
+		
+		Collections.sort(list, new aptitudecomp());
+		
 		model.addAttribute("a_school", a_school);
 		model.addAttribute("aschoollist", list);
 		ModelAndView mv = new ModelAndView();
