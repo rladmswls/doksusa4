@@ -35,7 +35,17 @@
 					</tr>
 				</tbody>
 			</table>
-
+<%-- 
+			<c:set var="num" value="0"></c:set> 
+			<select class="btn btn-default" name="e_subject">
+				<option>----</option>
+				<c:forEach var="a_dto" items="${a_list}">
+					<c:if test="${num==0}"><option value="${a_dto.a_link }">${a_dto.a_link }</option></c:if>
+				 <c:set var="num" value="${num+1}"></c:set>
+				</c:forEach>
+			</select> --%>
+			
+			
 		</div>
 	</div>
 </body>

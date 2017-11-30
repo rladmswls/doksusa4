@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
-
 </head>
 <body>
 	<jsp:include page="../up.jsp" flush="false" />
@@ -23,8 +22,6 @@
 					</tr>
 				</thead>
 				<tbody>
-
-
 					<tr>
 						<c:forEach var="ewdto" items="${e_list}">
 							<tr>
@@ -36,7 +33,15 @@
 					</tr>
 				</tbody>
 			</table>
-
+			<%-- 
+			<c:set var="num" value="0"></c:set> 
+			<select class="btn btn-default" name="e_subject">
+				<option>----</option>
+				<c:forEach var="ewsdto" items="${e_subject_list}">
+					<c:if test="${num==0}"><option value="${ewsdto.e_link }">${ewsdto.e_link }</option></c:if>
+				 	<c:set var="num" value="${num+1}"></c:set>
+				</c:forEach>
+			</select> --%>
 		</div>
 	</div>
 </body>

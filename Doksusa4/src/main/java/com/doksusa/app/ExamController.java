@@ -3,6 +3,7 @@ package com.doksusa.app;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doksusa.aptitude.AptitudeDTO;
 import com.doksusa.e_sub.E_subService;
 import com.doksusa.e_wrongnote.E_wrongMyNoteDTO;
 import com.doksusa.e_wrongnote.E_wrongnoteDTO;
@@ -42,7 +42,7 @@ public class ExamController {
 	E_wrongnoteService ewservice;
 	@Autowired
 	E_subService esubservice;
-
+	
 	@RequestMapping(value = "/esubject.do", method = RequestMethod.GET)
 	public String showSubjectList(String e_subject, Model model) {
 		System.out.println(e_subject);
