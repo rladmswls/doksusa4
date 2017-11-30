@@ -40,11 +40,6 @@
 	      <th id="e_answer">답지PDF</th>
 	      <th id="e_solution">해설PDF</th>
 	       <th>오답노트등록</th>
-	       <c:choose>
-				<c:when test="${sessionScope.u_id == 'dok'}">
-					 <th>삭제</th>
-				</c:when>
-			</c:choose>
 	   </tr>
 	   </thead>
    
@@ -62,11 +57,6 @@
          <td><a href="${list.e_answer}"><img src="exams/pdf.png"/></a></td>
          <td><a href="${list.e_solution}"><img src="exams/pdf.png"/></a></td>
          <td><a href="e_wrongnote.do?e_subject=${list.e_subject}&e_num=${list.e_num}">오답노트</a></td>
-         <c:choose>
-			<c:when test="${sessionScope.u_id == 'dok'}">
-			<td><input class="btn btn-default btn-sm" type="submit" value="삭제"></td>
-			</c:when>
-		</c:choose>
 	</tr>
 	</tbody>
    <c:set var="num" value="${num+1}"></c:set>
