@@ -40,7 +40,7 @@
 		<h5>${communityuserdto.c_date}</h5>
 
 		<hr>
-		<textarea class="btn btn-default" rows="20" cols="80" readonly="readonly">${communityuserdto.c_content }</textarea>
+		<pre>${communityuserdto.c_content }</pre>
 		
 		<c:choose>
 			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">

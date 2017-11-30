@@ -3,6 +3,7 @@ package com.doksusa.app;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -101,13 +102,18 @@ public class AptitudeController {
 		int u_num = (Integer) session.getAttribute("u_num");
 		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
 		List<A_wrongMyNoteDTO> a_list = new ArrayList<A_wrongMyNoteDTO>();
+		List<String> flist = new ArrayList<String>();
 		for (A_wrongnoteDTO awdto : aw_list) {
 			AptitudeDTO adto = aptitudeservice.ap_selectByAnum(awdto.getA_num());
 			String a_link = adto.getA_link().substring(9, adto.getA_link().length() - 4);
 			System.out.println(a_link);
-			a_list.add(new A_wrongMyNoteDTO(awdto.getA_num(), awdto.getA_subnum(), u_num, a_link));
+			A_wrongMyNoteDTO aa = new A_wrongMyNoteDTO(awdto.getA_num(), awdto.getA_subnum(), u_num, a_link);
+			a_list.add(aa);
+			flist.add(aa.getA_link());
 		}
+		List<String> a_school_list = new ArrayList<String>(new HashSet<String>(flist));
 		model.addAttribute("a_list", a_list);
+		model.addAttribute("a_school_list",a_school_list);
 		return "aptitude/au_wrongnote";
 	}
 
@@ -288,7 +294,7 @@ public class AptitudeController {
 			a_list.add(new A_wrongMyNoteDTO(awdto.getA_num(), awdto.getA_subnum(), u_num, a_link));
 		}
 		model.addAttribute("a_list", a_list);
-		return "aptitude/au_wrongnote";
+		return "redirect:au_wrongnote.do";
 	}
 
 }

@@ -105,12 +105,18 @@ public class ExamController {
 		int u_num = (Integer) session.getAttribute("u_num");
 		List<E_wrongnoteDTO> ew_list = ewservice.ew_selectByU_num(u_num);
 		List<E_wrongMyNoteDTO> e_list = new ArrayList<E_wrongMyNoteDTO>();
+		List<String> flist = new ArrayList<String>();
 		for (E_wrongnoteDTO ewdto : ew_list) {
 			ExamDTO edto = examservice.exam_selectByEnum(ewdto.getE_num());
 			String e_link = edto.getE_link().substring(6, edto.getE_link().length() - 4);
-			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
+			E_wrongMyNoteDTO dd = new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link);
+			e_list.add(dd);
+			flist.add(dd.getE_link());
+			
 		}
+		List<String> e_subject_list = new ArrayList<String>(new HashSet<String>(flist));
 		model.addAttribute("e_list", e_list);
+		model.addAttribute("e_subject_list", e_subject_list);
 		return "exam/eu_wrongnote";
 	}
 
@@ -287,7 +293,7 @@ public class ExamController {
 			e_list.add(new E_wrongMyNoteDTO(ewdto.getE_num(), ewdto.getE_subnum(), u_num, e_link));
 		}
 		model.addAttribute("e_list", e_list);
-		return "exam/eu_wrongnote";
+		return "redirect:eu_wrongnote.do";
 	}
 
 	@RequestMapping("/e_insert.do")
@@ -305,7 +311,7 @@ public class ExamController {
 		model.addAttribute("e_subject", e_subject);
 		model.addAttribute("e_grade", e_grade);
 		model.addAttribute("egradelist", list);
-		return "redirect:esubject.do";
+		return "redirect:eu_wrongnote.do";
 	}
 
 	@RequestMapping("/e_delete.do")

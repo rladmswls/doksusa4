@@ -58,6 +58,10 @@ h3{
    font-family: mySecondFont;
     color:#00004f;
 }
+pre{
+	background-color: white;
+	 font-family: mySecondFont;
+}
 h5{
 	display: inline-block;
    font-family: mySecondFont;

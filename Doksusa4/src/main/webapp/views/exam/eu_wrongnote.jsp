@@ -7,6 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
+<script>
+	function e_subject() {
+		f.action = "select_e_subject.do";
+		f.submit();
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="../up.jsp" flush="false" />
@@ -33,15 +39,13 @@
 					</tr>
 				</tbody>
 			</table>
-			<%-- 
-			<c:set var="num" value="0"></c:set> 
-			<select class="btn btn-default" name="e_subject">
+			
+			<select onchange="e_subject()" class="btn btn-default" name="e_subject">
 				<option>----</option>
 				<c:forEach var="ewsdto" items="${e_subject_list}">
-					<c:if test="${num==0}"><option value="${ewsdto.e_link }">${ewsdto.e_link }</option></c:if>
-				 	<c:set var="num" value="${num+1}"></c:set>
+					<option value="${ewsdto }">${ewsdto }</option>
 				</c:forEach>
-			</select> --%>
+			</select> 
 		</div>
 	</div>
 </body>
