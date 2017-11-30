@@ -26,8 +26,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public int ct_delete(int ctu_num) {
-		return ct.ct_delete(ctu_num);
+	public int ct_delete(int ct_num) {
+		return ct.ct_delete(ct_num);
 	}
 
 	@Override

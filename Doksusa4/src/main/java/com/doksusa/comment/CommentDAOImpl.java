@@ -25,8 +25,8 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 
 	@Override
-	public int ct_delete(int ctu_num) {
-		return session.delete(namespace + "ct_delete", ctu_num);
+	public int ct_delete(int ct_num) {
+		return session.delete(namespace + "ct_delete", ct_num);
 	}
 
 	@Override

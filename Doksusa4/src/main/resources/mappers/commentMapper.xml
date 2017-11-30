@@ -13,7 +13,7 @@
 
 	<delete id="ct_delete" parameterType="int">
 		delete from comments where
-		ctu_num=#{ctu_num}
+		ct_num=#{ct_num}
 	</delete>
 
 	<insert id="ct_insert" parameterType="codto">
