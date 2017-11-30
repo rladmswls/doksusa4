@@ -15,7 +15,7 @@ public interface CommentDAO {
 
 	public int ct_update(CommentDTO codto);
 	
-	
+	public CommentDTO ct_selectOne(int ct_num);
 	
 	
 	public List<CommentDTO> ctu_selectBy(int ctu_num);

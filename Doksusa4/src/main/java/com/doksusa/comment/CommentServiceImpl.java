@@ -45,6 +45,11 @@ public class CommentServiceImpl implements CommentService {
 		return ct.ctu_selectBy(ctu_num);
 	}
 
+	@Override
+	public CommentDTO ct_selectOne(int ct_num) {
+		return ct.ct_selectOne(ct_num);
+	}
+
 	
 	
 }

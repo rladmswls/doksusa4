@@ -120,9 +120,15 @@ public class CommunityController {
    }
 
    //댓글 수정을 위한 method
-   @RequestMapping(value = "/updateComment.do", method = RequestMethod.POST)
-   public String ct_update(CommentDTO codto, Model model) {
-      ctservice.ct_update(codto);
+   @RequestMapping(value = "/updateComment.do", method = RequestMethod.GET)
+   public String ct_update(String ct_comment, int ct_num2, Model model) {
+	   System.out.println(ct_comment);
+	   System.out.println("ct_num==========================================================="+ct_num2);
+	   
+	   
+	   CommentDTO codto = ctservice.ct_selectOne(ct_num2);
+	   CommentDTO codto2 = new CommentDTO(ct_num2,codto.getC_num(),codto.getCtu_num(),ct_comment,codto.getCt_date());
+      ctservice.ct_update(codto2);
       model.addAttribute("c_num", codto.getC_num());
       return "redirect:/communityview.do";
    }
@@ -144,10 +150,12 @@ public class CommunityController {
    }
 
    //댓글 삭제를 위한 method
-   @RequestMapping(value = "/deleteComment.do", method = RequestMethod.POST)
-   public String ct_delete(int ct_num, int c_num, Model model) {
-      ctservice.ct_delete(ct_num);
-      model.addAttribute("c_num", c_num);
+   @RequestMapping(value = "/deleteComment.do", method = RequestMethod.GET)
+   public String ct_delete(int ct_num3, Model model) {
+	   CommentDTO codto = ctservice.ct_selectOne(ct_num3);
+      ctservice.ct_delete(ct_num3);
+      
+      model.addAttribute("c_num", codto.getC_num());
       return "redirect:/communityview.do";
    }
 
