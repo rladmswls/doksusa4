@@ -22,7 +22,6 @@
 
 	}
 	function updateComment(ct_num,cnt ) {
-	
 		location.href = "updateComment.do?ct_num2="+ct_num+"&ct_comment="+ct_comment[cnt].value;
 
 	}
@@ -47,7 +46,8 @@
 						value="${communityuserdto.c_num}"> <input type="hidden"
 						name="c_group" id="c_group" value="${communityuserdto.c_group}">
 					<input class="btn btn-default" type="button"
-						onclick="updateCommunity()" value="수정하기"> <input
+						onclick="updateCommunity()" value="수정하기"> 
+					<input
 						class="btn btn-default" type="button" onclick="deleteCommunity()"
 						value="삭제하기">
 				</form>
@@ -77,7 +77,10 @@
 											<c:set var="cnt" value="${cnt+1 }" />
 											<td><input class="btn btn-default btn-sm" type="text"
 												name="ct_comment" id="ct_comment"
-												value="${commentlist.ct_comment}"></td>
+												value="${commentlist.ct_comment}">
+												<i onclick="updateComment(${commentlist.ct_num},${cnt})"  class="glyphicon glyphicon-pencil"></i>
+												<i onclick="deleteComment(${commentlist.ct_num})" class="glyphicon glyphicon-remove"></i>
+											</td>
 											<input type="hidden" name="ct_num" id="ct_num"
 												value="${commentlist.ct_num}">
 											<input type="hidden" name="c_num" id="c_num"
@@ -86,7 +89,6 @@
 												value="${commentlist.ctu_num}">
 											<input type="hidden" name="ct_date" id="ct_date"
 												value="${commentlist.ct_date}">
-
 										</c:when>
 										<c:otherwise>
 											<td>${commentlist.ct_comment}</td>
@@ -94,15 +96,6 @@
 									</c:choose>
 									<td>${commentlist.u_nick}</td>
 									<td>${commentlist.ct_date}</td>
-									<c:if test="${sessionScope.u_num == commentlist.ctu_num}">
-									<td><input class="btn btn-default btn-sm" type="button"
-										onclick="updateComment(${commentlist.ct_num},${cnt})"
-										value="수정"></td>
-									<td><input class="btn btn-default btn-sm" type="button"
-										onclick="deleteComment(${commentlist.ct_num})"
-										value="삭제"></td>
-										</c:if>
-
 								</tr>
 							</c:forEach>
 
@@ -115,7 +108,7 @@
 			<input type="hidden" name="c_num" id="c_num"
 				value="${communityuserdto.c_num}"> <input type="hidden"
 				name="ctu_num" id="ctu_num" value="${sessionScope.u_num}"> <input
-				type="text" name="ct_comment" id="ct_comment"> <input
+				type="text" name="ct_comment" id="ct_comment" class="btn btn-default"> <input
 				class="btn btn-default" type="submit" value="댓글 작성">
 		</form>
 
