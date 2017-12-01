@@ -6,6 +6,12 @@
 <head>
 <title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
+<script>
+	function f_foreword() {
+		var f_foreword = document.getElementById("f_foreword").value;
+		location.href = "searchforeword.do?c_group=${c_group}&f_foreword="+f_foreword;
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="../up.jsp" flush="false" />
@@ -19,15 +25,12 @@
 		<c:if test="${c_group=='4'}">
 		<h3>N수생 커뮤니티</h3></c:if>
 		
-		<form action="searchforeword.do" >
-        <input type="hidden" name="c_group" id="c_group" value="${c_group}">
-		<select class="btn btn-default" name="f_foreword">
+		<select class="btn btn-default" onchange="f_foreword()" id="f_foreword">
+			<option>------</option>
 	        <c:forEach var="foreword" items="${foreword}">
 	            <option value="${foreword.f_foreword}">${foreword.f_foreword}</option>
 	        </c:forEach>
 	    </select>
-    	<input class="btn btn-default btn-sm" type="submit" value="검색">
-    	</form>
    <br>
    <div class="container">
 			<table class="table">
