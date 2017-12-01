@@ -248,6 +248,7 @@ public class CommunityController {
 		int c_group2 = Integer.parseInt(c_group);
 
 		List<CommunityUserDTO> clist = user_list(cmservice.cm_selectBy(c_group2));
+		Collections.sort(clist, new communitycomp());
 		CommunityUserDTO cdto = clist.get(0);
 
 		if (cdto.getC_num() == c_num2) {
@@ -265,6 +266,7 @@ public class CommunityController {
 		int c_num2 = Integer.parseInt(c_num);
 		int c_group2 = Integer.parseInt(c_group);
 		List<CommunityUserDTO> clist = user_list(cmservice.cm_selectBy(c_group2));
+		Collections.sort(clist, new communitycomp());
 		CommunityUserDTO cdto = clist.get(clist.size() - 1);
 
 		if (cdto.getC_num() == c_num2) {
