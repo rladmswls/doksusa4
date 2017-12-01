@@ -153,7 +153,7 @@ public class CommunityController {
    @RequestMapping(value = "/deleteComment.do", method = RequestMethod.GET)
    public String ct_delete(int ct_num3, Model model) {
 	   CommentDTO codto = ctservice.ct_selectOne(ct_num3);
-      ctservice.ct_delete(ct_num3);
+      ctservice.ct_delete2(ct_num3);
       
       model.addAttribute("c_num", codto.getC_num());
       return "redirect:/communityview.do";

@@ -19,5 +19,7 @@ public interface CommentDAO {
 	
 	
 	public List<CommentDTO> ctu_selectBy(int ctu_num);
+
+	public int ct_delete2(int ct_num);
 	
 }

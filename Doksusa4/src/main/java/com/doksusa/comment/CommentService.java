@@ -9,6 +9,7 @@ public interface CommentService {
 	public List<CommentDTO> ct_selectBy(int c_num);
 	
 	public int ct_delete(int ctu_num);
+	public int ct_delete2(int ct_num);
 	
 	
 	public int ct_insert(CommentDTO codto);

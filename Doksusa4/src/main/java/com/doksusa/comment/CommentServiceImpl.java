@@ -50,6 +50,11 @@ public class CommentServiceImpl implements CommentService {
 		return ct.ct_selectOne(ct_num);
 	}
 
+	@Override
+	public int ct_delete2(int ct_num) {
+		return ct.ct_delete2(ct_num);
+	}
+
 	
 	
 }

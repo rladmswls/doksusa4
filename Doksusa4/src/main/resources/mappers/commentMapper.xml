@@ -16,6 +16,11 @@
 		ctu_num=#{ctu_num}
 	</delete>
 
+<delete id="ct_delete2" parameterType="int">
+		delete from comments where
+		ct_num=#{ct_num}
+	</delete>
+
 	<insert id="ct_insert" parameterType="codto">
 		insert into comments values
 		(ct_num_SEQ.nextval,#{c_num}, #{ctu_num}, #{ct_comment}, #{ct_date})

@@ -6,9 +6,7 @@
 <head>
 <title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
-<link
-	href="//bootswatch.com/sandstone/"
-	rel="stylesheet">
+<link href="//bootswatch.com/sandstone/" rel="stylesheet">
 <script>
 	function deleteCommunity() {
 		f.action = "deleteCommunity.do";
@@ -35,76 +33,90 @@
 	<div id="here">
 
 		<h3>${communityuserdto.f_foreword }${communityuserdto.c_title }</h3>
-		<h5>${communityuserdto.u_nick}</h5><br>
+		<h5>${communityuserdto.u_nick}</h5>
+		<br>
 		<h5>${communityuserdto.c_date}</h5>
 
 		<hr>
 		<pre>${communityuserdto.c_content }</pre>
-		
+
 		<c:choose>
 			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
 				<form name="f" action="">
 					<input type="hidden" name="c_num" id="c_num"
 						value="${communityuserdto.c_num}"> <input type="hidden"
 						name="c_group" id="c_group" value="${communityuserdto.c_group}">
-					<input class="btn btn-default" type="button" onclick="updateCommunity()" value="수정하기">
-					<input class="btn btn-default" type="button" onclick="deleteCommunity()" value="삭제하기">
+					<input class="btn btn-default" type="button"
+						onclick="updateCommunity()" value="수정하기"> <input
+						class="btn btn-default" type="button" onclick="deleteCommunity()"
+						value="삭제하기">
 				</form>
 			</c:when>
 		</c:choose>
 
 		<br>
 		<hr>
-		<br>
-<br>
-<br>
-<br>
-<form name="cf" action="">
-	<div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th id="ct_comment">댓글</th>
-					<th id="u_nick">댓글작성자</th>
-					<th id="ct_date">작성날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-				<c:set var="cnt" value="0"/>
-					<c:forEach var="commentlist" items="${commentuserlist}">
+		<br> <br> <br> <br>
+		<form name="cf" action="">
+			<div>
+				<table class="table">
+					<thead>
 						<tr>
-							<c:choose>
-								<c:when test="${sessionScope.u_num == commentlist.ctu_num}">
-								    <c:set var="cnt" value="${cnt+1 }"/>
-										<td><input class="btn btn-default btn-sm" type="text" name="ct_comment" id="ct_comment" value="${commentlist.ct_comment}"></td>
-										<td><input type="text" name="ct_num" id="ct_num" value="${commentlist.ct_num}" > </td>
-											<td><input type="text" name="c_num" id="c_num" value="${communityuserdto.c_num}"></td>
-											<td><input type="text" name="ctu_num" id="ctu_num" value="${commentlist.ctu_num}"></td>
-											<td><input type="text" name="ct_date" id="ct_date" value="${commentlist.ct_date}"></td>
-											<td><input  class="btn btn-default btn-sm" type="button" onclick="updateComment(${commentlist.ct_num},${cnt})" value="수정"></td>
-											<td><input  class="btn btn-default btn-sm" type="button" onclick="deleteComment(${commentlist.ct_num},${cnt})" value="삭제"></td>
-								</c:when>
-								<c:otherwise>
-									<td>${commentlist.ct_comment}</td>
-								</c:otherwise>
-							</c:choose>
-							<td>${commentlist.u_nick}</td>
-							<td>${commentlist.ct_date}</td>
-							
+							<th id="ct_comment">댓글</th>
+							<th id="u_nick">댓글작성자</th>
+							<th id="ct_date">작성날짜</th>
 						</tr>
-					</c:forEach>
-						
-				</tr>
-			</tbody>
-		</table>
-		</div>
-</form>
+					</thead>
+					<tbody>
+						<tr>
+							<c:set var="cnt" value="0" />
+							<c:forEach var="commentlist" items="${commentuserlist}">
+								<tr>
+									<c:choose>
+										<c:when test="${sessionScope.u_num == commentlist.ctu_num}">
+											<c:set var="cnt" value="${cnt+1 }" />
+											<td><input class="btn btn-default btn-sm" type="text"
+												name="ct_comment" id="ct_comment"
+												value="${commentlist.ct_comment}"></td>
+											<input type="hidden" name="ct_num" id="ct_num"
+												value="${commentlist.ct_num}">
+											<input type="hidden" name="c_num" id="c_num"
+												value="${communityuserdto.c_num}">
+											<input type="hidden" name="ctu_num" id="ctu_num"
+												value="${commentlist.ctu_num}">
+											<input type="hidden" name="ct_date" id="ct_date"
+												value="${commentlist.ct_date}">
+
+										</c:when>
+										<c:otherwise>
+											<td>${commentlist.ct_comment}</td>
+										</c:otherwise>
+									</c:choose>
+									<td>${commentlist.u_nick}</td>
+									<td>${commentlist.ct_date}</td>
+									<c:if test="${sessionScope.u_num == commentlist.ctu_num}">
+									<td><input class="btn btn-default btn-sm" type="button"
+										onclick="updateComment(${commentlist.ct_num},${cnt})"
+										value="수정"></td>
+									<td><input class="btn btn-default btn-sm" type="button"
+										onclick="deleteComment(${commentlist.ct_num})"
+										value="삭제"></td>
+										</c:if>
+
+								</tr>
+							</c:forEach>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
 		<form action="commentinsert.do" method="post">
-			<input type="hidden" name="c_num" id="c_num" value="${communityuserdto.c_num}"> 
-			<input type="hidden" name="ctu_num" id="ctu_num" value="${sessionScope.u_num}"> 
-			<input type="text" name="ct_comment" id="ct_comment"> 
-			<input class="btn btn-default" type="submit" value="댓글 작성">
+			<input type="hidden" name="c_num" id="c_num"
+				value="${communityuserdto.c_num}"> <input type="hidden"
+				name="ctu_num" id="ctu_num" value="${sessionScope.u_num}"> <input
+				type="text" name="ct_comment" id="ct_comment"> <input
+				class="btn btn-default" type="submit" value="댓글 작성">
 		</form>
 
 	</div>
