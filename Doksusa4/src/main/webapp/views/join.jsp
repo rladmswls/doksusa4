@@ -24,6 +24,7 @@
 				} else {
 					check_id = true;
 					alert("사용가능한 아이디입니다.");
+					$("#idCheck").val("체크완료");
 				}
 			}
 
@@ -44,6 +45,7 @@
 				} else {
 					check_nick = true;
 					alert("사용가능한 닉네임입니다.");
+					$("#nickCheck").val("체크완료");
 				}
 			}
 
@@ -71,6 +73,8 @@
 				} else {
 					check_phone = true;
 					alert("사용가능한 전화번호입니다.");
+					$("#phoneCheck").val("체크완료");
+
 				}
 			}
 		});
@@ -88,7 +92,7 @@
 						<tr>
 							<td><input class="btn btn-default" type="text" name="u_id"
 								id="u_id" placeholder="아이디를 입력하세요"></td>
-							<td><input class="btn btn-default" type="button"
+							<td><input class="btn btn-default" type="button" name="idCheck" id="idCheck"
 								onclick="checkID()" value="중복체크 "></td>
 						</tr>
 						<tr>
@@ -98,7 +102,7 @@
 						<tr>
 							<td><input class="btn btn-default" type="text" id="u_nick"
 								name="u_nick" placeholder="닉네임을 설정하세요"></td>
-							<td><input class="btn btn-default" type="button"
+							<td><input class="btn btn-default" type="button" name="nickCheck" id="nickCheck"
 								onclick="checkNick()" value="중복체크 "></td>
 						</tr>
 						<tr>
@@ -108,7 +112,7 @@
 								onclick="checkPhone()" value="중복체크 "></td>
 						</tr>
 						<tr>
-							<td><input class="btn btn-default" id="join" type="button"
+							<td><input class="btn btn-default" id="join" type="button" name="phoneCheck" id="phoneCheck"
 								onclick="goJoin()" value="회원등록"> <input
 								class="btn btn-default" type="reset" value="초기화"></td>
 						</tr>
