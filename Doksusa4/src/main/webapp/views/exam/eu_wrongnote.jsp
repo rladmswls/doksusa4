@@ -8,9 +8,9 @@
 <title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
 <script>
-	function e_subject() {
-		f.action = "select_e_subject.do";
-		f.submit();
+	function e_link() {
+		var e_link = document.getElementById("e_link").value;
+		location.href = "";
 	}
 </script>
 </head>
@@ -40,7 +40,7 @@
 				</tbody>
 			</table>
 			
-			<select onchange="e_subject()" class="btn btn-default" name="e_subject">
+			<select onchange="e_link()" class="btn btn-default" id="e_link">
 				<option>----</option>
 				<c:forEach var="ewsdto" items="${e_subject_list}">
 					<option value="${ewsdto }">${ewsdto }</option>
