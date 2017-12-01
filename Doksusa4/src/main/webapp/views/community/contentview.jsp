@@ -68,7 +68,7 @@
 			data: param,	
 			success : function(responsetext) {
 				if (responsetext == "1") {
-					alert("첫 페이지 입니다.");
+					alert("마지막 페이지 입니다.");
 				} else {
 					location.href = "c_next.do?c_num2="+$("#c_num2").val()+"&c_group=" + $("#c_group").val();
 					 
