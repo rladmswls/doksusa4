@@ -78,8 +78,8 @@
 											<td><input class="btn btn-default btn-sm" type="text"
 												name="ct_comment" id="ct_comment"
 												value="${commentlist.ct_comment}">
-												<i onclick="updateComment(${commentlist.ct_num},${cnt})"  class="glyphicon glyphicon-pencil"></i>
-												<i onclick="deleteComment(${commentlist.ct_num})" class="glyphicon glyphicon-remove"></i>
+												<i  style="cursor: pointer" onclick="updateComment(${commentlist.ct_num},${cnt})"  class="glyphicon glyphicon-pencil"></i>
+												<i  style="cursor: pointer" onclick="deleteComment(${commentlist.ct_num})" class="glyphicon glyphicon-remove"></i>
 											</td>
 											<input type="hidden" name="ct_num" id="ct_num"
 												value="${commentlist.ct_num}">
