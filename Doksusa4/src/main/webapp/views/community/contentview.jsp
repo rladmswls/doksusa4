@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Doksusa</title>
 <link rel="stylesheet" type="text/css" href="css/exam.css">
 <link href="//bootswatch.com/sandstone/" rel="stylesheet">
@@ -25,6 +26,65 @@
 		location.href = "updateComment.do?ct_num2="+ct_num+"&ct_comment="+ct_comment[cnt].value;
 
 	}
+	
+	function before2() {
+		var param={};
+		param.c_num = $("#c_num2").val();
+		param.c_group = $("#c_group").val();
+		
+		console.log(param.c_num);
+		console.log(param.c_group);
+		$.ajax({
+			url : "check_c_Before.do",
+			//data : $("#myfrm").serialize(),
+			//data : {"c_num":$("#c_num2").val(),"c_group":$("#c_group").val()},
+			data: param,	
+			success : function(responsetext) {
+				if (responsetext == "1") {
+					alert("첫 페이지 입니다.");
+				} else {
+					location.href = "c_before.do?c_num2="+$("#c_num2").val()+"&c_group=" + $("#c_group").val();
+					 
+				}
+			},
+			fail: function(xhr){
+				alert(xhr);
+				}
+		});
+
+	}
+	function next() {
+		
+		var param={};
+		param.c_num = $("#c_num2").val();
+		param.c_group = $("#c_group").val();
+		
+		console.log(param.c_num);
+		console.log(param.c_group);
+		$.ajax({
+			url : "check_c_Next.do",
+			//data : $("#myfrm").serialize(),
+			//data : {"c_num":$("#c_num2").val(),"c_group":$("#c_group").val()},
+			data: param,	
+			success : function(responsetext) {
+				if (responsetext == "1") {
+					alert("첫 페이지 입니다.");
+				} else {
+					location.href = "c_next.do?c_num2="+$("#c_num2").val()+"&c_group=" + $("#c_group").val();
+					 
+				}
+			},
+			fail: function(xhr){
+				alert(xhr);
+				}
+		});
+	
+	}
+
+	function goList() {
+		ff.action = "communitylist.do";
+		ff.submit();
+	}
 </script>
 </head>
 <body>
@@ -43,11 +103,11 @@
 			<c:when test="${sessionScope.u_num == communityuserdto.u_num}">
 				<form name="f" action="">
 					<input type="hidden" name="c_num" id="c_num"
-						value="${communityuserdto.c_num}"> <input type="hidden"
+						value="${communityuserdto.c_num}"> 
+						<input type="hidden"
 						name="c_group" id="c_group" value="${communityuserdto.c_group}">
 					<input class="btn btn-default" type="button"
-						onclick="updateCommunity()" value="수정하기"> 
-					<input
+						onclick="updateCommunity()" value="수정하기"> <input
 						class="btn btn-default" type="button" onclick="deleteCommunity()"
 						value="삭제하기">
 				</form>
@@ -77,10 +137,13 @@
 											<c:set var="cnt" value="${cnt+1 }" />
 											<td><input class="btn btn-default btn-sm" type="text"
 												name="ct_comment" id="ct_comment"
-												value="${commentlist.ct_comment}">
-												<i  style="cursor: pointer" onclick="updateComment(${commentlist.ct_num},${cnt})"  class="glyphicon glyphicon-pencil"></i>
-												<i  style="cursor: pointer" onclick="deleteComment(${commentlist.ct_num})" class="glyphicon glyphicon-remove"></i>
-											</td>
+												value="${commentlist.ct_comment}"> <i
+												style="cursor: pointer"
+												onclick="updateComment(${commentlist.ct_num},${cnt})"
+												class="glyphicon glyphicon-pencil"></i> <i
+												style="cursor: pointer"
+												onclick="deleteComment(${commentlist.ct_num})"
+												class="glyphicon glyphicon-remove"></i></td>
 											<input type="hidden" name="ct_num" id="ct_num"
 												value="${commentlist.ct_num}">
 											<input type="hidden" name="c_num" id="c_num"
@@ -108,8 +171,23 @@
 			<input type="hidden" name="c_num" id="c_num"
 				value="${communityuserdto.c_num}"> <input type="hidden"
 				name="ctu_num" id="ctu_num" value="${sessionScope.u_num}"> <input
-				type="text" name="ct_comment" id="ct_comment" class="btn btn-default"> <input
-				class="btn btn-default" type="submit" value="댓글 작성">
+				type="text" name="ct_comment" id="ct_comment"
+				class="btn btn-default"> <input class="btn btn-default"
+				type="submit" value="댓글 작성">
+		</form>
+
+		<form id="myfrm" name="ff" action="">
+			<hr>
+			<input type="hidden" name="c_group" id="c_group" value="${communityuserdto.c_group}">
+			<input type="hidden" name="c_num2" id="c_num2" value="${communityuserdto.c_num}">
+		
+		
+			<input class="btn btn-default" type="button" onclick="before2()" value="◀이전"> 
+				<input class="btn btn-default"
+				type="button" onclick="goList()" value="목록으로">
+				<input class="btn btn-default" type="button"
+				onclick="next()" value="다음▶"> 
+				
 		</form>
 
 	</div>
