@@ -135,9 +135,9 @@
 									<c:choose>
 										<c:when test="${sessionScope.u_num == commentlist.ctu_num}">
 											<c:set var="cnt" value="${cnt+1 }" />
-											<td><input class="btn btn-default btn-sm" type="text"
-												name="ct_comment" id="ct_comment"
-												value="${commentlist.ct_comment}"> <i
+											<td>
+											<textarea cols="40" rows="1" name="ct_comment" id="ct_comment">${commentlist.ct_comment}</textarea>
+											 <i
 												style="cursor: pointer"
 												onclick="updateComment(${commentlist.ct_num},${cnt})"
 												class="glyphicon glyphicon-pencil"></i> <i
