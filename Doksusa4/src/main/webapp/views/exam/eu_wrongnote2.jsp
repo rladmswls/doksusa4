@@ -43,14 +43,14 @@
 					</tr>
 				</tbody>
 			</table>
-
+			
 			<select onchange="e_link()" class="btn btn-default" id="e_link">
 				<option>----</option>
 				<option value="전체보기">전체보기</option>
 				<c:forEach var="ewsdto" items="${e_subject_list}">
 					<option value="${ewsdto }">${ewsdto }</option>
 				</c:forEach>
-			</select>
+			</select> 
 		</div>
 	</div>
 </body>

@@ -97,8 +97,31 @@ public class AptitudeController {
 
 	}
 
+	
+	
+	@RequestMapping("/au_wrongnote2.do")
+	public String au_wrongnote2(String a_school, HttpSession session, Model model) {
+		System.out.println(a_school+"0000000000000000000000000000000");
+		int u_num = (Integer) session.getAttribute("u_num");
+		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
+		List<A_wrongMyNoteDTO> a_list = new ArrayList<A_wrongMyNoteDTO>();
+		List<String> flist = new ArrayList<String>();
+		for (A_wrongnoteDTO awdto : aw_list) {
+			AptitudeDTO adto = aptitudeservice.ap_selectByAnum(awdto.getA_num());
+			A_wrongMyNoteDTO aa = new A_wrongMyNoteDTO(awdto.getA_num(), awdto.getA_subnum(), u_num, adto.getA_link().substring(9, adto.getA_link().length() - 4));
+			if(a_school.equals(adto.getA_link().substring(9, adto.getA_link().length() - 4)))a_list.add(aa);
+			flist.add(aa.getA_link());
+			System.out.println(aa.getA_link());
+		}
+		List<String> a_school_list = new ArrayList<String>(new HashSet<String>(flist));
+		model.addAttribute("a_list", a_list);
+		model.addAttribute("a_school_list",a_school_list);
+		return "aptitude/au_wrongnote2";
+	}
+	
+	
 	@RequestMapping("/au_wrongnote.do")
-	public String u_wrongnote(HttpSession session, Model model) {
+	public String au_wrongnote(HttpSession session, Model model) {
 		int u_num = (Integer) session.getAttribute("u_num");
 		List<A_wrongnoteDTO> aw_list = awservice.aw_selectByU_num(u_num);
 		List<A_wrongMyNoteDTO> a_list = new ArrayList<A_wrongMyNoteDTO>();
