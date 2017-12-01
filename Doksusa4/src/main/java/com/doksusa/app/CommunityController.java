@@ -318,7 +318,7 @@ public class CommunityController {
 		List<CommunityUserDTO> clist = user_list(cmservice.cm_selectBy(c_group));
 		Collections.sort(clist, new communitycomp());
 
-		for (int i = 1; i < clist.size(); i++) {
+		for (int i = 0; i < clist.size()-1; i++) {
 			CommunityUserDTO cdto = clist.get(i);
 			if (cdto.getC_num() == c_num2) {
 				i++;
