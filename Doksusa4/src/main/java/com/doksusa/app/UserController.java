@@ -242,6 +242,8 @@ public class UserController {
 
 	@RequestMapping(value = "/searchPW.do", method = RequestMethod.POST)
 	public String searchPW2(String u_id,String u_nick,String u_phone,Model model) {
+		System.out.println(u_nick);
+		System.out.println(u_phone);
 		UserDTO user = userservice.user_select3(u_id, u_nick, u_phone);
 		if (user == null) {
 			model.addAttribute("message", "등록된 회원이 아닙니다.");

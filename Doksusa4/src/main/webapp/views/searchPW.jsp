@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,11 +11,11 @@
 <jsp:include page="up.jsp" flush="false"/>
 <div id="here">
 <form method="post" action="searchPW.do">
-      <h3>ÆÐ½º¿öµå Ã£±â</h3>
-      <input class="btn btn-default" type="text" name="u_id" placeholder="¾ÆÀÌµð ÀÔ·Â"><br>
-      <input class="btn btn-default" type="text" name="u_nick" placeholder="´Ð³×ÀÓ ÀÔ·Â"><br>
-       <input class="btn btn-default" type="tel" name="u_phone" placeholder="ÀüÈ­¹øÈ£ÀÔ·Â"><br>
-      <input class="btn btn-default" type="submit" value="ÆÐ½º¿öµå Ã£±â">
+      <h3>íŒ¨ìŠ¤ì›Œë“œ ì°¾ê¸°</h3>
+      <input class="btn btn-default" type="text" name="u_id" placeholder="ì•„ì´ë”” ìž…ë ¥"><br>
+      <input class="btn btn-default" type="text" name="u_nick" placeholder="ë‹‰ë„¤ìž„ ìž…ë ¥"><br>
+       <input class="btn btn-default" type="tel" name="u_phone" placeholder="ì „í™”ë²ˆí˜¸ìž…ë ¥"><br>
+      <input class="btn btn-default" type="submit" value="íŒ¨ìŠ¤ì›Œë“œ ì°¾ê¸°">
    </form>
    </div>
 </body>
