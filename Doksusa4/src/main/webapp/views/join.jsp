@@ -106,7 +106,7 @@
 								onclick="checkNick()" value="중복체크 "></td>
 						</tr>
 						<tr>
-							<td><input class="btn btn-default" type="tel" name="u_phone"
+							<td><input class="btn btn-default" type="tel" maxlength="11" name="u_phone"
 								id="u_phone" placeholder="전번 입력하세요"></td>
 							<td><input class="btn btn-default" type="button" name="phoneCheck" id="phoneCheck"
 								onclick="checkPhone()" value="중복체크 "></td>

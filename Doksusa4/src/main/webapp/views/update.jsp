@@ -93,7 +93,7 @@
 
 				<tr>
 					<th>전화번호</th>
-					<td><input class="btn btn-default" type="text" name="u_phone"
+					<td><input class="btn btn-default" type="text" maxlength="11" name="u_phone"
 						id="u_phone" value="${user.u_phone}"></td>
 					<td><input class="btn btn-default" type="button"
 						onclick="checkPhone()" value="중복체크 "></td>
